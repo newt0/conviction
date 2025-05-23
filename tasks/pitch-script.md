@@ -50,22 +50,76 @@ And your conviction comes alive.
 
 ---
 
-## HOW IT WORKS: Mint. Delegate. Relax.
+## 🔄 HOW IT WORKS: Mint. Delegate. Relax.
 
 Each ConvictionFi NFT embodies a strategic belief:
 "Stake \$SUI until blue-chip rotation,"
 or "HODL \$BTC and lend for yield."
 
-You choose the thesis.
+You choose a thesis.
 You mint the NFT.
-It becomes your proxy.
+From there, the protocol unfolds in **seven autonomous phases**:
 
-- Each NFT has its own on-chain wallet
-- Funds are deposited upon mint
-- Agents operate using **Sui Agent Kit** — integrating with dApps, DEXs, and on-chain oracles
+---
 
-You stay hands-off.
-Your agent stays on-chain.
+### ✅ **Phase 1: Minting**
+
+- User selects a strategy and mints a ConvictionFi NFT.
+- The NFT is assigned its own on-chain wallet.
+- Mint price = allocated trading capital.
+
+---
+
+### ✅ **Phase 2: Funding**
+
+- Mint proceeds are deposited into the NFT’s dedicated wallet.
+- No need for the user to send funds separately.
+
+---
+
+### ✅ **Phase 3: Agent Initialization**
+
+- The NFT loads its strategy logic and system prompt from Walrus.
+- The agent is instantiated via **Sui Agent Kit**.
+
+---
+
+### ✅ **Phase 4: Autonomous Execution**
+
+- The agent begins operating — executing trades, staking, or lending based on its embedded logic.
+- It reads market conditions via oracles and adjusts actions accordingly.
+
+---
+
+### ✅ **Phase 5: Transparent Reporting**
+
+- The agent sends daily/weekly performance updates to the user:
+
+  - Wallet balance
+  - Trade logs
+  - Strategy status
+
+- Notifications are delivered via Twitter DM or visible on the dashboard.
+
+---
+
+### ✅ **Phase 6: Secondary Options**
+
+- NFTs can be traded on secondary markets.
+- Alternatively, users may redeem funds via built-in withdrawal logic (with optional lockups or floor-based models).
+
+---
+
+### ✅ **Phase 7: Archival or Upgrade**
+
+- Strategy logic can be upgraded by the team, with full transparency via Walrus’ versioned storage.
+- The NFT’s **conviction remains immutable**, preserving the original thesis.
+
+---
+
+**You stay hands-off.
+Your conviction stays on-chain.
+Your agent does the rest.**
 
 ---
 
