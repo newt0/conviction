@@ -15,9 +15,15 @@
 
 - [ ] Marketing Phrase の整理
 
-  - [ ] Tagline（例: _"Mint Your Conviction"_）
-  - [ ] Brand Copy（思想 × 自律戦略の訴求）
-  - [ ] Short Description（LP・SNS 用の 1 文説明）
+  - [x] Tagline（例: _"Mint Your Conviction"_）
+  - [x] Brand Copy（思想 × 自律戦略の訴求）
+  - [x] Short Description（LP・SNS 用の 1 文説明）
+
+## 設計
+
+- [ ] README.md
+- [ ] 要求定義
+- [ ] 要件定義
 
 ## 🧩 技術構成・実装
 
