@@ -9,6 +9,29 @@ Our slogan: _"Mint Your Conviction. DeFAI Agent as NFT."_
 
 ---
 
+## 🧩 THE GAP: DeFAI is a Word. We Made it Work.
+
+Everyone talks about DeFAI —
+Decentralized Finance + AI.
+
+But in reality?
+
+It’s still just a marketing term.
+Use cases remain vague.
+Interfaces are broken.
+No one knows what "using DeFAI" actually means.
+
+That’s why we built ConvictionFi.
+We don’t just say DeFAI.
+We deliver it —
+through a simple, self-contained interface:
+
+DeFAI Agent as NFT.
+Mint once. Let the agent do the rest.
+
+It’s not a buzzword.
+It’s a UX breakthrough.
+
 ## 🔥 MARKET REALITY: DeFi × AI is Inevitable, Yet Unfair
 
 Crypto investing has outpaced human cognition.
@@ -177,23 +200,6 @@ and let intelligence evolve within it.
 
 ---
 
-## 🎯 Vision
-
-Today, DeFi is a privilege.
-We believe it should be a public right.
-
-Our mission?
-
-- To empower belief over bureaucracy
-- To turn NFTs into **living vaults of conviction**
-- To let AI act on your behalf — not replace your agency
-
-**From one mint...
-to ten thousand agents...
-to a world where conviction moves capital.**
-
----
-
 ## 🎥 DEMO VIDEO (Recommended Insert @ \~2:00 mark)
 
 > - Show: Minting “SUI_MAXIMIZER” → wallet creation → fund confirmation
@@ -208,7 +214,11 @@ One mint.
 One conviction.
 One unstoppable agent.
 
-**ConvictionFi** —
+Built for believers — not just traders.
+Where AI acts for you — not over you.
+Where NFTs become living vaults of conviction.
+
+ConvictionFi —
 Where belief becomes automation.
 Where conviction becomes capital.
 
