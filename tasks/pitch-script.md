@@ -32,27 +32,6 @@ Mint once. Let the agent do the rest.
 It’s not a buzzword.
 It’s a UX breakthrough.
 
-## 🔥 MARKET REALITY: DeFi × AI is Inevitable, Yet Unfair
-
-Crypto investing has outpaced human cognition.
-Every day — over 140,000 new tokens emerge.
-Too fast. Too fragmented. Too volatile.
-
-AI could have been the solution.
-Instead, it's become an exclusive tool for the elite —
-those who fine-tune prompts, manage bots, and move capital at lightning speed.
-
-The result?
-
-**They get richer.
-Everyone else gets wrecked.**
-
-AI didn’t democratize finance.
-It stratified it even more.
-
-That’s why we built ConvictionFi:
-To let conviction — not expertise — become your edge.
-
 ---
 
 ## 💡 SOLUTION: ConvictionFi — Your Conviction, Your Agent
