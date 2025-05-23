@@ -1,49 +1,59 @@
-## ConvictionFi Technical Specification Document (for Engineers)
+## ConvictionFi Technical Requirements Document (For Engineers)
 
-### 1. Project Overview
+### 1. Overview
 
-ConvictionFi is a platform that tokenizes users' convictions as NFTs, which act as autonomous DeFAI (Decentralized Financial AI) agents executing crypto investments. By minting an NFT, users delegate trading decisions to the AI agent, enabling transparent, secure, and fully automated investing.
+ConvictionFi is a decentralized finance platform that enables users to mint their beliefs as NFTs. These NFTs act as autonomous DeFAI (Decentralized Financial AI) agents, executing crypto investment strategies on the user's behalf. The system integrates on-chain execution, off-chain AI agents, and transparent metadata management.
 
 ---
 
 ### 2. Tech Stack
 
+#### Web3 Components
+
 - **Blockchain**: Sui
 - **Smart Contract Language**: Move
-- **Decentralized Storage**: Walrus (for storing strategy logic and agent config JSON)
-- **Social Login**: Privy (Twitter, Email, Google)
-- **Cross-Chain Bridge**: Wormhole + Circle CCTP
-- **Fiat Payment**: Stripe / Transak
-- **Notification Infra**: Twitter Bot + Sui Agent Kit (or Webhook)
+- **AI Metadata Storage**: Walrus (off-chain JSON)
+- **Agent Execution**: Sui Agent Kit
+- **User Authentication**: Privy (Twitter, Email, Google)
+- **Cross-Chain Bridge**: Wormhole
+
+#### Web2 Application
+
+- **Language**: TypeScript
+- **Framework**: Next.js
+- **Styling**: TailwindCSS + shadcn/ui
+- **Backend**: Firebase (Realtime DB + Functions)
+- **Hosting**: Vercel
+- **Payments**: Stripe
 
 ---
 
-### 3. Component-Based Technical Requirements
+### 3. System Components
 
-#### 3.1 NFT Issuance & Structure
+#### 3.1 NFT Minting & Metadata
 
-- NFTs are minted on Sui and contain the following metadata:
+- NFTs minted on Sui include:
 
-  - strategy_name (e.g., "Trump memecoin sniper")
-  - metadata_url (link to Walrus-hosted JSON)
-  - agent_wallet_address
+  - `strategy_name`
+  - `metadata_url` (Walrus JSON link)
+  - `agent_wallet_address`
 
-- Upon minting, a corresponding smart contract wallet is auto-generated
+- On mint, generate a smart contract wallet (agent wallet) and bind it to the NFT
 
-#### 3.2 AI Agent Architecture
+#### 3.2 AI Agent (Off-Chain)
 
-- An off-chain bot (Node.js or Python) acts as the AI agent
-- Agent retrieves config JSON from Walrus and performs investment logic
-- Example triggers: Oracle price changes / Twitter API monitoring / Cron Jobs
-- Agent executes on-chain via Sui SDK by issuing TransactionBlocks from the agent wallet
+- Implemented in Node.js or Python
+- Periodically fetches metadata from Walrus
+- Executes investment logic based on triggers (oracle price, Twitter API, cron)
+- Sends TransactionBlock via Sui SDK
 
-#### 3.3 Wallet Structure
+#### 3.3 Wallet Isolation
 
-- Each NFT has an isolated smart contract wallet
-- Completely separated from the user’s main wallet
-- Withdraw function supports lock period or can be disabled (floor-price model)
+- Each NFT is linked to an isolated smart contract wallet
+- Main wallet remains untouched
+- Withdraw function is lockable or optionally disabled
 
-#### 3.4 Walrus Metadata Structure
+#### 3.4 Walrus Metadata Schema
 
 ```json
 {
@@ -61,35 +71,36 @@ ConvictionFi is a platform that tokenizes users' convictions as NFTs, which act 
 }
 ```
 
-#### 3.5 Notifications & Dashboard
+#### 3.5 Dashboard & Notifications
 
-- The agent retrieves daily PnL data and sends it via Twitter Bot @replies
-- Dashboard will be built using Next.js + TailwindCSS
-- Displayed fields:
+- Daily @reply PnL updates from a Twitter bot
+- Dashboard (Next.js) shows:
 
-  - NFT Name / Balance / Cumulative PnL / Last Tx Info / Metadata Summary
+  - NFT name, balance, PnL, last action, metadata summary
 
-#### 3.6 Payment Interfaces
+#### 3.6 Payment Integrations
 
-- Native Sui payments via Wallet Adapter
-- Cross-chain bridge payments (e.g., USDC/USDT via Wormhole → triggers Mint on Sui)
-- Stripe/Transak payments handled off-chain with signed message relay
-
-#### 3.7 Security Requirements
-
-- Admin role control for contracts; rollback-disabled design
-- Signature-based permission control for agent read/write operations
-- Formal verification or audit recommended before mainnet deployment
+- Native Sui wallet via adapter
+- USDC/USDT via Wormhole → Sui → trigger mint
+- Stripe payments trigger Firebase cloud functions and signed message relay
 
 ---
 
-### 4. Future Technical Extensions
+### 4. Security Requirements
 
-- Agent evaluation leaderboard for meta-optimization
-- zkLogin integration for anonymous DeFi access
-- Versioning / Fork & Remix functionality for strategy templates
-- L2 compatibility (e.g., ZK Rollup-based extension)
+- Smart contract admin role enforcement
+- Signature-based agent permissions
+- Pre-deploy audit or formal verification required
 
 ---
 
-_This document defines the MVP-level technical requirements for ConvictionFi and will be updated as development progresses._
+### 5. Future Enhancements
+
+- Agent Leaderboard (performance ranking)
+- zkLogin-based anonymous DeFi access
+- Strategy versioning, fork/remix tools
+- L2 support via ZK Rollups or parallel chains
+
+---
+
+_This document defines the MVP technical blueprint for ConvictionFi and will evolve based on testing and deployment phases._
