@@ -177,36 +177,6 @@ and let intelligence evolve within it.
 
 ---
 
-## FEATURES: Safe. Serverless. Effortless.
-
-- **Isolated Wallets**: No cross-agent risk
-- **Prepaid Mint**: Your mint price = your risk ceiling
-- **No SUI? No Wallet?** Login with Twitter via **zkLogin**
-- **Gasless Onboarding**: Powered by sponsored transactions
-- **Cross-Chain Ready**: Via **Wormhole** bridge
-
-No dashboards.
-No approvals.
-Just conviction — encoded.
-
----
-
-## 🧠 TECH STACK: Built on Sui. Powered by Agents.
-
-This isn’t “AI on blockchain.”
-This is AI **woven into blockchain execution**.
-
-- **Sui Agent Kit (SAK)**: Schedules and executes strategy logic
-- **Walrus**: Decentralized metadata & config storage
-- **zkLogin + Privy**: Secure, social onboarding
-- **Wormhole**: For future multichain execution
-- **Stripe (planned)**: For fiat-based NFT mints
-
-ConvictionFi is not Solana-ported.
-It’s **Sui-native by design** — leveraging Move, parallelism, and object-centric architecture.
-
----
-
 ## 🎯 Vision
 
 Today, DeFi is a privilege.
