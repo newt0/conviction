@@ -44,7 +44,7 @@ All on its own.
 
 ## Step 1: Choose and Mint Conviction
 
-Select a thesis — like staking SUI, or HODLing BTC.
+Select a thesis — like staking Sui, or HODLing Bitcoin.
 Mint an NFT.
 That’s it.
 
@@ -64,7 +64,7 @@ Your mint price?
 It’s transferred into that wallet — and becomes trading capital.
 
 The agent loads its logic and prompt from Walrus.
-It deploys via Sui Agent Kit.
+It deploys via Sui-Agent-Kit.
 Now it’s ready to act.
 
 ---
@@ -99,18 +99,23 @@ Social feedback fuels growth.**
 ## Step 4: Learn and Evolve
 
 Agents aren’t frozen in time.
-Their logic is stored on Walrus — and it’s upgradable.
+Their AI logic, strategy modules, and system prompts are stored as part of the NFT’s metadata on Walrus — and they’re upgradable.
+This means agents can evolve:
+they learn, adapt, and refine themselves as markets shift.
 
-They learn.
-They adapt.
-They evolve with the market.
+But one thing stays untouched:
 
-But one thing never changes:
-**The conviction minted in the NFT.**
-It stays immutable.
+The conviction — the belief encoded in the NFT at the moment of mint.
+Its theme, its thesis, its soul — that’s written once, and written forever.
 
-_The mind may evolve.
-But the soul stays the same._
+Walrus allows us to store both:
+
+Mutable data: AI logic, prompts, and parameters
+
+Immutable data: the core conviction that defines what the NFT stands for
+
+The mind may evolve.
+But the soul stays the same.
 
 ---
 
@@ -131,25 +136,29 @@ but agency is never taken away.**
 Most DeFi apps ask you to sign from your main wallet.
 That’s not just clunky — it’s dangerous.
 
-> Don’t put all your eggs in one basket.
+Don’t put all your eggs in one basket.
 
 We don’t.
 
-Every NFT uses an isolated wallet.
+Every ConvictionFi NFT uses an isolated smart wallet.
 You never sign again.
 And even if the strategy fails —
-**your personal funds stay safe.**
+your personal funds stay safe.
+
+This isn’t just safer infrastructure.
+It’s a new UX paradigm:
+
+NFT as Safety Layer —
+a firewall between you and protocol-level risk.
 
 NFTs aren’t just assets.
-They’re **firewalls between you and protocol risk.**
+They’re autonomous protectors.
 
 ---
 
 **You mint your conviction.
 Your agent lives it.
 Autonomously. Transparently. On-chain.**
-
----
 
 One mint.
 One conviction.
