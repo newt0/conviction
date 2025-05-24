@@ -1,4 +1,4 @@
-# ✅ ConvictionFi Pitch Script (vFinal.2)
+# ✅ ConvictionFi Pitch Script (vFinal.4)
 
 ## 🎬 Title
 
@@ -13,6 +13,7 @@ Our slogan: _"Mint Your Conviction. DeFAI Agent as NFT."_
 
 Everyone talks about **DeFAI** —
 Decentralized Finance + AI.
+Some even call it _Vibe Trading_.
 
 But in reality?
 
@@ -21,8 +22,7 @@ Use cases remain vague.
 Interfaces are broken.
 No one knows what "using DeFAI" actually means.
 
-That’s why we built **ConvictionFi**.
-We don’t just say _DeFAI_.
+**We don’t just say _DeFAI_ or _Vibe Trading_.**
 We deliver it —
 through a simple, self-contained interface:
 
@@ -54,7 +54,11 @@ And your conviction comes alive.
 
 ## 🔄 HOW IT WORKS: From Belief to Autonomy
 
-ConvictionFi is a full-cycle system of belief-driven investing — in five clear steps:
+ConvictionFi is a full-cycle system of belief-driven investing — in five clear steps.
+
+But here’s the key:
+**Only Step 1 requires your decision.**
+From Step 2 onward, the agent takes over.
 
 ---
 
@@ -62,48 +66,66 @@ ConvictionFi is a full-cycle system of belief-driven investing — in five clear
 
 - Select a thesis: from \$SUI staking to \$BTC HODLing.
 - Mint an NFT agent. Mint price = your trading capital.
+- **That’s it. No setup. No approvals. No dashboards.**
+
+> Your conviction is now on-chain.
+> **From here, it acts — not you.**
 
 ---
 
 ### 2. **Initialize & Deploy**
 
 - NFT creates its own isolated smart wallet.
-- Strategy logic is loaded from Walrus.
-- Agent is instantiated via **Sui Agent Kit**.
+- The full mint price is **transferred into this wallet** — it becomes the agent's trading capital.
+- Strategy logic and system prompt are loaded from **Walrus**.
+- The agent is instantiated via **Sui Agent Kit** — ready to act autonomously.
 
 ---
 
 ### 3. **Trade & Report**
 
-- Agent autonomously executes trades, staking, or lending.
-- Regular updates are posted **publicly via Twitter replies** — visible to the user and their network:
+The agent autonomously executes trades, staking, or lending —
+based on its embedded strategy and real-time market signals.
 
-  - Wallet balance
-  - Trade logs
-  - Strategy status
+Regular performance updates are posted **publicly via Twitter replies** —
+visible to the user and their network:
 
-- A dashboard is also available.
+- Wallet balance (in NFT)
+- Trade logs
+- Strategy status
+- Performance relative to initial budget
+
+These updates don’t just inform — they spark conversations.
+Friends can comment, share, or follow along in the timeline.
+Each reply becomes a **growth node**, turning belief into visibility.
+
+A private dashboard is also available for detailed tracking.
+
+> Transparency fuels trust.
+> Social feedback fuels growth.
 
 ---
 
 ### 4. **Learn & Evolve**
 
 - Strategy logic is **upgradable** via versioned Walrus metadata.
-- Agents adapt to new market data — transparently.
-- But conviction — the belief itself — is immutable.
+- Agents adapt transparently to market changes.
+- But conviction — the belief minted in the NFT — is immutable.
+
+> The mind may evolve.
+> But the soul stays the same.
 
 ---
 
 ### 5. **Exit or Transfer**
 
-- NFTs can be traded or redeemed (floor, lockup, or free withdrawal).
-- Your belief remains tokenized — even after exit.
+- Most agents are designed to exit autonomously —
+  triggered by predefined thresholds or lockup periods.
+- But users retain agency:
+  they may **sell the NFT**, or opt-in for a **refund** if permitted by the strategy.
 
----
-
-**You mint your conviction.
-Your agent lives it.
-Autonomously, transparently, and on-chain.**
+> Exit is guided by belief —
+> but agency is never taken away.
 
 ---
 
@@ -122,24 +144,6 @@ ConvictionFi fixes this.
 
 NFTs become **secure intermediaries** —
 not collectibles, but **autonomous firewalls** between you and DeFi risk.
-
----
-
-## 🧠 EVOLVING INTELLIGENCE, IMMUTABLE CONVICTION
-
-ConvictionFi agents are powered by **prompts** —
-system-level instructions stored on **Walrus**.
-
-- Prompts and logic are **mutable** and versioned.
-- Agents evolve — markets change, strategy adapts.
-- But conviction — the belief minted in the NFT — is **unchangeable**.
-
-> The mind may evolve.
-> But the soul stays the same.
-
-You don’t just mint a strategy.
-You mint a philosophy —
-and let intelligence evolve _within_ it.
 
 ---
 
