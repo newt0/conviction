@@ -44,16 +44,23 @@ All on its own.
 
 ## Step 1: Choose and Mint Conviction
 
-Select a thesis — like staking Sui, or HODLing Bitcoin.
-Mint an NFT.
+Choose a thesis.
+Like… Sui Maximizer.
+Stable Optimizer.
+Or… Bitcoin Hodler.
+
+You pick what you believe.
+And you mint.
 That’s it.
 
 No dashboards.
 No approvals.
-No setup.
+No complicated setup.
 
-**From this moment, your conviction is on-chain.**
-From here, it acts — not you.
+From that moment...
+your conviction is on-chain.
+And from here —
+it acts. Not you.
 
 ---
 
