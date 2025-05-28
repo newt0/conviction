@@ -1,0 +1,6 @@
+[package]
+name = "convictionfi"
+version = "0.0.1"
+
+[dependencies]
+Sui = { local = "../sui-framework" }
