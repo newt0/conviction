@@ -10,7 +10,7 @@ This command implements the **integration logic with the AI Agent** for Convicti
 - Ensure strict validation and linkage between `ManagedWallet` and `AgentDelegation`
 - Apply `assert_permission` and `assert_daily_limit` **before any execution**
 - Include conditional branching based on action types: Trade, Stake, Lend, Rebalance, Emergency
-- **Add inline comments** to all functions for clarity
+- **Add inline comments** to all functions for clarity in English
 
 ## 💡 Target Functions
 

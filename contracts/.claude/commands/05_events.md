@@ -8,7 +8,7 @@ This command defines the **event structs** used in the ConvictionFi smart contra
 
 - Define all event structs **within** the `conviction_fi.move` module
 - Each event struct must include the `has copy, drop` ability
-- Each struct must include a comment specifying **which function emits it**
+- Each struct must include a comment specifying **which function emits it** in English
 
 ## 📦 Target Event Structs
 
