@@ -599,6 +599,313 @@ module conviction_fi::core {
         timestamp: u64,
     }
 
+    // 🏗️ ADVANCED FEATURES
+
+    // 1. STRATEGY MANAGEMENT FUNCTIONS
+
+    // Add a new strategy to the registry with proper access control
+    public fun add_strategy(
+        registry: &mut StrategyRegistry,
+        admin_cap: &AdminCap,
+        name: String,
+        description: String,
+        risk_category: u8,
+        supported_protocols: vector<String>,
+        min_deposit: u64,
+        max_deposit: u64,
+        performance_fee: u64,
+        management_fee: u64,
+        ctx: &TxContext
+    ): u64 {
+        // Access control: only admin can add strategies
+        assert!(admin_cap.level >= 1, E_UNAUTHORIZED_CALLER);
+        assert!(!registry.is_paused, E_SYSTEM_PAUSED);
+        
+        let current_time = epoch_timestamp_ms(ctx);
+        let strategy_id = registry.next_strategy_id;
+        
+        // Create new strategy
+        let strategy = Strategy {
+            id: strategy_id,
+            name,
+            description,
+            risk_category,
+            supported_protocols,
+            min_deposit,
+            max_deposit,
+            performance_fee,
+            management_fee,
+            is_active: true,
+            created_at: current_time,
+            updated_at: current_time,
+            version: 1,
+        };
+        
+        // Add to registry
+        table::add(&mut registry.strategies, strategy_id, strategy);
+        registry.next_strategy_id = strategy_id + 1;
+        registry.total_strategies = registry.total_strategies + 1;
+        registry.total_active_strategies = registry.total_active_strategies + 1;
+        
+        // Emit strategy added event
+        event::emit(StrategyAdded {
+            strategy_id,
+            name: strategy.name,
+            risk_category,
+            admin: sender(ctx),
+            min_deposit,
+            max_deposit,
+            timestamp: current_time,
+        });
+        
+        strategy_id
+    }
+
+    // Update an existing strategy with proper versioning
+    public fun update_strategy(
+        registry: &mut StrategyRegistry,
+        admin_cap: &AdminCap,
+        strategy_id: u64,
+        name: Option<String>,
+        description: Option<String>,
+        min_deposit: Option<u64>,
+        max_deposit: Option<u64>,
+        performance_fee: Option<u64>,
+        management_fee: Option<u64>,
+        ctx: &TxContext
+    ) {
+        // Access control: only admin can update strategies
+        assert!(admin_cap.level >= 1, E_UNAUTHORIZED_CALLER);
+        assert!(!registry.is_paused, E_SYSTEM_PAUSED);
+        assert!(table::contains(&registry.strategies, strategy_id), E_STRATEGY_NOT_FOUND);
+        
+        let strategy = table::borrow_mut(&mut registry.strategies, strategy_id);
+        let current_time = epoch_timestamp_ms(ctx);
+        
+        // Update fields if provided
+        if (option::is_some(&name)) {
+            strategy.name = option::extract(&mut name);
+        };
+        if (option::is_some(&description)) {
+            strategy.description = option::extract(&mut description);
+        };
+        if (option::is_some(&min_deposit)) {
+            strategy.min_deposit = option::extract(&mut min_deposit);
+        };
+        if (option::is_some(&max_deposit)) {
+            strategy.max_deposit = option::extract(&mut max_deposit);
+        };
+        if (option::is_some(&performance_fee)) {
+            strategy.performance_fee = option::extract(&mut performance_fee);
+        };
+        if (option::is_some(&management_fee)) {
+            strategy.management_fee = option::extract(&mut management_fee);
+        };
+        
+        // Update metadata
+        strategy.updated_at = current_time;
+        strategy.version = strategy.version + 1;
+    }
+
+    // Deactivate a strategy to prevent new investments
+    public fun deactivate_strategy(
+        registry: &mut StrategyRegistry,
+        admin_cap: &AdminCap,
+        strategy_id: u64,
+        ctx: &TxContext
+    ) {
+        // Access control: only admin can deactivate strategies
+        assert!(admin_cap.level >= 1, E_UNAUTHORIZED_CALLER);
+        assert!(table::contains(&registry.strategies, strategy_id), E_STRATEGY_NOT_FOUND);
+        
+        let strategy = table::borrow_mut(&mut registry.strategies, strategy_id);
+        
+        if (strategy.is_active) {
+            strategy.is_active = false;
+            strategy.updated_at = epoch_timestamp_ms(ctx);
+            registry.total_active_strategies = registry.total_active_strategies - 1;
+        };
+    }
+
+    // Get list of all active strategies
+    public fun get_active_strategies(registry: &StrategyRegistry): vector<u64> {
+        let active_strategies = vector::empty<u64>();
+        let strategy_id = 1;
+        
+        while (strategy_id < registry.next_strategy_id) {
+            if (table::contains(&registry.strategies, strategy_id)) {
+                let strategy = table::borrow(&registry.strategies, strategy_id);
+                if (strategy.is_active) {
+                    vector::push_back(&mut active_strategies, strategy_id);
+                };
+            };
+            strategy_id = strategy_id + 1;
+        };
+        
+        active_strategies
+    }
+
+    // 2. DELEGATION REVOCATION & EXPIRY HANDLING
+
+    // Revoke an active delegation manually
+    public fun revoke_delegation(
+        delegation: &mut AgentDelegation,
+        wallet: &mut ManagedWallet,
+        nft: &ConvictionNFT,
+        ctx: &TxContext
+    ) {
+        // Access control: only wallet owner can revoke delegation
+        assert_nft_owner(nft, wallet);
+        assert!(sender(ctx) == wallet.controller, E_UNAUTHORIZED_CALLER);
+        assert!(delegation.wallet_id == sui::object::id(wallet), E_WALLET_NOT_FOUND);
+        assert!(delegation.is_active, E_DELEGATION_EXPIRED);
+        
+        // Deactivate delegation
+        delegation.is_active = false;
+        
+        // Clear wallet delegation info
+        wallet.delegated_agent = option::none();
+        wallet.delegation_expires = 0;
+        wallet.nonce = wallet.nonce + 1;
+        
+        // Emit delegation revoked event
+        event::emit(DelegationRevoked {
+            delegation_id: sui::object::id(delegation),
+            wallet_id: sui::object::id(wallet),
+            agent_address: delegation.agent_address,
+            revoked_by: sender(ctx),
+            reason: 1, // manual_revoke
+            timestamp: epoch_timestamp_ms(ctx),
+        });
+    }
+
+    // Clean up expired delegation
+    public fun cleanup_expired_delegation(
+        delegation: &mut AgentDelegation,
+        wallet: &mut ManagedWallet,
+        ctx: &TxContext
+    ) {
+        // Check if delegation has expired
+        let current_time = epoch_timestamp_ms(ctx);
+        assert!(delegation.expires_at <= current_time, E_DELEGATION_EXPIRED);
+        assert!(delegation.wallet_id == sui::object::id(wallet), E_WALLET_NOT_FOUND);
+        
+        if (delegation.is_active) {
+            // Deactivate expired delegation
+            delegation.is_active = false;
+            
+            // Clear wallet delegation info
+            wallet.delegated_agent = option::none();
+            wallet.delegation_expires = 0;
+            wallet.nonce = wallet.nonce + 1;
+            
+            // Emit delegation revoked event
+            event::emit(DelegationRevoked {
+                delegation_id: sui::object::id(delegation),
+                wallet_id: sui::object::id(wallet),
+                agent_address: delegation.agent_address,
+                revoked_by: sender(ctx),
+                reason: 2, // expired
+                timestamp: current_time,
+            });
+        };
+    }
+
+    // 3. SYSTEM OPERATIONS & CONFIGURATION
+
+    // Toggle global system pause status
+    public fun toggle_system_pause(
+        config: &mut GlobalConfig,
+        admin_cap: &AdminCap,
+        ctx: &TxContext
+    ) {
+        // Access control: only high-level admin can pause system
+        assert!(admin_cap.level >= 2, E_UNAUTHORIZED_CALLER);
+        
+        config.is_paused = !config.is_paused;
+        
+        // Emit system pause toggled event
+        event::emit(SystemPauseToggled {
+            target_type: 1, // global_system
+            target_id: option::none(),
+            is_paused: config.is_paused,
+            admin: sender(ctx),
+            timestamp: epoch_timestamp_ms(ctx),
+        });
+    }
+
+    // Toggle individual wallet pause status
+    public fun toggle_wallet_pause(
+        wallet: &mut ManagedWallet,
+        nft: &ConvictionNFT,
+        admin_cap: &AdminCap,
+        ctx: &TxContext
+    ) {
+        // Access control: admin or wallet owner can pause wallet
+        let caller = sender(ctx);
+        let is_admin = admin_cap.level >= 1;
+        let is_owner = caller == wallet.controller;
+        assert!(is_admin || is_owner, E_UNAUTHORIZED_CALLER);
+        
+        if (is_owner) {
+            assert_nft_owner(nft, wallet);
+        };
+        
+        wallet.is_paused = !wallet.is_paused;
+        wallet.nonce = wallet.nonce + 1;
+        
+        // Emit wallet pause toggled event
+        event::emit(SystemPauseToggled {
+            target_type: 2, // wallet
+            target_id: option::some(sui::object::id(wallet)),
+            is_paused: wallet.is_paused,
+            admin: caller,
+            timestamp: epoch_timestamp_ms(ctx),
+        });
+    }
+
+    // Update global configuration parameters
+    public fun update_global_config(
+        config: &mut GlobalConfig,
+        admin_cap: &AdminCap,
+        min_deposit_amount: Option<u64>,
+        max_risk_level: Option<u8>,
+        default_delegation_duration: Option<u64>,
+        protocol_fee_rate: Option<u64>,
+        treasury: Option<address>,
+        emergency_admin: Option<address>,
+        ctx: &TxContext
+    ) {
+        // Access control: only high-level admin can update global config
+        assert!(admin_cap.level >= 2, E_UNAUTHORIZED_CALLER);
+        
+        // Update fields if provided
+        if (option::is_some(&min_deposit_amount)) {
+            config.min_deposit_amount = option::extract(&mut min_deposit_amount);
+        };
+        if (option::is_some(&max_risk_level)) {
+            config.max_risk_level = option::extract(&mut max_risk_level);
+        };
+        if (option::is_some(&default_delegation_duration)) {
+            let duration = option::extract(&mut default_delegation_duration);
+            assert!(duration >= MIN_DELEGATION_DURATION && duration <= MAX_DELEGATION_DURATION, E_INVALID_DURATION);
+            config.default_delegation_duration = duration;
+        };
+        if (option::is_some(&protocol_fee_rate)) {
+            let fee_rate = option::extract(&mut protocol_fee_rate);
+            assert!(fee_rate <= 10000, E_INVALID_PERMISSION); // Max 100% (10000 basis points)
+            config.protocol_fee_rate = fee_rate;
+        };
+        if (option::is_some(&treasury)) {
+            config.treasury = option::extract(&mut treasury);
+        };
+        if (option::is_some(&emergency_admin)) {
+            config.emergency_admin = option::extract(&mut emergency_admin);
+        };
+        
+        config.version = config.version + 1;
+    }
+
     // 🧪 COMPREHENSIVE TEST SUITE
 
     #[test_only]
