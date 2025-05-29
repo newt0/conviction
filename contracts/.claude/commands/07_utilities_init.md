@@ -1,14 +1,14 @@
 # /project:07_utilities_init
 
-## 🧰 指示
+## 🧰 Instructions
 
-このコマンドでは、ConvictionFi における**補助的な Getter 関数群**および**初期化ロジック**を実装します。
+This command implements **utility getter functions** and the **initialization logic** for the ConvictionFi smart contract.
 
-## 🎯 要件
+## 🎯 Requirements
 
-以下の内容を `conviction_fi.move` モジュールに追加してください：
+The following components must be added to the `conviction_fi.move` module:
 
-### 1. Getter 関数（情報取得）
+### 1. Getter Functions (Information Retrieval)
 
 - `get_nft_details`
 - `get_wallet_balance`
@@ -16,17 +16,17 @@
 - `get_strategy_details`
 - `get_system_stats`
 
-### 2. 初期化関数（Init）
+### 2. Initialization Function
 
-- `init`（`GlobalConfig`, `StrategyRegistry`, `AdminCap` を作成して共有）
+- `init` — creates and shares `GlobalConfig`, `StrategyRegistry`, and `AdminCap`
 
-## 🛠 Claude への出力期待
+## 🛠 Output Expectations for Claude
 
-- Getter 関数では引数から必要な情報を抽出して tuple で返却
-- `init` 関数では `object::new`, `tx_context::sender`, `transfer::share_object` を使用
-- コメントはすべて **日本語＋英語併記** とし、使用目的が明確であること
-- ガス効率と型安全性を意識した Move 構文を用いること
+- Getter functions must extract required data from arguments and return them as tuples
+- The `init` function should use `object::new`, `tx_context::sender`, and `transfer::share_object` properly
+- All comments must be written in **English** and clearly explain the purpose of each function
+- Use gas-efficient and type-safe Move syntax throughout
 
 ---
 
-Claude Code はこのコマンドを `/project:07_utilities_init` として実行し、ConvictionFi の補助関数と初期化ロジックを構築してください。
+Claude Code should process this command as `/project:07_utilities_init`, and implement all utility getters and initialization logic into the `conviction_fi.move` module accordingly.

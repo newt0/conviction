@@ -1,28 +1,28 @@
 # /project:01_core_infra
 
-## ⛏ 指示
+## ⛏ Instructions
 
-このコマンドでは、ConvictionFi の Move スマートコントラクトの**基盤構造と型定義**を実装します。
+This command implements the **core infrastructure and type definitions** for the `ConvictionFi` Move smart contract.
 
-## 🎯 要件
+## 🎯 Requirements
 
-- `conviction_fi.move` モジュールに含める
-- `core` セクションのインポートおよび定数定義
-- `ConvictionNFT`, `ManagedWallet`, `AgentDelegation` などの構造体をすべて含む
-- エラーコードは `E_` で始まる形式で、意味のある名称を付与
-- `PERMISSION_` 定数と `TIME`, `LIMITS` に関する定義も含む
+- All code must be placed inside the `conviction_fi.move` module
+- Include necessary imports and constant definitions for the `core` section
+- Define the following structs: `ConvictionNFT`, `ManagedWallet`, `AgentDelegation`, etc.
+- Use meaningful error codes prefixed with `E_`
+- Include constants for `PERMISSION_`, as well as `TIME` and `LIMITS`
 
-## 🛠 実装方法
+## 🛠 Implementation Guidelines
 
-Move 2024 Edition に準拠し、最適な型安全性を保ちながら記述してください。コメントは**日本語と英語併記**でお願いします。
+Follow the Move 2024 Edition standard. Ensure optimal type safety. All comments should be written in English.
 
 ---
 
-### ✅ 実装内容
+### ✅ Implementation Content
 
 ```move
 module conviction_fi::core {
-    // 🔥 CRITICAL: Suiの最新stable APIを使用 / Use latest Sui stable API
+    // 🔥 CRITICAL: Use latest stable Sui API
     use sui::object::{UID, ID, uid_from_inner};
     use sui::transfer;
     use sui::tx_context::{TxContext, sender, epoch_timestamp_ms};
@@ -35,7 +35,7 @@ module conviction_fi::core {
     use std::vector;
     use std::option::{Self, Option};
 
-    // 🛡️ SECURITY: エラーコード定義 / Error code definitions
+    // 🛡️ SECURITY: Error code definitions
     const E_INVALID_STRATEGY: u64 = 0x001;
     const E_INVALID_RISK_LEVEL: u64 = 0x002;
     const E_INSUFFICIENT_BALANCE: u64 = 0x003;
@@ -52,7 +52,7 @@ module conviction_fi::core {
     const E_WALLET_PAUSED: u64 = 0x00E;
     const E_SYSTEM_PAUSED: u64 = 0x00F;
 
-    // 🔐 PERMISSIONS: ビットマスク方式 / Bitmask-style permission system
+    // 🔐 PERMISSIONS: Bitmask-style permission system
     const PERMISSION_TRADE: u64 = 0x001;      // 0000 0001
     const PERMISSION_STAKE: u64 = 0x002;      // 0000 0010
     const PERMISSION_LEND: u64 = 0x004;       // 0000 0100
@@ -60,17 +60,17 @@ module conviction_fi::core {
     const PERMISSION_EMERGENCY: u64 = 0x010;  // 0001 0000
     const PERMISSION_ALL: u64 = 0x01F;        // 0001 1111
 
-    // ⏰ TIME: 時間に関する定数 / Time-related constants
+    // ⏰ TIME: Time-related constants
     const SECONDS_IN_DAY: u64 = 86400000; // milliseconds
     const MAX_DELEGATION_DURATION: u64 = 31536000000; // 1 year
     const MIN_DELEGATION_DURATION: u64 = 3600000;     // 1 hour
 
-    // 💰 LIMITS: 金額制限 / Financial constraints
+    // 💰 LIMITS: Financial constraints
     const MIN_DEPOSIT_AMOUNT: u64 = 1000000000;         // 1 SUI (MIST)
     const MAX_DAILY_LIMIT: u64 = 100000000000000;       // 100,000 SUI (MIST)
     const MAX_TX_LIMIT: u64 = 10000000000000;           // 10,000 SUI (MIST)
 
-    // 🎭 ConvictionNFT: メタデータ付きNFT / NFT with metadata
+    // 🎭 ConvictionNFT: NFT with metadata
     struct ConvictionNFT has key, store {
         id: UID,
         strategy_id: u64,
@@ -82,7 +82,7 @@ module conviction_fi::core {
         metadata: Table<String, String>,
     }
 
-    // 💼 ManagedWallet: ユーザー資産を管理するウォレット / Wallet managing user funds
+    // 💼 ManagedWallet: Wallet managing user funds
     struct ManagedWallet has key {
         id: UID,
         nft_id: ID,
@@ -97,7 +97,7 @@ module conviction_fi::core {
         nonce: u64,
     }
 
-    // 🤖 AgentDelegation: エージェントへの権限委任 / Delegation to AI Agent
+    // 🤖 AgentDelegation: Delegation to AI Agent
     struct AgentDelegation has key, store {
         id: UID,
         wallet_id: ID,
@@ -112,7 +112,7 @@ module conviction_fi::core {
         is_active: bool,
     }
 
-    // 📊 Strategy: 投資戦略オブジェクト / Investment strategy
+    // 📊 Strategy: Investment strategy object
     struct Strategy has store, copy {
         id: u64,
         name: String,
@@ -129,7 +129,7 @@ module conviction_fi::core {
         version: u64,
     }
 
-    // 🏛️ StrategyRegistry: 戦略管理レジストリ / Registry for strategies
+    // 🏛️ StrategyRegistry: Registry for strategies
     struct StrategyRegistry has key {
         id: UID,
         strategies: Table<u64, Strategy>,
@@ -140,7 +140,7 @@ module conviction_fi::core {
         is_paused: bool,
     }
 
-    // 👑 AdminCap: 管理者キャップ / Administrator capability
+    // 👑 AdminCap: Administrator capability
     struct AdminCap has key, store {
         id: UID,
         level: u8,
@@ -149,7 +149,7 @@ module conviction_fi::core {
         expires_at: Option<u64>,
     }
 
-    // 🌍 GlobalConfig: グローバル設定 / Global configuration
+    // 🌍 GlobalConfig: Global configuration
     struct GlobalConfig has key {
         id: UID,
         is_paused: bool,

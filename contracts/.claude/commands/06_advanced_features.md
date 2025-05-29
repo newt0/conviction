@@ -1,39 +1,39 @@
 # /project:06_advanced_features
 
-## 🏗️ 指示
+## 🏗️ Instructions
 
-このコマンドでは、ConvictionFi の Move スマートコントラクトにおける**上級機能**を実装します。
+This command implements **advanced features** within the ConvictionFi Move smart contract.
 
-## 🎯 要件
+## 🎯 Requirements
 
-以下の 3 つの領域にまたがる高度な機能をまとめて実装してください：
+Implement the following advanced features across **three functional domains**:
 
-### 1. 戦略管理機能
+### 1. Strategy Management
 
 - `add_strategy`
 - `update_strategy`
 - `deactivate_strategy`
 - `get_active_strategies`
 
-### 2. 委任解除・期限切れ処理
+### 2. Delegation Revocation & Expiry Handling
 
 - `revoke_delegation`
 - `cleanup_expired_delegation`
 
-### 3. システム運用管理
+### 3. System Operations & Configuration
 
 - `toggle_system_pause`
 - `toggle_wallet_pause`
 - `update_global_config`
 
-## 🛠 Claude への出力期待
+## 🛠 Output Expectations for Claude
 
-- すべての関数は `conviction_fi.move` モジュールに追記する形で記述
-- アクセス制御は `AdminCap` または `assert_nft_owner` によって保護されること
-- `event::emit(...)` による状態ログを忘れずに追加
-- `option::is_some()` と `option::extract()` を適切に使用
-- コメントは **日本語と英語併記** で明瞭に記述
+- All functions must be appended to the `conviction_fi.move` module
+- Enforce **access control** using `AdminCap` or `assert_nft_owner` as appropriate
+- Emit state changes using `event::emit(...)`
+- Use `option::is_some()` and `option::extract()` properly for Option values
+- All comments must be clearly written **in English**
 
 ---
 
-Claude Code はこのコマンドを `/project:06_advanced_features` として処理し、ConvictionFi の上級機能をモジュールに統合してください。
+Claude Code should treat this command as `/project:06_advanced_features`, and integrate all advanced features into the `conviction_fi.move` module accordingly.

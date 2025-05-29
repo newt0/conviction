@@ -1,40 +1,45 @@
 # /project:04_testing
 
-## 🧪 指示
+## 🧪 Instructions
 
-このコマンドでは、ConvictionFi スマートコントラクトの**包括的なユニットテストと統合テスト**を実装します。
+This command implements **comprehensive unit and integration tests** for the ConvictionFi smart contract in Move.
 
-## 🎯 要件
+## 🎯 Requirements
 
-- `#[test]` および `#[test_only]` 属性を用いた Move のテスト構文を使用
-- `test_scenario::begin` から `test_scenario::end` までの一連のフローをカバー
-- デプロイ → ミント → 入金 → 委任 → エージェント実行までの一連の流れを検証
-- ガス上限、リプレイ保護、アクセス制御に関するエッジケースも網羅
-- 日本語＋英語でコメントを記述すること
+- Use Move’s native test syntax, including `#[test]` and `#[test_only]` attributes
+- Cover the full flow from `test_scenario::begin` to `test_scenario::end`
+- Verify the entire workflow: deploy → mint → deposit → delegate → agent execution
+- Include edge cases related to:
 
-## 📦 対象関数群
+  - Gas limits
+  - Replay protection
+  - Access control
 
-### 1. テストセットアップ関数
+- All comments must be written in English
+
+## 📦 Target Function Set
+
+### 1. Test Setup Function
 
 - `create_test_environment`
 
-### 2. メインワークフローテスト
+### 2. Main Workflow Test
 
 - `test_complete_workflow`
 
-### 3. 追加テストスイート（最低限以下のスケルトンを含む）
+### 3. Additional Test Suite (at minimum, include skeletons for the following)
 
 - `test_security_edge_cases`
 - `test_gas_optimization`
 - `test_concurrent_access`
-- `test_unauthorized_access`（`#[expected_failure]`）
+- `test_unauthorized_access` (`#[expected_failure]`)
 
-## 🛠 Claude への出力期待
+## 🛠 Output Expectations for Claude
 
-- `conviction_fi.move` モジュール内の最下部にテストコードを含めて出力すること
-- オブジェクトの mint/share/transfer フローのトランザクションを明示
-- `assert!` による検証や `tx_context::epoch_timestamp_ms` を適切に使用
+- Append all test code at the **bottom of the `conviction_fi.move` module**
+- Explicitly include mint/share/transfer transaction flows for all objects
+- Use `assert!` statements for validation and `tx_context::epoch_timestamp_ms` where relevant
 
 ---
 
-Claude Code はこのコマンドを `/project:04_testing` として処理し、ConvictionFi の Move スマートコントラクトにおける**完全なテストスイート**を出力してください。
+Claude Code should treat this command as `/project:04_testing`, and output a **complete test suite** for the ConvictionFi Move smart contract accordingly.

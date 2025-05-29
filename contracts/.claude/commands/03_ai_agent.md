@@ -1,29 +1,29 @@
 # /project:03_ai_agent
 
-## 🤖 指示
+## 🤖 Instructions
 
-このコマンドでは、ConvictionFi における**AI エージェントとの統合ロジック**を実装します。特に**Agent への委任機能**と**エージェントによる自律実行機能**が対象です。
+This command implements the **integration logic with the AI Agent** for ConvictionFi — specifically focusing on **agent delegation** and **autonomous agent execution**.
 
-## 🎯 要件
+## 🎯 Requirements
 
-- `conviction_fi.move` モジュールに追記する形で実装すること
-- `ManagedWallet` と `AgentDelegation` の連携を厳密に検証
-- 実行前に `assert_permission` や `assert_daily_limit` を確実に適用
-- アクションタイプ（Trade, Stake, Lend, Rebalance, Emergency）ごとの分岐処理を記述
-- 各関数には **日英併記のコメント** を追加すること
+- Implement all logic by appending to the `conviction_fi.move` module
+- Ensure strict validation and linkage between `ManagedWallet` and `AgentDelegation`
+- Apply `assert_permission` and `assert_daily_limit` **before any execution**
+- Include conditional branching based on action types: Trade, Stake, Lend, Rebalance, Emergency
+- **Add inline comments** to all functions for clarity
 
-## 💡 対象関数
+## 💡 Target Functions
 
-### 1. 委任ロジック
+### 1. Delegation Logic
 
 - `delegate_to_agent`
 
-### 2. エージェント実行ロジック
+### 2. Agent Execution Logic
 
 - `execute_agent_action`
 - `execute_action_internal`
 
-## 🔢 権限マトリクス
+## 🔢 Permission Matrix
 
 | Action Type | Permission Constant    |
 | ----------- | ---------------------- |
@@ -33,13 +33,13 @@
 | 4           | `PERMISSION_REBALANCE` |
 | 5           | `PERMISSION_EMERGENCY` |
 
-## 🛠 Claude への出力期待
+## 🛠 Output Expectations for Claude
 
-- `wallet.balance` から `reserved_balance` への資金移動を安全に処理
-- `delegation` の統計（`used_today`, `tx_count`）を更新
-- `event::emit(...)` を用いたロギングを行う
-- `execute_action_internal` は簡易的な戻り値でもよい（`vector<u8>`）
+- Securely handle fund transfers from `wallet.balance` to `wallet.reserved_balance`
+- Update delegation usage statistics such as `used_today` and `tx_count`
+- Use `event::emit(...)` to log agent actions
+- `execute_action_internal` may return a simplified output (e.g., `vector<u8>` is acceptable)
 
 ---
 
-Claude Code はこのコマンドを `/project:03_ai_agent` として処理し、AI Agent の委任・実行機構を `conviction_fi.move` に統合してください。
+Claude Code should process this command as `/project:03_ai_agent`, and integrate the AI Agent delegation and execution logic directly into the `conviction_fi.move` module.

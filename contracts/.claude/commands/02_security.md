@@ -1,19 +1,25 @@
 # /project:02_security
 
-## 🔐 指示
+## 🔐 Instructions
 
-このコマンドでは、ConvictionFi の Move スマートコントラクトにおける**セキュリティ検証関数**および**中核的な Public 関数（Mint・Deposit・Withdraw）**を実装します。
+This command implements **security validation functions** and **core public functions (Mint, Deposit, Withdraw)** for the `ConvictionFi` Move smart contract.
 
-## 🎯 要件
+## 🎯 Requirements
 
-- `conviction_fi.move` モジュールに追記する形式で出力
-- `GlobalConfig`, `ManagedWallet`, `ConvictionNFT`, `AgentDelegation` などに対して検証ロジックを明示的に追加
-- ガス効率・リプレイ攻撃防止・時間制御・ビットマスクによる権限制御を厳格に適用
-- 各関数には**日英併記コメント**を付与すること
+- Output should be appended to the `conviction_fi.move` module
+- Explicitly implement validation logic for: `GlobalConfig`, `ManagedWallet`, `ConvictionNFT`, `AgentDelegation`, etc.
+- Apply strict constraints for:
 
-## 💡 対象関数
+  - Gas efficiency
+  - Replay attack prevention
+  - Time-based control
+  - Permission checks via bitmask
 
-### 1. セキュリティチェック関数
+- **Add comments** to every function to explain its purpose and behavior
+
+## 💡 Target Functions
+
+### 1. Security Validation Functions
 
 - `assert_system_active`
 - `assert_wallet_active`
@@ -23,19 +29,19 @@
 - `assert_permission`
 - `assert_daily_limit`
 
-### 2. コアロジック関数（最低限必須）
+### 2. Core Logic Functions (minimum required)
 
 - `mint_conviction_nft`
 - `deposit_to_wallet`
 - `withdraw_from_wallet`
 - `emergency_withdraw`
 
-## 🛠 Claude への出力期待
+## 🛠 Output Expectations for Claude
 
-- モジュール内の `impl conviction_fi::core` の一部として関数を実装
-- 各関数に十分なコメントと、エラーコードとの整合性を持たせる
-- セキュリティと UX のバランスを意識する
+- Implement all functions as part of the `impl conviction_fi::core` block
+- Each function must include clear documentation comments and ensure alignment with the defined error codes
+- Balance security best practices with optimal user experience
 
 ---
 
-Claude Code はこのコマンドを `/project:02_security` として受け取り、上記の全関数を `conviction_fi.move` に安全に追加してください。
+Claude Code should treat this command as `/project:02_security`, and safely integrate all of the above functions into the `conviction_fi.move` module.

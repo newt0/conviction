@@ -1,35 +1,41 @@
 # /project:08_deployment
 
-## 🚀 指示
+## 🚀 Instructions
 
-このコマンドでは、ConvictionFi の Move スマートコントラクトを**本番品質でデプロイ可能な状態に仕上げるための検証と構成**を行います。
+This command prepares the ConvictionFi Move smart contract for **production-grade deployment**, including final validations and deployment configuration.
 
-## 🎯 要件
+## 🎯 Requirements
 
-次の 2 つの構成要素を 1 つの出力としてまとめてください：
+Combine the following **two components** into a single cohesive output:
 
-### 1. 検証チェックリスト（Pre-Deployment Checklist）
+### 1. Pre-Deployment Checklist
 
-- import と依存関係が正しいか？
-- 定数やエラーコードが重複していないか？
-- すべての `public` 関数にセキュリティチェックがあるか？
-- `event::emit` が適切に使用されているか？
-- テストで主要ユースケースがカバーされているか？
-- ドキュメント（英日コメント）が整備されているか？
+- Are all `import` statements and dependencies correct?
+- Are there any duplicate constants or error codes?
+- Do all `public` functions include proper security checks?
+- Is `event::emit(...)` used appropriately throughout the code?
+- Are all core user flows covered in unit and integration tests?
+- Are inline comments and documentation provided in both English and Japanese where needed?
 
-### 2. `Move.toml`と CLI 用デプロイ手順
+### 2. `Move.toml` & CLI Deployment Instructions
 
-- 依存設定（Sui フレームワークのパス）
-- `addresses` セクションの定義
-- `sui move build` / `test` / `publish` コマンドの順番とガス予算の設定
-- `--testnet` と `--mainnet` 向けの切替方法
+- Define dependency paths for the Sui Framework
+- Set up the `[addresses]` section appropriately
+- Provide the correct sequence of CLI commands:
 
-## 🛠 Claude への出力期待
+  - `sui move build`
+  - `sui move test`
+  - `sui client publish`
 
-- 上記 2 点をすべて `conviction_fi.move` の開発プロジェクトに組み込む前提で出力
-- Move に関する構文・バージョン・ネットワーク設定の誤りがないよう厳密にチェック
-- コメントは日本語と英語併記
+- Include proper gas budget settings
+- Explain how to switch between `--testnet` and `--mainnet` deployments
+
+## 🛠 Output Expectations for Claude
+
+- Assume this output will be directly integrated into the ConvictionFi Move project
+- Carefully verify all Move syntax, framework versions, and network configurations
+- All comments must be written clearly in **English**
 
 ---
 
-Claude Code はこのコマンドを `/project:08_deployment` として受け取り、**本番品質の Move スマートコントラクトを安全にデプロイするためのチェックと構成**を出力してください。
+Claude Code should process this command as `/project:08_deployment` and generate a **comprehensive pre-launch validation checklist and deployment setup** to ensure ConvictionFi is ready for secure, production-grade release.

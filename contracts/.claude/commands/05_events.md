@@ -1,16 +1,16 @@
 # /project:05_events
 
-## 📊 指示
+## 📊 Instructions
 
-このコマンドでは、ConvictionFi のスマートコントラクトにおける**イベント構造体の定義**を実装します。
+This command defines the **event structs** used in the ConvictionFi smart contract.
 
-## 🎯 要件
+## 🎯 Requirements
 
-- `conviction_fi.move` モジュールに含まれるイベント構造体をすべて定義すること
-- `has copy, drop` 属性を正しく付与すること
-- それぞれのイベントが**どの関数で発火するかを明記した日英併記コメント**を付与すること
+- Define all event structs **within** the `conviction_fi.move` module
+- Each event struct must include the `has copy, drop` ability
+- Each struct must include a comment specifying **which function emits it**
 
-## 📦 対象イベント
+## 📦 Target Event Structs
 
 - `NFTMinted`
 - `DepositMade`
@@ -22,12 +22,12 @@
 - `StrategyAdded`
 - `SystemPauseToggled`
 
-## 🛠 Claude への出力期待
+## 🛠 Output Expectations for Claude
 
-- モジュールのイベント定義セクションに追記
-- `event::emit(...)` に対応した構造とフィールド名を維持
-- 型の整合性（ID, address, u64, bool 等）を厳密にチェック
+- Append all event definitions to the **event section** of the module
+- Ensure each struct is compatible with `event::emit(...)`
+- Strictly validate type correctness for all fields (e.g., `ID`, `address`, `u64`, `bool`)
 
 ---
 
-Claude Code はこのコマンドを `/project:05_events` として処理し、すべてのイベント構造体を `conviction_fi.move` に追加してください。
+Claude Code should treat this command as `/project:05_events` and append **all required event struct definitions** to the `conviction_fi.move` module.
