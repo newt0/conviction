@@ -1,36 +1,37 @@
 # CLAUDE.md
 
-## 🧭 プロジェクト名
+## 🧭 Project Name
 
-**ConvictionFi** - 信念にもとづく完全自律型の暗号資産運用エージェント
+**ConvictionFi** – A fully autonomous crypto asset management agent powered by belief and conviction.
 
-## 🎯 プロジェクトの目的
+## 🎯 Project Objective
 
-ConvictionFi は、ユーザーが思想・投資方針に基づく NFT を 1 回ミントするだけで、自律的に資産運用を行う DeFAI（Decentralized Finance + AI）システムです。ユーザーは煩雑な操作を行うことなく、オンチェーン戦略をエージェントに委任し、その成績をウォレット/NFT/Twitter 経由で把握できます。
+ConvictionFi is a DeFAI system (Decentralized Finance + AI) that allows users to mint a single NFT representing their investment conviction or ideology, which then autonomously manages their assets. Users can delegate on-chain strategy execution to an agent without manual operations, and track performance via wallet, NFT, or Twitter-based notifications.
 
-## 📦 技術スタック（Web3 基盤）
+## 📦 Tech Stack (Web3 Infrastructure)
 
-- **ブロックチェーン**: Sui
-- **スマートコントラクト言語**: Move（2024 Edition）
-- **構成単位**:
-  - ConvictionNFT（信念を象徴するトークン）
-  - ManagedWallet（エージェント用スマートウォレット）
-  - AgentDelegation（権限付き委任）
-  - StrategyRegistry（運用戦略の管理）
-  - GlobalConfig（全体設定）
+- **Blockchain**: Sui
+- **Smart Contract Language**: Move (2024 Edition)
+- **Core Components**:
 
-## 🧱 機能フェーズ（Claude コマンドとの対応）
+  - `ConvictionNFT` – Token representing user belief
+  - `ManagedWallet` – Agent-controlled smart wallet
+  - `AgentDelegation` – Permissioned delegation for execution
+  - `StrategyRegistry` – Registry for supported strategies
+  - `GlobalConfig` – Global configuration and system parameters
 
-- `01_core_infra`: 型定義と定数の基礎構築
-- `02_security`: セキュリティチェックとコア関数（Mint/Deposit/Withdraw）
-- `03_ai_agent`: 委任と実行の自律化処理
-- `04_testing`: 完全なテストスイート（`test_scenario`）
-- `05_events`: すべてのイベント構造体（ログ）
-- `06_advanced_features`: 戦略追加・委任解除・システム管理
-- `07_utilities_init`: Getter 関数群と初期化処理
-- `08_deployment`: 検証・Move.toml・ビルド・テスト・デプロイ手順
+## 🧱 Feature Phases (Mapped to Claude Commands)
 
-## 📜 開発前提条件
+- `01_core_infra`: Foundational types and constant definitions
+- `02_security`: Security validations and core functions (Mint / Deposit / Withdraw)
+- `03_ai_agent`: Delegation and autonomous agent execution
+- `04_testing`: Comprehensive test suite using `test_scenario`
+- `05_events`: Event struct definitions (for logging)
+- `06_advanced_features`: Strategy management, delegation revocation, system control
+- `07_utilities_init`: Getter functions and initialization logic
+- `08_deployment`: Final validation, `Move.toml`, build/test/deploy CLI flow
+
+## 📜 Development Prerequisites
 
 ```toml
 Sui Version     = "1.15.0+"
@@ -40,9 +41,9 @@ Gas Budget      = "Optimized for <1000 SUI"
 Security Level  = "Audit-Ready"
 ```
 
-## 🧠 Claude Code での利用方法
+## 🧠 Using with Claude Code
 
-Claude Code でこのプロジェクトを操作する際は、以下のように段階的に各コマンドを読み込ませてください：
+To operate this project with Claude Code, sequentially load each command as follows:
 
 ```bash
 claude > /project:01_core_infra
@@ -52,22 +53,22 @@ claude > /project:03_ai_agent
 claude > /project:08_deployment
 ```
 
-各コマンドは `.claude/commands/` に Markdown で格納されており、それぞれが 1 モジュール単位の指示として機能します。
+Each command is stored as a Markdown file under `.claude/commands/` and acts as a modular instruction unit.
 
-## ✍️ ドキュメント原則
+## ✍️ Documentation Principles
 
-- すべての関数・構造体に**日本語＋英語併記のコメント**を記載
-- Claude が正しく文脈を理解できるよう、すべての出力に意図と用途を明示
+- All functions and structs should include **bilingual comments (Japanese + English)**
+- Each output must explicitly state its **intent and usage** so Claude can understand context properly
 
-## 🚨 セキュリティ方針
+## 🚨 Security Policy
 
-- 権限はすべてビットマスク方式で制御
-- リプレイ攻撃防止のための `nonce` 実装
-- 取引金額、日次上限、委任有効期間などのパラメータはすべてバリデーション付き
-- すべての `public fun` に `assert_*` 系の事前検証を導入
+- All permissions are controlled via a bitmask system
+- `nonce` is implemented to prevent replay attacks
+- Transaction amounts, daily limits, and delegation durations are all strictly validated
+- Every `public fun` is guarded with appropriate `assert_*` checks
 
-## 📅 最終目標
+## 📅 Final Goals
 
-- 本番デプロイ可能な `conviction_fi.move` の生成
-- すべてのロジックに対するテストの実装
-- Claude による全自動コントラクト生成ワークフローの確立
+- Generate a production-ready `conviction_fi.move` smart contract
+- Implement complete test coverage for all logic
+- Establish a fully automated Claude-driven contract generation workflow
