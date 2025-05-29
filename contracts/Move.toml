@@ -1,7 +1,0 @@
-[package]
-name = "convictionfi"
-version = "0.0.1"
-published-at = "0x0"
-
-[addresses]
-convictionfi = "0x0"
