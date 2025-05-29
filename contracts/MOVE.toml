@@ -12,4 +12,4 @@ conviction_fi = "0x0"
 [dev-dependencies]
 
 [dev-addresses]
-conviction_fi = "0x0"
+# Remove the duplicate address assignment - dev addresses will inherit from [addresses]
