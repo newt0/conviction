@@ -906,6 +906,134 @@ module conviction_fi::core {
         config.version = config.version + 1;
     }
 
+    // 🧰 UTILITY FUNCTIONS AND INITIALIZATION
+
+    // 1. GETTER FUNCTIONS (Information Retrieval)
+
+    // Get comprehensive NFT details including metadata and associated wallet info
+    public fun get_nft_details(nft: &ConvictionNFT): (u64, u8, ID, u64, u64, u64) {
+        (
+            nft.strategy_id,
+            nft.risk_level,
+            nft.wallet_id,
+            nft.created_at,
+            nft.last_rebalance,
+            nft.total_returns
+        )
+    }
+
+    // Get wallet balance information and status
+    public fun get_wallet_balance(wallet: &ManagedWallet): (u64, u64, u64, u64, u64, bool, u64) {
+        (
+            balance::value(&wallet.balance),
+            balance::value(&wallet.reserved_balance),
+            wallet.total_deposited,
+            wallet.total_withdrawn,
+            wallet.delegation_expires,
+            wallet.is_paused,
+            wallet.nonce
+        )
+    }
+
+    // Get delegation information and current status
+    public fun get_delegation_info(delegation: &AgentDelegation): (ID, address, u64, u64, u64, u64, u64, u64, u64, bool) {
+        (
+            delegation.wallet_id,
+            delegation.agent_address,
+            delegation.permissions,
+            delegation.expires_at,
+            delegation.max_transaction_amount,
+            delegation.daily_limit,
+            delegation.used_today,
+            delegation.last_reset,
+            delegation.tx_count,
+            delegation.is_active
+        )
+    }
+
+    // Get strategy details from registry
+    public fun get_strategy_details(registry: &StrategyRegistry, strategy_id: u64): (String, String, u8, u64, u64, u64, u64, bool, u64, u64, u64) {
+        assert!(table::contains(&registry.strategies, strategy_id), E_STRATEGY_NOT_FOUND);
+        let strategy = table::borrow(&registry.strategies, strategy_id);
+        
+        (
+            strategy.name,
+            strategy.description,
+            strategy.risk_category,
+            strategy.min_deposit,
+            strategy.max_deposit,
+            strategy.performance_fee,
+            strategy.management_fee,
+            strategy.is_active,
+            strategy.created_at,
+            strategy.updated_at,
+            strategy.version
+        )
+    }
+
+    // Get comprehensive system statistics
+    public fun get_system_stats(config: &GlobalConfig, registry: &StrategyRegistry): (bool, u64, u8, u64, u64, u64, u64, u64, bool) {
+        (
+            config.is_paused,
+            config.min_deposit_amount,
+            config.max_risk_level,
+            config.default_delegation_duration,
+            config.protocol_fee_rate,
+            config.version,
+            registry.total_strategies,
+            registry.total_active_strategies,
+            registry.is_paused
+        )
+    }
+
+    // 2. INITIALIZATION FUNCTION
+
+    // Initialize the ConvictionFi system with global configuration and strategy registry
+    fun init(ctx: &mut TxContext) {
+        let deployer = sender(ctx);
+        let current_time = epoch_timestamp_ms(ctx);
+        
+        // Create global configuration
+        let global_config = GlobalConfig {
+            id: sui::object::new(ctx),
+            is_paused: false,
+            min_deposit_amount: MIN_DEPOSIT_AMOUNT,
+            max_risk_level: 5,
+            default_delegation_duration: 3600000, // 1 hour default
+            protocol_fee_rate: 250, // 2.5% (250 basis points)
+            treasury: deployer,
+            emergency_admin: deployer,
+            version: 1,
+        };
+        
+        // Create strategy registry
+        let strategy_registry = StrategyRegistry {
+            id: sui::object::new(ctx),
+            strategies: table::new(ctx),
+            next_strategy_id: 1,
+            admin: deployer,
+            total_strategies: 0,
+            total_active_strategies: 0,
+            is_paused: false,
+        };
+        
+        // Create admin capability for deployer
+        let admin_cap = AdminCap {
+            id: sui::object::new(ctx),
+            level: 3, // Highest admin level
+            permissions: PERMISSION_ALL,
+            issued_at: current_time,
+            expires_at: option::none(), // Never expires for deployer
+        };
+        
+        // Share global objects for public access
+        transfer::share_object(global_config);
+        transfer::share_object(strategy_registry);
+        
+        // Transfer admin capability to deployer
+        transfer::public_transfer(admin_cap, deployer);
+    }
+
     // 🧪 COMPREHENSIVE TEST SUITE
 
     #[test_only]
