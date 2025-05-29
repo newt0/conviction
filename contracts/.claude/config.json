@@ -1,0 +1,22 @@
+{
+  "project_name": "ConvictionFi",
+  "language": "move",
+  "entrypoint": "sources/conviction_fi.move",
+  "runtime": "sui",
+  "move_version": "2024",
+  "sui_version": "1.15.0",
+  "command_sequence": [
+    "01_core_infra",
+    "02_security",
+    "03_ai_agent",
+    "04_testing",
+    "05_events",
+    "06_advanced_features",
+    "07_utilities_init",
+    "08_deployment"
+  ],
+  "comment_style": "ja+en",
+  "security_mode": "audit-ready",
+  "gas_optimized": true,
+  "strict_typing": true
+}
