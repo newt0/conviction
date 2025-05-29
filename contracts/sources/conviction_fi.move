@@ -397,9 +397,6 @@ public fun execute_agent_action(
     assert_daily_limit(delegation, amount, ctx);
 
     // Execute the action internally
-    let mut target_data = std::vector::empty<u8>();
-    std::vector::push_back(&mut target_data, 42); // Test data
-
     let result = execute_action_internal(wallet, action_type, amount, target_data);
 
     // Update delegation statistics
@@ -662,7 +659,7 @@ public fun add_strategy(
         timestamp: current_time,
     });
 
-    abort 0
+    strategy_id
 }
 
 // Update an existing strategy with proper versioning
@@ -688,28 +685,22 @@ public fun update_strategy(
 
     // Update fields if provided
     if (std::option::is_some(&name)) {
-        let mut name_val = name;
-        strategy.name = std::option::extract(&mut name_val);
+        strategy.name = std::option::extract(&mut name);
     };
     if (std::option::is_some(&description)) {
-        let mut desc_val = description;
-        strategy.description = std::option::extract(&mut desc_val);
+        strategy.description = std::option::extract(&mut description);
     };
     if (std::option::is_some(&min_deposit)) {
-        let mut min_deposit_val = min_deposit;
-        strategy.min_deposit = std::option::extract(&mut min_deposit_val);
+        strategy.min_deposit = std::option::extract(&mut min_deposit);
     };
     if (std::option::is_some(&max_deposit)) {
-        let mut max_deposit_val = max_deposit;
-        strategy.max_deposit = std::option::extract(&mut max_deposit_val);
+        strategy.max_deposit = std::option::extract(&mut max_deposit);
     };
     if (std::option::is_some(&performance_fee)) {
-        let mut perf_fee_val = performance_fee;
-        strategy.performance_fee = std::option::extract(&mut perf_fee_val);
+        strategy.performance_fee = std::option::extract(&mut performance_fee);
     };
     if (std::option::is_some(&management_fee)) {
-        let mut mgmt_fee_val = management_fee;
-        strategy.management_fee = std::option::extract(&mut mgmt_fee_val);
+        strategy.management_fee = std::option::extract(&mut management_fee);
     };
 
     // Update metadata
@@ -739,8 +730,8 @@ public fun deactivate_strategy(
 
 // Get list of all active strategies
 public fun get_active_strategies(registry: &StrategyRegistry): vector<u64> {
-    let mut active_strategies = std::vector::empty<u64>();
-    let mut strategy_id = 1;
+    let active_strategies = std::vector::empty<u64>();
+    let strategy_id = 1;
 
     while (strategy_id < registry.next_strategy_id) {
         if (table::contains(&registry.strategies, strategy_id)) {
@@ -887,16 +878,13 @@ public fun update_global_config(
 
     // Update fields if provided
     if (std::option::is_some(&min_deposit_amount)) {
-        let mut min_deposit_val = min_deposit_amount;
-        config.min_deposit_amount = std::option::extract(&mut min_deposit_val);
+        config.min_deposit_amount = std::option::extract(&mut min_deposit_amount);
     };
     if (std::option::is_some(&max_risk_level)) {
-        let mut risk_level_val = max_risk_level;
-        config.max_risk_level = std::option::extract(&mut risk_level_val);
+        config.max_risk_level = std::option::extract(&mut max_risk_level);
     };
     if (std::option::is_some(&default_delegation_duration)) {
-        let mut duration_val = default_delegation_duration;
-        let duration = std::option::extract(&mut duration_val);
+        let duration = std::option::extract(&mut default_delegation_duration);
         assert!(
             duration >= MIN_DELEGATION_DURATION && duration <= MAX_DELEGATION_DURATION,
             E_INVALID_DURATION,
@@ -904,18 +892,15 @@ public fun update_global_config(
         config.default_delegation_duration = duration;
     };
     if (std::option::is_some(&protocol_fee_rate)) {
-        let mut fee_rate_val = protocol_fee_rate;
-        let fee_rate = std::option::extract(&mut fee_rate_val);
+        let fee_rate = std::option::extract(&mut protocol_fee_rate);
         assert!(fee_rate <= 10000, E_INVALID_PERMISSION); // Max 100% (10000 basis points)
         config.protocol_fee_rate = fee_rate;
     };
     if (std::option::is_some(&treasury)) {
-        let mut treasury_val = treasury;
-        config.treasury = std::option::extract(&mut treasury_val);
+        config.treasury = std::option::extract(&mut treasury);
     };
     if (std::option::is_some(&emergency_admin)) {
-        let mut admin_val = emergency_admin;
-        config.emergency_admin = std::option::extract(&mut admin_val);
+        config.emergency_admin = std::option::extract(&mut emergency_admin);
     };
 
     config.version = config.version + 1;
@@ -1181,7 +1166,7 @@ public fun test_complete_workflow() {
         let mut delegation = test_scenario::take_from_sender<AgentDelegation>(&scenario);
         let ctx = test_scenario::ctx(&mut scenario);
 
-        let mut target_data = std::vector::empty<u8>();
+        let target_data = std::vector::empty<u8>();
         std::vector::push_back(&mut target_data, 42); // Test data
 
         let result = execute_agent_action(
