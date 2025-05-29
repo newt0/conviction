@@ -5,16 +5,12 @@ However, these agents are designed to **evolve** over time while preserving the 
 
 This document outlines the philosophy, conditions, mechanics, and metadata structure of AI agent evolution.
 
----
-
 ## 🧬 Why Evolution Matters
 
 - **Strategic Adaptability**: Adjust to market changes or new data sources
 - **User Engagement**: Make agents feel like they grow with the user
 - **Performance Optimization**: Improve returns and reduce risk over time
 - **Conviction Continuity**: The belief stays the same — only the behavior evolves
-
----
 
 ## 🔁 Triggers for Evolution
 
@@ -25,8 +21,6 @@ This document outlines the philosophy, conditions, mechanics, and metadata struc
 | Expired Strategy    | Strategy expires after a defined lifecycle        |
 | Underperformance    | Agent underperforms for X days vs benchmark       |
 
----
-
 ## 🔒 Rules & Constraints
 
 - The **conviction statement** is immutable
@@ -34,8 +28,6 @@ This document outlines the philosophy, conditions, mechanics, and metadata struc
 - All previous versions are stored permanently on **Walrus**
 - The **agent wallet is reused** (unless full remint occurs)
 - Evolution metadata is fully auditable and diffable
-
----
 
 ## 📈 Evolution Methods
 
@@ -59,8 +51,6 @@ This document outlines the philosophy, conditions, mechanics, and metadata struc
 - Users stake tokens to unlock advanced logic or data streams
 - Long-term holders unlock deeper evolution paths
 
----
-
 ## 🧾 Metadata Format
 
 All evolution events are recorded on Walrus metadata like so:
@@ -74,8 +64,6 @@ All evolution events are recorded on Walrus metadata like so:
 }
 ```
 
----
-
 ## 📊 Future Features: Version Analytics
 
 - Every NFT will have a **"Evolution History"** dashboard
@@ -88,15 +76,11 @@ All evolution events are recorded on Walrus metadata like so:
 - Let users reflect on:
   _“How many times has your conviction evolved?”_
 
----
-
 ## 🔮 Roadmap Possibilities
 
 - Allow evolved NFTs to be listed on marketplaces
 - Issue Soulbound Tokens (SBTs) as rewards for successful evolution
 - Visualize agent lineage like a family tree of conviction
-
----
 
 In ConvictionFi, **evolution is not just technical**.
 It’s a design language for belief — a way to reconcile **unchanging conviction** with **ever-learning intelligence**.

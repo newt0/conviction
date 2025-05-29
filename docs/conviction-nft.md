@@ -4,8 +4,6 @@ At ConvictionFi, NFTs are not just collectibles.
 They are **autonomous AI agents**, encoded with conviction and equipped to act on your behalf.  
 This document defines the structure, logic, and governance of Conviction NFTs.
 
----
-
 ## 🏗️ Core Structure
 
 Each Conviction NFT is a programmable asset that includes:
@@ -18,8 +16,6 @@ Each Conviction NFT is a programmable asset that includes:
 - **Metadata Storage**: Stored immutably on [Walrus](https://walrus.ai)
 - **Mint Timestamp**: Identifies the birth and tracking of the agent
 
----
-
 ## 🧠 Agent Behavior
 
 - Each NFT is linked to a unique **DeFAI Agent**
@@ -27,8 +23,6 @@ Each Conviction NFT is a programmable asset that includes:
 - It makes decisions based on pre-encoded strategy logic
 - It executes trades autonomously, without user input
 - All actions are reportable via a dashboard and public Twitter notifications
-
----
 
 ## 🔐 Risk Parameters (Example)
 
@@ -47,8 +41,6 @@ Conviction NFTs can define custom risk settings:
 - **max_position_pct**: Max % of funds per asset
 - **max_drawdown_pct**: Cumulative loss threshold for halt
 - **autostop_on_loss**: Whether to automatically stop on a major loss
-
----
 
 ## 🧾 Execution Policy (Allowlist / Blocklist)
 
@@ -74,8 +66,6 @@ To ensure security and transparency, each NFT defines which protocols or account
 - **EOA Targets**: Specific oracles or automation agents
 - **Blocklist priority**: Overrides whitelist for safety
 
----
-
 ## 🪙 Mint-to-Execution Flow
 
 1. User selects or customizes a conviction strategy
@@ -84,16 +74,12 @@ To ensure security and transparency, each NFT defines which protocols or account
 4. Agent begins autonomous operation
 5. Daily updates are delivered via dashboard and Twitter mentions
 
----
-
 ## 🔄 Future Evolution Model
 
 - **Staking Evolution**: Locking \$CVCT tokens to unlock advanced agent features
 - **Governance Upgrades**: Community voting on agent logic upgrades
 - **Burn-and-Remint**: Reset with conviction carried forward
 - **Versioning**: Agent versions are recorded on Walrus and linked to wallet history
-
----
 
 ## 📁 Example Metadata (JSON)
 
@@ -116,8 +102,6 @@ To ensure security and transparency, each NFT defines which protocols or account
 }
 ```
 
----
-
 ## 🧱 Standards & Compatibility
 
 | Element          | Description                                             |
@@ -127,8 +111,6 @@ To ensure security and transparency, each NFT defines which protocols or account
 | Marketplace      | ConvictionFi native UI (in-house trading only)          |
 | Update Frequency | Daily agent transaction reports                         |
 | Transferability  | Controlled via metadata (lock periods, resale policies) |
-
----
 
 ConvictionFi NFTs embody a new paradigm:
 **Investment not based on speculation, but conviction.**

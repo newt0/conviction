@@ -11,8 +11,6 @@
 | Typography    | Clean sans-serif (e.g., Inter)                                   |
 | Brand Tone    | Calm, resolute, refined, tech-forward, financial professionalism |
 
----
-
 ## 🧱 Layout Principles
 
 - **Grid layout**: Central container with `max-w-7xl`
@@ -20,8 +18,6 @@
 - **Responsive focus**: Desktop-first, with `md:` and `lg:` breakpoints emphasized
 - **Card components**: Rounded corners (`rounded-2xl`), shadow (`shadow-md`), padding (`p-4` or more)
 - **Icons**: Use Lucide React icons, minimal and symbolic
-
----
 
 ## 🖥 Component Architecture
 
@@ -46,8 +42,6 @@
 - **Display Mode**: Tables or charts (e.g., with Recharts)
 - **Information Hierarchy**: Wallet balance, daily P\&L, agent actions history
 
----
-
 ## 🧩 UI Libraries & Tech Stack
 
 - `Tailwind CSS`: Utility-first styling
@@ -55,8 +49,6 @@
 - `Lucide Icons`: Minimal and consistent icon set
 - `Framer Motion`: Animations (slide-in, fade-in, etc.)
 - `Next.js` (App Router) as framework baseline
-
----
 
 ## 🗣 Tone & Copywriting
 
@@ -68,15 +60,11 @@
   - _"Powered by Walrus, driven by conviction."_
   - _"Breaking down Web3 barriers with Privy & Wormhole."_
 
----
-
 ## 🚫 Anti-Patterns / Do-Not-Do
 
 - ❌ Avoid overly colorful palettes – they dilute the brand’s seriousness
 - ❌ Avoid playful or cartoonish styles – this is a conviction-based financial product
 - ❌ Avoid user decision fatigue – no manual angle/color pickers, use default-safe choices
-
----
 
 ## 🔧 Optional Extensions
 

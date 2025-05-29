@@ -5,8 +5,6 @@ they are **autonomous financial agents encoded with conviction and capital**.
 
 This document outlines how such NFTs can be safely and meaningfully traded on the secondary market.
 
----
-
 ## 🧩 Why a Custom Model is Required
 
 Unlike traditional NFTs:
@@ -14,8 +12,6 @@ Unlike traditional NFTs:
 - Conviction NFTs are **linked to live wallets holding capital**
 - Transferring the NFT **transfers control over an operating strategy**
 - The strategy and conviction are immutable, but transparently recorded
-
----
 
 ## 📦 Core Principles
 
@@ -26,8 +22,6 @@ Unlike traditional NFTs:
 | External Support   | ❌ Not supported (e.g., OpenSea) due to metadata/UI complexity        |
 | Pricing            | Open pricing or optional reserve prices                               |
 | Asset Transfer     | Transferring the NFT also transfers wallet control and active capital |
-
----
 
 ## 🔐 Security & Conditions
 
@@ -43,8 +37,6 @@ Unlike traditional NFTs:
 - Agent continues operating uninterrupted
 - Conviction remains immutable — the thesis stays
 
----
-
 ## 📊 Displayed Marketplace Data (per NFT)
 
 - NFT name / strategy name
@@ -54,15 +46,11 @@ Unlike traditional NFTs:
 - Version & evolution history
 - Remaining lock time (if applicable)
 
----
-
 ## 💸 Revenue Model (Optional)
 
 - ConvictionFi may take a marketplace fee (e.g., 2.5%)
 - Royalties can be configured to reward SBT holders or DAO pools
 - Future: protocol-level royalties based on conviction age or history
-
----
 
 ## 💡 Future Expansions
 
@@ -70,8 +58,6 @@ Unlike traditional NFTs:
 - Price recommendation engine based on wallet snapshots
 - “One-time Evolution Token” included with NFT purchases
 - Leaderboards: most evolved agents, longest-held convictions, etc.
-
----
 
 ## 🧠 Philosophical Position
 
@@ -83,8 +69,6 @@ you're acquiring a **thesis, a strategy, and a transparent operational history.*
 This is not just asset trading.  
 This is **Conviction Transfer** —  
 a protocol layer that monetizes ideas through autonomous execution.
-
----
 
 ConvictionFi’s secondary market is where **finance meets ideology**,  
 and where beliefs can be passed on — with proof.

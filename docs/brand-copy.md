@@ -2,22 +2,16 @@
 
 This document defines the core messaging, tone, and values that shape the identity of ConvictionFi — a conviction-first platform for autonomous Web3 investing.
 
----
-
 ## 🏷️ Tagline
 
 > **Mint Your Conviction.**  
 > _DeFAI Agent as NFTMint._
-
----
 
 ## 📣 Brand Message
 
 > The NFT isn’t just a token.  
 > It’s your **Guardian** — standing between you and DeFi & Crypto Investing.  
 > A **Safety Layer**, encoded with conviction.
-
----
 
 ## 📝 Short Description
 
@@ -30,14 +24,10 @@ The agent’s strategy is stored transparently on **Walrus** as NFT metadata, so
 **You don’t trade anymore.**  
 **Your conviction does.**
 
----
-
 ## 🚀 Brand Purpose
 
 To simplify DeFi investing through autonomous, conviction-driven agents —  
 enabling anyone to act on belief, not expertise.
-
----
 
 ## 🧭 Core Values
 
@@ -45,8 +35,6 @@ enabling anyone to act on belief, not expertise.
 - **Transparency**: Every strategy is stored and visible on-chain (via Walrus).
 - **Simplicity**: No dashboards to babysit. No manual trades. Just conviction.
 - **Conviction over Noise**: Decisions are rooted in belief, not trends or panic.
-
----
 
 ## 🗣 Tone of Voice
 
@@ -56,8 +44,6 @@ enabling anyone to act on belief, not expertise.
 - Uses suggestive language:
   - ✅ “Let your conviction evolve.”
   - ❌ “Buy now!” or “Don’t miss out!”
-
----
 
 ## ✅ Do / ❌ Don’t
 

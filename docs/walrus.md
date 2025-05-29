@@ -4,8 +4,6 @@ ConvictionFi uses [Walrus](https://walrus.ai) to store all critical NFT metadata
 
 This document outlines how ConvictionFi leverages Walrus to guarantee the integrity, auditability, and future-proofing of conviction-based trading agents.
 
----
-
 ## 📦 What We Store on Walrus
 
 Each Conviction NFT is associated with a Walrus-hosted metadata record containing:
@@ -20,8 +18,6 @@ Each Conviction NFT is associated with a Walrus-hosted metadata record containin
 
 All data is stored in **JSON format**, retrievable via the NFT's metadata URI.
 
----
-
 ## 🛡️ Why We Use Walrus
 
 | Requirement         | Walrus Feature                                       |
@@ -31,8 +27,6 @@ All data is stored in **JSON format**, retrievable via the NFT's metadata URI.
 | Transparency        | Anyone can inspect metadata via URI                  |
 | Audit readiness     | Full history is preserved (append-only architecture) |
 | On-chain efficiency | No need to store large metadata directly on-chain    |
-
----
 
 ## 🗂️ Storage Format (Example)
 
@@ -59,10 +53,6 @@ All data is stored in **JSON format**, retrievable via the NFT's metadata URI.
 }
 ```
 
-```
-
----
-
 ## 🔁 Update & Versioning Policy
 
 Walrus is **append-only** — meaning no data is ever overwritten.
@@ -73,8 +63,6 @@ Walrus is **append-only** — meaning no data is ever overwritten.
 
 This ensures **full traceability** of how an agent evolves over time.
 
----
-
 ## 🔍 Per-NFT Accessibility
 
 Each NFT includes a **Walrus metadata URI**:
@@ -83,15 +71,11 @@ Each NFT includes a **Walrus metadata URI**:
 - Visible in the dashboard
 - Shows real-time strategy, risk profile, execution policies, and version
 
----
-
 ## 🔐 Security & Verifiability
 
 - All URIs are based on verifiable CIDs (Content Identifiers)
 - Agent logic cannot be secretly altered after minting
 - Any strategy change requires a new version and potentially governance approval
-
----
 
 ## 🔮 Future Applications
 
@@ -101,10 +85,7 @@ Walrus may be extended to support:
 - AI Agent logs (reasoning, trade justifications)
 - Lineage tracking (for agent evolution and NFT merging)
 
----
-
 Walrus is not just storage.
 In ConvictionFi, it’s the **infrastructure of belief** — securing every NFT’s philosophy, logic, and trust.
 
 It’s how we turn conviction into code. Permanently.
-```

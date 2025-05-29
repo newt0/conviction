@@ -4,8 +4,6 @@ In ConvictionFi, each NFT is linked to a **dedicated smart contract wallet** tha
 
 This wallet is the operational layer through which the AI agent autonomously manages and trades assets — with no user intervention required after minting.
 
----
-
 ## 🏗️ Core Structure
 
 | Component              | Description                                           |
@@ -17,8 +15,6 @@ This wallet is the operational layer through which the AI agent autonomously man
 | Supported Assets       | SUI / Tokens / NFTs (future roadmap)                  |
 | Trade Execution Limits | Enforced via risk parameters (e.g., max 3 trades/day) |
 
----
-
 ## 🔐 Security Architecture
 
 - ✅ **Isolated from User Wallet**
@@ -29,16 +25,12 @@ This wallet is the operational layer through which the AI agent autonomously man
   - Governance-gated withdrawal
   - Non-withdrawable (floor-price realization model)
 
----
-
 ## 🔄 Trade Execution Flow
 
 1. NFT is minted → linked wallet is created
 2. User deposits funds (e.g., 100 SUI) into the wallet
 3. AI agent executes trades based on encoded logic and real-time signals
 4. Trade history is logged to Walrus and viewable in the dashboard
-
----
 
 ## 📦 Example Wallet Structure (in Move)
 
@@ -52,8 +44,6 @@ struct ConvictionWallet has key {
 }
 ```
 
----
-
 ## ❌ Risks We Intentionally Prevent
 
 | Risk Scenario                         | Mitigation                                      |
@@ -62,15 +52,11 @@ struct ConvictionWallet has key {
 | Wallet persists after NFT is burned   | Wallet lifecycle is coupled with NFT mint/burn  |
 | Manual override or admin intervention | Fully autonomous execution; no human fallback   |
 
----
-
 ## 🧬 Future Extensions
 
 - Agent wallet reuse after NFT evolution (version upgrades)
 - Reward/point accumulation logic
 - Collateralization for lending markets (AgentFi × DeFi integration)
-
----
 
 ConvictionFi’s NFT wallet architecture realizes a simple but radical promise:
 
