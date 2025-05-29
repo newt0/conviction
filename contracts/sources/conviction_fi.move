@@ -499,7 +499,66 @@ module conviction_fi::core {
         target_data
     }
 
-    // Event structure for agent actions
+    // 📊 EVENT DEFINITIONS
+
+    // Emitted by mint_conviction_nft function when a new NFT and wallet are created
+    struct NFTMinted has copy, drop {
+        nft_id: ID,
+        wallet_id: ID,
+        owner: address,
+        strategy_id: u64,
+        risk_level: u8,
+        timestamp: u64,
+    }
+
+    // Emitted by deposit_to_wallet function when SUI is deposited to a managed wallet
+    struct DepositMade has copy, drop {
+        wallet_id: ID,
+        nft_id: ID,
+        depositor: address,
+        amount: u64,
+        total_deposited: u64,
+        timestamp: u64,
+        nonce: u64,
+    }
+
+    // Emitted by withdraw_from_wallet function when SUI is withdrawn from a managed wallet
+    struct WithdrawalMade has copy, drop {
+        wallet_id: ID,
+        nft_id: ID,
+        withdrawer: address,
+        amount: u64,
+        total_withdrawn: u64,
+        timestamp: u64,
+        nonce: u64,
+    }
+
+    // Emitted by emergency_withdraw function when emergency withdrawal is performed
+    struct EmergencyWithdrawal has copy, drop {
+        wallet_id: ID,
+        nft_id: ID,
+        withdrawer: address,
+        amount: u64,
+        admin_initiated: bool,
+        timestamp: u64,
+        nonce: u64,
+    }
+
+    // Emitted by delegate_to_agent function when control is delegated to an AI agent
+    struct AgentDelegated has copy, drop {
+        delegation_id: ID,
+        wallet_id: ID,
+        nft_id: ID,
+        owner: address,
+        agent_address: address,
+        permissions: u64,
+        expires_at: u64,
+        max_transaction_amount: u64,
+        daily_limit: u64,
+        timestamp: u64,
+    }
+
+    // Emitted by execute_agent_action function when an agent executes an action
     struct AgentActionExecuted has copy, drop {
         delegation_id: ID,
         wallet_id: ID,
@@ -508,6 +567,36 @@ module conviction_fi::core {
         amount: u64,
         timestamp: u64,
         tx_count: u64,
+    }
+
+    // Emitted when delegation is revoked or expires (placeholder for future implementation)
+    struct DelegationRevoked has copy, drop {
+        delegation_id: ID,
+        wallet_id: ID,
+        agent_address: address,
+        revoked_by: address,
+        reason: u8, // 1=manual_revoke, 2=expired, 3=emergency
+        timestamp: u64,
+    }
+
+    // Emitted when a new strategy is added to the registry (placeholder for future implementation)
+    struct StrategyAdded has copy, drop {
+        strategy_id: u64,
+        name: String,
+        risk_category: u8,
+        admin: address,
+        min_deposit: u64,
+        max_deposit: u64,
+        timestamp: u64,
+    }
+
+    // Emitted when system or wallet pause status is toggled (placeholder for future implementation)
+    struct SystemPauseToggled has copy, drop {
+        target_type: u8, // 1=global_system, 2=wallet, 3=strategy_registry
+        target_id: Option<ID>,
+        is_paused: bool,
+        admin: address,
+        timestamp: u64,
     }
 
     // 🧪 COMPREHENSIVE TEST SUITE
