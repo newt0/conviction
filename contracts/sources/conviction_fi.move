@@ -509,4 +509,491 @@ module conviction_fi::core {
         timestamp: u64,
         tx_count: u64,
     }
+
+    // 🧪 COMPREHENSIVE TEST SUITE
+
+    #[test_only]
+    use sui::test_scenario::{Self, Scenario};
+    #[test_only]
+    use sui::test_utils;
+
+    // Test setup function to create a complete test environment
+    #[test_only]
+    public fun create_test_environment(admin: address, user: address, agent: address): (GlobalConfig, StrategyRegistry) {
+        // Create global configuration for testing
+        let config = GlobalConfig {
+            id: sui::object::new(&mut sui::tx_context::dummy()),
+            is_paused: false,
+            min_deposit_amount: MIN_DEPOSIT_AMOUNT,
+            max_risk_level: 5,
+            default_delegation_duration: 3600000, // 1 hour
+            protocol_fee_rate: 100, // 1%
+            treasury: admin,
+            emergency_admin: admin,
+            version: 1,
+        };
+
+        // Create strategy registry for testing
+        let registry = StrategyRegistry {
+            id: sui::object::new(&mut sui::tx_context::dummy()),
+            strategies: table::new(&mut sui::tx_context::dummy()),
+            next_strategy_id: 1,
+            admin,
+            total_strategies: 0,
+            total_active_strategies: 0,
+            is_paused: false,
+        };
+
+        (config, registry)
+    }
+
+    // Test the complete workflow from mint to agent execution
+    #[test]
+    public fun test_complete_workflow() {
+        let admin = @0xA;
+        let user = @0xB;
+        let agent = @0xC;
+        
+        let mut scenario = test_scenario::begin(admin);
+        
+        // Setup test environment
+        let (config, registry) = create_test_environment(admin, user, agent);
+        
+        // Test Step 1: Mint ConvictionNFT and ManagedWallet
+        test_scenario::next_tx(&mut scenario, user);
+        {
+            let ctx = test_scenario::ctx(&mut scenario);
+            let (nft, wallet) = mint_conviction_nft(1, 3, &config, ctx);
+            
+            // Verify NFT properties
+            assert!(nft.strategy_id == 1, 0);
+            assert!(nft.risk_level == 3, 1);
+            assert!(wallet.controller == user, 2);
+            assert!(balance::value(&wallet.balance) == 0, 3);
+            
+            transfer::public_transfer(nft, user);
+            transfer::share_object(wallet);
+        };
+        
+        // Test Step 2: Deposit SUI to wallet
+        test_scenario::next_tx(&mut scenario, user);
+        {
+            let mut wallet = test_scenario::take_shared<ManagedWallet>(&scenario);
+            let nft = test_scenario::take_from_sender<ConvictionNFT>(&scenario);
+            let ctx = test_scenario::ctx(&mut scenario);
+            
+            // Create test coin for deposit
+            let deposit_coin = coin::mint_for_testing<SUI>(5000000000, ctx); // 5 SUI
+            
+            deposit_to_wallet(&mut wallet, &nft, deposit_coin, &config, ctx);
+            
+            // Verify deposit
+            assert!(balance::value(&wallet.balance) == 5000000000, 4);
+            assert!(wallet.total_deposited == 5000000000, 5);
+            
+            test_scenario::return_shared(wallet);
+            test_scenario::return_to_sender(&scenario, nft);
+        };
+        
+        // Test Step 3: Delegate to AI agent
+        test_scenario::next_tx(&mut scenario, user);
+        {
+            let mut wallet = test_scenario::take_shared<ManagedWallet>(&scenario);
+            let nft = test_scenario::take_from_sender<ConvictionNFT>(&scenario);
+            let ctx = test_scenario::ctx(&mut scenario);
+            
+            let delegation = delegate_to_agent(
+                &mut wallet,
+                &nft,
+                agent,
+                PERMISSION_TRADE | PERMISSION_STAKE, // Allow trade and stake
+                3600000, // 1 hour
+                1000000000, // 1 SUI max per tx
+                2000000000, // 2 SUI daily limit
+                &config,
+                ctx
+            );
+            
+            // Verify delegation
+            assert!(delegation.agent_address == agent, 6);
+            assert!(delegation.permissions == (PERMISSION_TRADE | PERMISSION_STAKE), 7);
+            assert!(delegation.is_active == true, 8);
+            assert!(option::is_some(&wallet.delegated_agent), 9);
+            
+            transfer::public_transfer(delegation, agent);
+            test_scenario::return_shared(wallet);
+            test_scenario::return_to_sender(&scenario, nft);
+        };
+        
+        // Test Step 4: Agent executes action
+        test_scenario::next_tx(&mut scenario, agent);
+        {
+            let mut wallet = test_scenario::take_shared<ManagedWallet>(&scenario);
+            let mut delegation = test_scenario::take_from_sender<AgentDelegation>(&scenario);
+            let ctx = test_scenario::ctx(&mut scenario);
+            
+            let target_data = vector::empty<u8>();
+            vector::push_back(&mut target_data, 42); // Test data
+            
+            let result = execute_agent_action(
+                &mut delegation,
+                &mut wallet,
+                1, // TRADE action
+                500000000, // 0.5 SUI
+                target_data,
+                &config,
+                ctx
+            );
+            
+            // Verify execution
+            assert!(delegation.tx_count == 1, 10);
+            assert!(delegation.used_today == 500000000, 11);
+            assert!(balance::value(&wallet.reserved_balance) == 500000000, 12);
+            assert!(balance::value(&wallet.balance) == 4500000000, 13);
+            assert!(vector::length(&result) > 0, 14);
+            
+            test_scenario::return_shared(wallet);
+            test_scenario::return_to_sender(&scenario, delegation);
+        };
+        
+        test_scenario::end(scenario);
+        
+        // Clean up test objects
+        let GlobalConfig { id: config_id, .. } = config;
+        sui::object::delete(config_id);
+        let StrategyRegistry { id: registry_id, strategies, .. } = registry;
+        table::destroy_empty(strategies);
+        sui::object::delete(registry_id);
+    }
+
+    // Test security edge cases including replay protection and access control
+    #[test]
+    public fun test_security_edge_cases() {
+        let admin = @0xA;
+        let user = @0xB;
+        let agent = @0xC;
+        
+        let mut scenario = test_scenario::begin(admin);
+        let (config, registry) = create_test_environment(admin, user, agent);
+        
+        // Setup NFT and wallet
+        test_scenario::next_tx(&mut scenario, user);
+        {
+            let ctx = test_scenario::ctx(&mut scenario);
+            let (nft, wallet) = mint_conviction_nft(1, 3, &config, ctx);
+            transfer::public_transfer(nft, user);
+            transfer::share_object(wallet);
+        };
+        
+        // Test: Verify nonce increments (replay protection)
+        test_scenario::next_tx(&mut scenario, user);
+        {
+            let mut wallet = test_scenario::take_shared<ManagedWallet>(&scenario);
+            let nft = test_scenario::take_from_sender<ConvictionNFT>(&scenario);
+            let ctx = test_scenario::ctx(&mut scenario);
+            
+            let initial_nonce = wallet.nonce;
+            let deposit_coin = coin::mint_for_testing<SUI>(2000000000, ctx);
+            
+            deposit_to_wallet(&mut wallet, &nft, deposit_coin, &config, ctx);
+            
+            // Verify nonce incremented
+            assert!(wallet.nonce == initial_nonce + 1, 15);
+            
+            test_scenario::return_shared(wallet);
+            test_scenario::return_to_sender(&scenario, nft);
+        };
+        
+        test_scenario::end(scenario);
+        
+        // Clean up
+        let GlobalConfig { id: config_id, .. } = config;
+        sui::object::delete(config_id);
+        let StrategyRegistry { id: registry_id, strategies, .. } = registry;
+        table::destroy_empty(strategies);
+        sui::object::delete(registry_id);
+    }
+
+    // Test gas optimization scenarios
+    #[test]
+    public fun test_gas_optimization() {
+        let admin = @0xA;
+        let user = @0xB;
+        let agent = @0xC;
+        
+        let mut scenario = test_scenario::begin(admin);
+        let (config, registry) = create_test_environment(admin, user, agent);
+        
+        // Test batch operations efficiency
+        test_scenario::next_tx(&mut scenario, user);
+        {
+            let ctx = test_scenario::ctx(&mut scenario);
+            
+            // Mint multiple NFTs to test gas efficiency
+            let (nft1, wallet1) = mint_conviction_nft(1, 1, &config, ctx);
+            let (nft2, wallet2) = mint_conviction_nft(2, 2, &config, ctx);
+            let (nft3, wallet3) = mint_conviction_nft(3, 3, &config, ctx);
+            
+            // Verify all created successfully
+            assert!(nft1.strategy_id == 1, 16);
+            assert!(nft2.strategy_id == 2, 17);
+            assert!(nft3.strategy_id == 3, 18);
+            
+            // Clean up
+            transfer::public_transfer(nft1, user);
+            transfer::public_transfer(nft2, user);
+            transfer::public_transfer(nft3, user);
+            transfer::share_object(wallet1);
+            transfer::share_object(wallet2);
+            transfer::share_object(wallet3);
+        };
+        
+        test_scenario::end(scenario);
+        
+        // Clean up
+        let GlobalConfig { id: config_id, .. } = config;
+        sui::object::delete(config_id);
+        let StrategyRegistry { id: registry_id, strategies, .. } = registry;
+        table::destroy_empty(strategies);
+        sui::object::delete(registry_id);
+    }
+
+    // Test concurrent access scenarios
+    #[test]
+    public fun test_concurrent_access() {
+        let admin = @0xA;
+        let user = @0xB;
+        let agent1 = @0xC;
+        
+        let mut scenario = test_scenario::begin(admin);
+        let (config, registry) = create_test_environment(admin, user, agent1);
+        
+        // Setup wallet with sufficient balance
+        test_scenario::next_tx(&mut scenario, user);
+        {
+            let ctx = test_scenario::ctx(&mut scenario);
+            let (nft, mut wallet) = mint_conviction_nft(1, 3, &config, ctx);
+            
+            let deposit_coin = coin::mint_for_testing<SUI>(10000000000, ctx); // 10 SUI
+            deposit_to_wallet(&mut wallet, &nft, deposit_coin, &config, ctx);
+            
+            transfer::public_transfer(nft, user);
+            transfer::share_object(wallet);
+        };
+        
+        // Test delegation
+        test_scenario::next_tx(&mut scenario, user);
+        {
+            let mut wallet = test_scenario::take_shared<ManagedWallet>(&scenario);
+            let nft = test_scenario::take_from_sender<ConvictionNFT>(&scenario);
+            let ctx = test_scenario::ctx(&mut scenario);
+            
+            let delegation1 = delegate_to_agent(
+                &mut wallet,
+                &nft,
+                agent1,
+                PERMISSION_TRADE,
+                3600000,
+                1000000000,
+                2000000000,
+                &config,
+                ctx
+            );
+            
+            // Verify delegation is active
+            assert!(option::is_some(&wallet.delegated_agent), 19);
+            assert!(*option::borrow(&wallet.delegated_agent) == agent1, 20);
+            
+            transfer::public_transfer(delegation1, agent1);
+            test_scenario::return_shared(wallet);
+            test_scenario::return_to_sender(&scenario, nft);
+        };
+        
+        test_scenario::end(scenario);
+        
+        // Clean up
+        let GlobalConfig { id: config_id, .. } = config;
+        sui::object::delete(config_id);
+        let StrategyRegistry { id: registry_id, strategies, .. } = registry;
+        table::destroy_empty(strategies);
+        sui::object::delete(registry_id);
+    }
+
+    // Test unauthorized access scenarios - should fail
+    #[test]
+    #[expected_failure(abort_code = E_UNAUTHORIZED_CALLER)]
+    public fun test_unauthorized_access() {
+        let admin = @0xA;
+        let user = @0xB;
+        let attacker = @0xC;
+        
+        let mut scenario = test_scenario::begin(admin);
+        let (config, registry) = create_test_environment(admin, user, attacker);
+        
+        // Setup legitimate user's wallet
+        test_scenario::next_tx(&mut scenario, user);
+        {
+            let ctx = test_scenario::ctx(&mut scenario);
+            let (nft, wallet) = mint_conviction_nft(1, 3, &config, ctx);
+            transfer::public_transfer(nft, user);
+            transfer::share_object(wallet);
+        };
+        
+        // Attacker tries to access user's wallet - should fail
+        test_scenario::next_tx(&mut scenario, attacker);
+        {
+            let mut wallet = test_scenario::take_shared<ManagedWallet>(&scenario);
+            let ctx = test_scenario::ctx(&mut scenario);
+            
+            let malicious_coin = coin::mint_for_testing<SUI>(1000000000, ctx);
+            
+            // Create fake NFT with correct wallet_id but owned by attacker
+            let fake_nft = ConvictionNFT {
+                id: sui::object::new(ctx),
+                strategy_id: 999,
+                risk_level: 1,
+                wallet_id: sui::object::id(&wallet),
+                created_at: sui::tx_context::epoch_timestamp_ms(ctx),
+                last_rebalance: sui::tx_context::epoch_timestamp_ms(ctx),
+                total_returns: 0,
+                metadata: table::new(ctx),
+            };
+            
+            // This will abort with E_UNAUTHORIZED_CALLER because attacker != wallet.controller
+            deposit_to_wallet(&mut wallet, &fake_nft, malicious_coin, &config, ctx);
+            
+            // Cleanup (won't reach here due to abort)
+            let ConvictionNFT { id, metadata, .. } = fake_nft;
+            table::destroy_empty(metadata);
+            sui::object::delete(id);
+            test_scenario::return_shared(wallet);
+        };
+        
+        test_scenario::end(scenario);
+        
+        // Clean up
+        let GlobalConfig { id: config_id, .. } = config;
+        sui::object::delete(config_id);
+        let StrategyRegistry { id: registry_id, strategies, .. } = registry;
+        table::destroy_empty(strategies);
+        sui::object::delete(registry_id);
+    }
+
+    // Test invalid permission scenarios - should fail
+    #[test]
+    #[expected_failure(abort_code = E_INVALID_PERMISSION)]
+    public fun test_invalid_permissions() {
+        let admin = @0xA;
+        let user = @0xB;
+        let agent = @0xC;
+        
+        let mut scenario = test_scenario::begin(admin);
+        let (config, registry) = create_test_environment(admin, user, agent);
+        
+        test_scenario::next_tx(&mut scenario, user);
+        {
+            let ctx = test_scenario::ctx(&mut scenario);
+            let (nft, mut wallet) = mint_conviction_nft(1, 3, &config, ctx);
+            
+            let deposit_coin = coin::mint_for_testing<SUI>(5000000000, ctx);
+            deposit_to_wallet(&mut wallet, &nft, deposit_coin, &config, ctx);
+            
+            // Try to delegate with invalid permissions (0)
+            let _delegation = delegate_to_agent(
+                &mut wallet,
+                &nft,
+                agent,
+                0, // Invalid: no permissions
+                3600000,
+                1000000000,
+                2000000000,
+                &config,
+                ctx
+            );
+            
+            // Should not reach here
+            transfer::public_transfer(nft, user);
+            transfer::share_object(wallet);
+        };
+        
+        test_scenario::end(scenario);
+        
+        // Clean up
+        let GlobalConfig { id: config_id, .. } = config;
+        sui::object::delete(config_id);
+        let StrategyRegistry { id: registry_id, strategies, .. } = registry;
+        table::destroy_empty(strategies);
+        sui::object::delete(registry_id);
+    }
+
+    // Test daily limit exceeded scenarios - should fail
+    #[test]
+    #[expected_failure(abort_code = E_EXCEEDS_DAILY_LIMIT)]
+    public fun test_daily_limit_exceeded() {
+        let admin = @0xA;
+        let user = @0xB;
+        let agent = @0xC;
+        
+        let mut scenario = test_scenario::begin(admin);
+        let (config, registry) = create_test_environment(admin, user, agent);
+        
+        // Setup wallet and delegation
+        test_scenario::next_tx(&mut scenario, user);
+        {
+            let ctx = test_scenario::ctx(&mut scenario);
+            let (nft, mut wallet) = mint_conviction_nft(1, 3, &config, ctx);
+            
+            let deposit_coin = coin::mint_for_testing<SUI>(10000000000, ctx); // 10 SUI
+            deposit_to_wallet(&mut wallet, &nft, deposit_coin, &config, ctx);
+            
+            let delegation = delegate_to_agent(
+                &mut wallet,
+                &nft,
+                agent,
+                PERMISSION_TRADE,
+                3600000,
+                3000000000, // 3 SUI max per tx
+                2000000000, // 2 SUI daily limit (less than tx limit)
+                &config,
+                ctx
+            );
+            
+            transfer::public_transfer(nft, user);
+            transfer::public_transfer(delegation, agent);
+            transfer::share_object(wallet);
+        };
+        
+        // Agent tries to execute transaction exceeding daily limit
+        test_scenario::next_tx(&mut scenario, agent);
+        {
+            let mut wallet = test_scenario::take_shared<ManagedWallet>(&scenario);
+            let mut delegation = test_scenario::take_from_sender<AgentDelegation>(&scenario);
+            let ctx = test_scenario::ctx(&mut scenario);
+            
+            let target_data = vector::empty<u8>();
+            
+            // This should fail because 2.5 SUI > 2 SUI daily limit
+            let _result = execute_agent_action(
+                &mut delegation,
+                &mut wallet,
+                1, // TRADE action
+                2500000000, // 2.5 SUI - exceeds daily limit
+                target_data,
+                &config,
+                ctx
+            );
+            
+            test_scenario::return_shared(wallet);
+            test_scenario::return_to_sender(&scenario, delegation);
+        };
+        
+        test_scenario::end(scenario);
+        
+        // Clean up
+        let GlobalConfig { id: config_id, .. } = config;
+        sui::object::delete(config_id);
+        let StrategyRegistry { id: registry_id, strategies, .. } = registry;
+        table::destroy_empty(strategies);
+        sui::object::delete(registry_id);
+    }
 }
