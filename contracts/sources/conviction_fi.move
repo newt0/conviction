@@ -321,7 +321,6 @@ module conviction_fi::core {
     // 🤖 AI AGENT DELEGATION AND EXECUTION
 
     // Delegate control of a wallet to an AI agent with specific permissions and limits
-    // エージェントにウォレットの制御を委任し、特定の権限と制限を設定する
     public fun delegate_to_agent(
         wallet: &mut ManagedWallet,
         nft: &ConvictionNFT,
@@ -333,7 +332,7 @@ module conviction_fi::core {
         config: &GlobalConfig,
         ctx: &mut TxContext
     ): AgentDelegation {
-        // Security validations / セキュリティ検証
+        // Security validations
         assert_system_active(config);
         assert_wallet_active(wallet);
         assert_nft_owner(nft, wallet);
@@ -346,12 +345,12 @@ module conviction_fi::core {
         let current_time = epoch_timestamp_ms(ctx);
         let expires_at = current_time + duration_ms;
         
-        // Update wallet delegation info / ウォレットの委任情報を更新
+        // Update wallet delegation info
         wallet.delegated_agent = option::some(agent_address);
         wallet.delegation_expires = expires_at;
         wallet.nonce = wallet.nonce + 1;
         
-        // Create delegation object / 委任オブジェクトを作成
+        // Create delegation object
         let delegation = AgentDelegation {
             id: sui::object::new(ctx),
             wallet_id: sui::object::id(wallet),
@@ -370,7 +369,6 @@ module conviction_fi::core {
     }
 
     // Execute an agent action with validation and permission checks
-    // エージェントアクションを検証と権限チェックと共に実行する
     public fun execute_agent_action(
         delegation: &mut AgentDelegation,
         wallet: &mut ManagedWallet,
@@ -380,7 +378,7 @@ module conviction_fi::core {
         config: &GlobalConfig,
         ctx: &mut TxContext
     ): vector<u8> {
-        // Security validations / セキュリティ検証
+        // Security validations
         assert_system_active(config);
         assert_wallet_active(wallet);
         assert!(sender(ctx) == delegation.agent_address, E_UNAUTHORIZED_CALLER);
@@ -389,21 +387,21 @@ module conviction_fi::core {
         assert_valid_amount(amount);
         assert!(amount <= delegation.max_transaction_amount, E_EXCEEDS_TX_LIMIT);
         
-        // Check permission based on action type / アクションタイプに基づく権限チェック
+        // Check permission based on action type
         let required_permission = get_required_permission(action_type);
         assert_permission(delegation, required_permission);
         
-        // Check daily limits / 日次制限をチェック
+        // Check daily limits
         assert_daily_limit(delegation, amount, ctx);
         
-        // Execute the action internally / アクションを内部的に実行
+        // Execute the action internally
         let result = execute_action_internal(wallet, action_type, amount, target_data, ctx);
         
-        // Update delegation statistics / 委任統計を更新
+        // Update delegation statistics
         delegation.tx_count = delegation.tx_count + 1;
         wallet.nonce = wallet.nonce + 1;
         
-        // Emit agent action event / エージェントアクションイベントを発行
+        // Emit agent action event
         event::emit(AgentActionExecuted {
             delegation_id: sui::object::id(delegation),
             wallet_id: sui::object::id(wallet),
@@ -418,7 +416,6 @@ module conviction_fi::core {
     }
 
     // Internal function to execute specific action types
-    // 特定のアクションタイプを実行する内部関数
     fun execute_action_internal(
         wallet: &mut ManagedWallet,
         action_type: u8,
@@ -426,37 +423,36 @@ module conviction_fi::core {
         target_data: vector<u8>,
         ctx: &mut TxContext
     ): vector<u8> {
-        // Ensure sufficient balance for the operation / 操作に十分な残高があることを確認
+        // Ensure sufficient balance for the operation
         assert!(balance::value(&wallet.balance) >= amount, E_INSUFFICIENT_BALANCE);
         
-        // Move funds from main balance to reserved balance for execution / 実行のためにメイン残高から予約残高に資金を移動
+        // Move funds from main balance to reserved balance for execution
         let execution_balance = balance::split(&mut wallet.balance, amount);
         balance::join(&mut wallet.reserved_balance, execution_balance);
         
-        // Execute based on action type / アクションタイプに基づいて実行
+        // Execute based on action type
         if (action_type == 1) {
-            // TRADE: Execute trading operation / TRADE: 取引操作を実行
+            // TRADE: Execute trading operation
             execute_trade_action(target_data)
         } else if (action_type == 2) {
-            // STAKE: Execute staking operation / STAKE: ステーキング操作を実行
+            // STAKE: Execute staking operation
             execute_stake_action(target_data)
         } else if (action_type == 3) {
-            // LEND: Execute lending operation / LEND: レンディング操作を実行
+            // LEND: Execute lending operation
             execute_lend_action(target_data)
         } else if (action_type == 4) {
-            // REBALANCE: Execute portfolio rebalancing / REBALANCE: ポートフォリオリバランスを実行
+            // REBALANCE: Execute portfolio rebalancing
             execute_rebalance_action(target_data)
         } else if (action_type == 5) {
-            // EMERGENCY: Execute emergency action / EMERGENCY: 緊急アクションを実行
+            // EMERGENCY: Execute emergency action
             execute_emergency_action(target_data)
         } else {
-            // Invalid action type / 無効なアクションタイプ
+            // Invalid action type
             abort E_INVALID_PERMISSION
         }
     }
 
     // Helper function to get required permission for action type
-    // アクションタイプに必要な権限を取得するヘルパー関数
     fun get_required_permission(action_type: u8): u64 {
         if (action_type == 1) {
             PERMISSION_TRADE
@@ -474,47 +470,36 @@ module conviction_fi::core {
     }
 
     // Trade action implementation (placeholder)
-    // 取引アクション実装（プレースホルダー）
     fun execute_trade_action(target_data: vector<u8>): vector<u8> {
         // TODO: Implement actual trading logic with DEX integration
-        // TODO: 実際の取引ロジックをDEX統合と共に実装
         target_data
     }
 
     // Stake action implementation (placeholder)
-    // ステークアクション実装（プレースホルダー）
     fun execute_stake_action(target_data: vector<u8>): vector<u8> {
         // TODO: Implement actual staking logic with validator selection
-        // TODO: 実際のステーキングロジックをバリデーター選択と共に実装
         target_data
     }
 
     // Lend action implementation (placeholder)
-    // レンドアクション実装（プレースホルダー）
     fun execute_lend_action(target_data: vector<u8>): vector<u8> {
         // TODO: Implement actual lending logic with protocol integration
-        // TODO: 実際のレンディングロジックをプロトコル統合と共に実装
         target_data
     }
 
     // Rebalance action implementation (placeholder)
-    // リバランスアクション実装（プレースホルダー）
     fun execute_rebalance_action(target_data: vector<u8>): vector<u8> {
         // TODO: Implement actual portfolio rebalancing logic
-        // TODO: 実際のポートフォリオリバランシングロジックを実装
         target_data
     }
 
     // Emergency action implementation (placeholder)
-    // 緊急アクション実装（プレースホルダー）
     fun execute_emergency_action(target_data: vector<u8>): vector<u8> {
         // TODO: Implement emergency procedures like position closure
-        // TODO: ポジション閉鎖などの緊急手順を実装
         target_data
     }
 
     // Event structure for agent actions
-    // エージェントアクション用のイベント構造
     struct AgentActionExecuted has copy, drop {
         delegation_id: ID,
         wallet_id: ID,
