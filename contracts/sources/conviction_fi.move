@@ -1,5 +1,5 @@
 module conviction_fi::core {
-    // =% CRITICAL: Use latest stable Sui API
+    // CRITICAL: Use latest stable Sui API
     use sui::object::{UID, ID, uid_from_inner};
     use sui::transfer;
     use sui::tx_context::{TxContext, sender, epoch_timestamp_ms};
@@ -12,7 +12,7 @@ module conviction_fi::core {
     use std::vector;
     use std::option::{Self, Option};
 
-    // =� SECURITY: Error code definitions
+    // SECURITY: Error code definitions
     const E_INVALID_STRATEGY: u64 = 0x001;
     const E_INVALID_RISK_LEVEL: u64 = 0x002;
     const E_INSUFFICIENT_BALANCE: u64 = 0x003;
@@ -29,7 +29,7 @@ module conviction_fi::core {
     const E_WALLET_PAUSED: u64 = 0x00E;
     const E_SYSTEM_PAUSED: u64 = 0x00F;
 
-    // = PERMISSIONS: Bitmask-style permission system
+    // PERMISSIONS: Bitmask-style permission system
     const PERMISSION_TRADE: u64 = 0x001;      // 0000 0001
     const PERMISSION_STAKE: u64 = 0x002;      // 0000 0010
     const PERMISSION_LEND: u64 = 0x004;       // 0000 0100
@@ -37,17 +37,17 @@ module conviction_fi::core {
     const PERMISSION_EMERGENCY: u64 = 0x010;  // 0001 0000
     const PERMISSION_ALL: u64 = 0x01F;        // 0001 1111
 
-    // � TIME: Time-related constants
+    // TIME: Time-related constants
     const SECONDS_IN_DAY: u64 = 86400000; // milliseconds
     const MAX_DELEGATION_DURATION: u64 = 31536000000; // 1 year
     const MIN_DELEGATION_DURATION: u64 = 3600000;     // 1 hour
 
-    // =� LIMITS: Financial constraints
+    // LIMITS: Financial constraints
     const MIN_DEPOSIT_AMOUNT: u64 = 1000000000;         // 1 SUI (MIST)
     const MAX_DAILY_LIMIT: u64 = 100000000000000;       // 100,000 SUI (MIST)
     const MAX_TX_LIMIT: u64 = 10000000000000;           // 10,000 SUI (MIST)
 
-    // <� ConvictionNFT: NFT with metadata
+    // ConvictionNFT: NFT with metadata
     struct ConvictionNFT has key, store {
         id: UID,
         strategy_id: u64,
@@ -59,7 +59,7 @@ module conviction_fi::core {
         metadata: Table<String, String>,
     }
 
-    // =� ManagedWallet: Wallet managing user funds
+    // ManagedWallet: Wallet managing user funds
     struct ManagedWallet has key {
         id: UID,
         nft_id: ID,
@@ -74,7 +74,7 @@ module conviction_fi::core {
         nonce: u64,
     }
 
-    // > AgentDelegation: Delegation to AI Agent
+    // AgentDelegation: Delegation to AI Agent
     struct AgentDelegation has key, store {
         id: UID,
         wallet_id: ID,
@@ -89,7 +89,7 @@ module conviction_fi::core {
         is_active: bool,
     }
 
-    // =� Strategy: Investment strategy object
+    // Strategy: Investment strategy object
     struct Strategy has store, copy {
         id: u64,
         name: String,
@@ -106,7 +106,7 @@ module conviction_fi::core {
         version: u64,
     }
 
-    // <� StrategyRegistry: Registry for strategies
+    // StrategyRegistry: Registry for strategies
     struct StrategyRegistry has key {
         id: UID,
         strategies: Table<u64, Strategy>,
@@ -117,7 +117,7 @@ module conviction_fi::core {
         is_paused: bool,
     }
 
-    // =Q AdminCap: Administrator capability
+    // AdminCap: Administrator capability
     struct AdminCap has key, store {
         id: UID,
         level: u8,
@@ -140,7 +140,7 @@ module conviction_fi::core {
         version: u64,
     }
 
-    // 🔐 SECURITY VALIDATION FUNCTIONS
+    // SECURITY VALIDATION FUNCTIONS
 
     // Check if the global system is active and not paused
     public fun assert_system_active(config: &GlobalConfig) {
@@ -188,7 +188,7 @@ module conviction_fi::core {
         delegation.used_today = delegation.used_today + amount;
     }
 
-    // 💼 CORE PUBLIC FUNCTIONS
+    // CORE PUBLIC FUNCTIONS
 
     // Mint a new ConvictionNFT with associated ManagedWallet
     public fun mint_conviction_nft(
@@ -318,7 +318,7 @@ module conviction_fi::core {
         emergency_coin
     }
 
-    // 🤖 AI AGENT DELEGATION AND EXECUTION
+    // AI AGENT DELEGATION AND EXECUTION
 
     // Delegate control of a wallet to an AI agent with specific permissions and limits
     public fun delegate_to_agent(
@@ -499,7 +499,7 @@ module conviction_fi::core {
         target_data
     }
 
-    // 📊 EVENT DEFINITIONS
+    // EVENT DEFINITIONS
 
     // Emitted by mint_conviction_nft function when a new NFT and wallet are created
     struct NFTMinted has copy, drop {
@@ -599,7 +599,7 @@ module conviction_fi::core {
         timestamp: u64,
     }
 
-    // 🏗️ ADVANCED FEATURES
+    // ADVANCED FEATURES
 
     // 1. STRATEGY MANAGEMENT FUNCTIONS
 
@@ -906,7 +906,7 @@ module conviction_fi::core {
         config.version = config.version + 1;
     }
 
-    // 🧰 UTILITY FUNCTIONS AND INITIALIZATION
+    // UTILITY FUNCTIONS AND INITIALIZATION
 
     // 1. GETTER FUNCTIONS (Information Retrieval)
 
