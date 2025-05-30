@@ -54,6 +54,20 @@ Since Walrus is append-only, strategy upgrades create new versions rather than o
 
 This storage solution guarantees transparency, auditability, and future-proofing without requiring large metadata storage directly on-chain, while ensuring all strategy changes remain traceable and potentially subject to governance approval.
 
+
+[Sample Strategy]
+1. SUI_MAXIMIZER
+- Aggressive accumulation of SUI and ecosystem tokens during market dips
+- Ideological Thesis: "Sui represents the future of blockchain scalability. Every dip is an opportunity to accumulate before mass adoption."
+
+2. BTC_HODLER
+- Long-term Bitcoin accumulation with DCA and volatility exploitation
+-  Ideological Thesis: "Bitcoin is digital gold and the ultimate store of value. Time in market beats timing the market."
+
+3. STABLE_OPTIMIZER
+- Conservative yield optimization across stable pools and lending protocols
+- "Consistent yield generation with capital preservation. Compound interest is the eighth wonder of the world."
+
 [Tech Stack]
 
 ▼Web3 Layer
