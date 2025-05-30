@@ -31,11 +31,25 @@ Only Step 1 requires your input — from Step 2 onward, your agent takes over.
   Withdraw via protocol rules — or sell the NFT on secondary markets.
 
 
+[Sample Strategy]
+1. SUI_MAXIMIZER
+- Aggressive accumulation of SUI and ecosystem tokens during market dips
+- Ideological Thesis: "Sui represents the future of blockchain scalability. Every dip is an opportunity to accumulate before mass adoption."
+
+2. BTC_HODLER
+- Long-term Bitcoin accumulation with DCA and volatility exploitation
+-  Ideological Thesis: "Bitcoin is digital gold and the ultimate store of value. Time in market beats timing the market."
+
+3. STABLE_OPTIMIZER
+- Conservative yield optimization across stable pools and lending protocols
+- "Consistent yield generation with capital preservation. Compound interest is the eighth wonder of the world."
+
 [SECURUTY MODEL: Why We Never Touch Your Wallet]
 
 Most DeFi apps require direct wallet transactions, creating unnecessary risk and inconvenience. 
 ConvictionFi uses a different approach: your minted NFT becomes both entry point and autonomous firewall.
-The minting price becomes your trading budget—no additional deposits or approvals needed. Each NFT generates its own isolated smart wallet, completely separate from your personal funds. 
+The minting price becomes your trading budget — no additional deposits or approvals needed. 
+Each NFT generates its own isolated smart wallet, completely separate from your personal funds. 
 Only the NFT agent signs transactions and takes action.
 Your risk is compartmentalized, your conviction tokenized, and your NFT thinks and acts independently—keeping your wallet safe.
 
@@ -53,20 +67,6 @@ The JSON-formatted data includes strategy details, risk profiles, whitelisted co
 Since Walrus is append-only, strategy upgrades create new versions rather than overwriting existing data, ensuring full traceability of agent evolution over time.
 
 This storage solution guarantees transparency, auditability, and future-proofing without requiring large metadata storage directly on-chain, while ensuring all strategy changes remain traceable and potentially subject to governance approval.
-
-
-[Sample Strategy]
-1. SUI_MAXIMIZER
-- Aggressive accumulation of SUI and ecosystem tokens during market dips
-- Ideological Thesis: "Sui represents the future of blockchain scalability. Every dip is an opportunity to accumulate before mass adoption."
-
-2. BTC_HODLER
-- Long-term Bitcoin accumulation with DCA and volatility exploitation
--  Ideological Thesis: "Bitcoin is digital gold and the ultimate store of value. Time in market beats timing the market."
-
-3. STABLE_OPTIMIZER
-- Conservative yield optimization across stable pools and lending protocols
-- "Consistent yield generation with capital preservation. Compound interest is the eighth wonder of the world."
 
 [Tech Stack]
 
