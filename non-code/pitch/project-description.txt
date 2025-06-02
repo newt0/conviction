@@ -44,7 +44,7 @@ Only Step 1 requires your input — from Step 2 onward, your agent takes over.
 - Conservative yield optimization across stable pools and lending protocols
 - "Consistent yield generation with capital preservation. Compound interest is the eighth wonder of the world."
 
-[SECURUTY MODEL: Safety Layer as NFT]
+[SECURUTY MODEL: NFT as Safety Layer]
 
 Most DeFi apps require direct wallet transactions, creating unnecessary risk and inconvenience. 
 ConvictionFi uses a different approach: your minted NFT becomes both entry point and autonomous firewall.
