@@ -1,7 +1,5 @@
 # 💰 ConvictionFi | Revenue Model Blueprint
 
-ConvictionFi offers a next-gen DeFAI experience where **minting once lets AI invest for you**.
-
 With a **three-tier revenue structure—Mint → Performance → Resale**,
 we deliver a user journey that is intuitive and frictionless,
 while ensuring protocol sustainability and long-term economic health.
