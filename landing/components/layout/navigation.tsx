@@ -3,26 +3,27 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, User } from "lucide-react";
+import { Menu, User, Wallet } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const navigationItems = [
   { name: "Marketplace", href: "/marketplace" },
   { name: "Compare", href: "/compare" },
-  { name: "Profile", href: "/profile" },
   { name: "Dashboard", href: "/dashboard" },
+  { name: "Profile", href: "/profile" },
 ];
-
-// Mock user data - in real app this would come from auth context
-const mockUser = {
-  isConnected: true,
-  handle: "@kyohei_nft",
-};
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isConnected, setIsConnected] = useState(false);
+  const [userHandle] = useState("@kyohei_nft");
+
   const pathname = usePathname();
+
+  const showUserInfo = ["/mint", "/dashboard", "/profile", "/compare"].some(
+    (prefix) => pathname.startsWith(prefix)
+  );
 
   const isActive = (href: string) => {
     if (href === "/" && pathname === "/") return true;
@@ -58,7 +59,7 @@ export function Navigation() {
             mobile ? "w-full mt-2" : ""
           } bg-[#4DA2FF] hover:bg-[#3d8ae6] text-white font-medium`}
         >
-          Mint Agent
+          Mint
         </Button>
       </Link>
     </>
@@ -71,7 +72,6 @@ export function Navigation() {
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2">
             <div className="w-8 h-8 bg-[#011829] rounded-lg flex items-center justify-center">
-              {/* <span className="text-white font-bold text-sm">C</span> */}
               <img
                 src="convictionfi_icon.png"
                 alt="ConvictionFi Logo"
@@ -90,53 +90,41 @@ export function Navigation() {
 
           {/* Desktop User Info */}
           <div className="hidden md:flex items-center space-x-4">
-            {mockUser.isConnected ? (
-              <div className="flex items-center space-x-2 text-[#030F1C]">
-                <User className="h-4 w-4" />
-                <span className="font-medium">{mockUser.handle}</span>
-              </div>
-            ) : (
-              <Button
-                variant="outline"
-                className="border-[#4DA2FF] text-[#4DA2FF] hover:bg-[#4DA2FF] hover:text-white"
-              >
-                Connect Wallet
-              </Button>
-            )}
+            {showUserInfo &&
+              (isConnected ? (
+                <div className="flex items-center space-x-2 text-[#030F1C]">
+                  <User className="h-4 w-4" />
+                  <span className="font-medium">{userHandle}</span>
+                </div>
+              ) : (
+                <Button
+                  onClick={() => setIsConnected(true)}
+                  variant="outline"
+                  className="border-[#4DA2FF] text-[#4DA2FF] hover:bg-[#4DA2FF] hover:text-white"
+                >
+                  <Wallet className="mr-2 h-4 w-4" />
+                  Connect Wallet
+                </Button>
+              ))}
           </div>
 
-          {/* Mobile Menu */}
+          {/* Mobile menu button */}
           <div className="md:hidden">
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild>
-                <Button variant="ghost" size="sm" className="text-[#030F1C]">
-                  <Menu className="h-5 w-5" />
-                  <span className="sr-only">Open menu</span>
+                <Button variant="ghost" size="icon">
+                  <Menu className="h-6 w-6" />
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-[300px] sm:w-[400px]">
-                <div className="flex flex-col space-y-4 mt-6">
-                  {/* Mobile User Info */}
-                  {mockUser.isConnected && (
+              <SheetContent side="right">
+                <div className="mt-4 space-y-4">
+                  {showUserInfo && isConnected && (
                     <div className="flex items-center space-x-2 text-[#030F1C] pb-4 border-b border-gray-200">
                       <User className="h-4 w-4" />
-                      <span className="font-medium">{mockUser.handle}</span>
+                      <span className="font-medium">{userHandle}</span>
                     </div>
                   )}
-
-                  {/* Mobile Navigation Items */}
                   <NavItems mobile onItemClick={() => setIsOpen(false)} />
-
-                  {/* Mobile Connect Wallet */}
-                  {!mockUser.isConnected && (
-                    <Button
-                      variant="outline"
-                      className="w-full mt-4 border-[#4DA2FF] text-[#4DA2FF] hover:bg-[#4DA2FF] hover:text-white"
-                      onClick={() => setIsOpen(false)}
-                    >
-                      Connect Wallet
-                    </Button>
-                  )}
                 </div>
               </SheetContent>
             </Sheet>

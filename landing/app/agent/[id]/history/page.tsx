@@ -1,6 +1,5 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -10,7 +9,6 @@ import {
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import {
-  ArrowLeft,
   Bot,
   Target,
   Shield,
@@ -271,30 +269,6 @@ export default function AgentHistoryPage({ params }: AgentHistoryProps) {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Navigation */}
-      <nav className="border-b border-gray-100 bg-white/80 backdrop-blur-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <Link href="/" className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-[#011829] rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-sm">C</span>
-              </div>
-              <span className="text-[#011829] font-bold text-xl">
-                ConvictionFi
-              </span>
-            </Link>
-            <div className="flex items-center space-x-4">
-              <Link href={`/agent/${params.id}`}>
-                <Button variant="ghost" className="text-[#030F1C]">
-                  <ArrowLeft className="mr-2 h-4 w-4" />
-                  Back to Agent Profile
-                </Button>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </nav>
-
       {/* Main Content */}
       <div className="py-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

@@ -14,22 +14,16 @@ import {
   ArrowRight,
   Zap,
   Shield,
-  TrendingUp,
   Bot,
   Wallet,
-  Github,
-  Twitter,
-  Linkedin,
-  MessageCircle,
-  Play,
-  Coins,
   Target,
   PieChart,
-  Sparkles,
   Eye,
   Cpu,
 } from "lucide-react";
 import Link from "next/link";
+import { Twitter, Linkedin, Github, Facebook } from "lucide-react";
+import HowItWorks from "@/components/how-it-works/HowItWorks";
 
 export default function ConvictionFiLanding() {
   const mintSectionRef = useRef<HTMLElement>(null);
@@ -56,27 +50,31 @@ export default function ConvictionFiLanding() {
               <span className="text-[#4DA2FF]">DeFAI Agent as NFT.</span>
             </h1>
             <p className="text-xl md:text-2xl text-[#030F1C] mb-10 max-w-3xl mx-auto leading-relaxed">
-              The NFT isn’t just a token. It’s your Guardian — standing between
-              you and DeFi & Crypto Investing. A Safety Layer, encoded with
-              conviction.{" "}
+              Your NFT is the safety layer standing between you and DeFi.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button
-                size="lg"
-                className="bg-[#011829] hover:bg-[#022a3d] text-white px-8 py-4 text-lg transition-all hover:scale-105"
-                onClick={scrollToMintSection}
-              >
-                Mint Agent
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-[#4DA2FF] text-[#4DA2FF] hover:bg-[#4DA2FF] hover:text-white px-8 py-4 text-lg transition-all hover:scale-105"
-              >
-                <Play className="mr-2 h-5 w-5" />
-                Watch Demo
-              </Button>
+              {/* Mint DeFAI Agent → /mint に遷移 */}
+              <Link href="/mint" passHref>
+                <Button
+                  size="lg"
+                  className="bg-[#011829] hover:bg-[#022a3d] text-white px-8 py-4 text-lg transition-all hover:scale-105"
+                >
+                  Mint DeFAI Agent
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+              </Link>
+
+              {/* Watch Marketplace → /marketplace に遷移 */}
+              <Link href="/marketplace" passHref>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-[#4DA2FF] text-[#4DA2FF] hover:bg-[#4DA2FF] hover:text-white px-8 py-4 text-lg transition-all hover:scale-105"
+                >
+                  Watch Marketplace
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
@@ -204,72 +202,7 @@ export default function ConvictionFiLanding() {
       {/* How It Works */}
       <section id="how-it-works" className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#011829] mb-4">
-              How It Works
-            </h2>
-            <p className="text-lg text-[#030F1C] max-w-2xl mx-auto">
-              Five simple steps to transform your conviction into an autonomous
-              trading agent.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-5 gap-8">
-            {[
-              {
-                step: "01",
-                title: "Mint",
-                description:
-                  "Create your conviction NFT with your trading thesis and risk parameters",
-                icon: Coins,
-              },
-              {
-                step: "02",
-                title: "Deploy",
-                description:
-                  "Your NFT becomes an autonomous AI agent on the Sui blockchain",
-                icon: Bot,
-              },
-              {
-                step: "03",
-                title: "Trade",
-                description:
-                  "Agent executes trades 24/7 based on your encoded conviction",
-                icon: TrendingUp,
-              },
-              {
-                step: "04",
-                title: "Evolve",
-                description:
-                  "Agent learns and adapts using Walrus decentralized storage",
-                icon: Sparkles,
-              },
-              {
-                step: "05",
-                title: "Exit",
-                description:
-                  "Withdraw profits or transfer your evolved agent NFT",
-                icon: ArrowRight,
-              },
-            ].map((item, index) => (
-              <div key={index} className="text-center">
-                <div className="relative mb-6">
-                  <div className="w-16 h-16 bg-[#4DA2FF] rounded-full flex items-center justify-center mx-auto mb-4">
-                    <item.icon className="h-8 w-8 text-white" />
-                  </div>
-                  <div className="absolute -top-2 -right-2 w-8 h-8 bg-[#011829] text-white rounded-full flex items-center justify-center text-sm font-bold">
-                    {item.step}
-                  </div>
-                </div>
-                <h3 className="text-xl font-bold text-[#011829] mb-3">
-                  {item.title}
-                </h3>
-                <p className="text-[#030F1C] text-sm leading-relaxed">
-                  {item.description}
-                </p>
-              </div>
-            ))}
-          </div>
+          <HowItWorks />
         </div>
       </section>
 
@@ -511,16 +444,15 @@ export default function ConvictionFiLanding() {
         </div>
       </section>
 
-      {/* Mint Your DeFAI NFT Agent */}
+      {/* Mint Your DeFAI Agent Agent */}
       <section
-        ref={mintSectionRef}
         id="mint-section"
         className="py-20 bg-gradient-to-br from-[#4DA2FF]/5 to-[#011829]/5"
       >
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-[#011829] mb-4">
-              Mint Your DeFAI NFT Agent
+              Mint Your DeFAI Agent
             </h2>
             <p className="text-lg text-[#030F1C]">
               Transform your conviction into an autonomous trading agent in
@@ -531,68 +463,37 @@ export default function ConvictionFiLanding() {
           <Card className="border-2 border-[#4DA2FF]/20 bg-white/80 backdrop-blur-sm">
             <CardContent className="p-8">
               <div className="grid md:grid-cols-2 gap-8">
+                {/* 左側: デモ情報 */}
                 <div>
                   <h3 className="text-xl font-bold text-[#011829] mb-4">
-                    Configure Your Agent
+                    Sample Configuration
                   </h3>
-                  <div className="space-y-4">
-                    <div>
-                      <label className="block text-sm font-medium text-[#011829] mb-2">
-                        Strategy Archetype
-                      </label>
-                      <div className="w-full p-3 border border-gray-200 rounded-lg bg-white">
-                        <span className="text-[#030F1C]">SUI_MAXIMIZER</span>
-                      </div>
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-[#011829] mb-2">
-                        Mint Price (USDC)
-                      </label>
-                      <div className="w-full p-3 border border-gray-200 rounded-lg bg-white">
-                        <span className="text-[#030F1C]">1000</span>
-                      </div>
-                      <p className="text-sm text-[#030F1C] mt-1">
-                        This is the total budget your AI agent will manage.
-                      </p>
-                    </div>
+                  <div className="space-y-4 text-[#030F1C] text-sm">
+                    <p>
+                      <strong>Strategy:</strong> SUI_MAXIMIZER
+                    </p>
+                    <p>
+                      <strong>Mint Price:</strong> 1000 USDC
+                    </p>
+                    <p>
+                      <strong>Total Cost:</strong> 1010 USDC (incl. minting fee)
+                    </p>
+                    <p>This is the budget your AI agent will manage.</p>
                   </div>
                 </div>
 
-                <div>
-                  <h3 className="text-xl font-bold text-[#011829] mb-4">
-                    Wallet Connection
-                  </h3>
-                  <div className="space-y-4">
-                    <Button className="w-full bg-[#4DA2FF] hover:bg-[#3d8ae6] text-white p-4 text-lg">
-                      <Wallet className="mr-2 h-5 w-5" />
-                      Connect Sui Wallet
+                {/* 右側: 遷移ボタン */}
+                <div className="flex flex-col justify-center items-center space-y-6">
+                  <Wallet className="h-10 w-10 text-[#011829]" />
+                  <Link href="/mint">
+                    <Button className="bg-[#011829] hover:bg-[#022a3d] text-white text-lg px-8 py-4">
+                      Mint Now
                     </Button>
-                    <div className="text-center text-sm text-[#030F1C]">
-                      Wallet not connected
-                    </div>
-                    <div className="border-t pt-4">
-                      <div className="text-sm text-[#030F1C] mb-4">
-                        <div className="flex justify-between">
-                          <span>Minting Fee:</span>
-                          <span>10 USDC</span>
-                        </div>
-                        <div className="flex justify-between">
-                          <span>Mint Price:</span>
-                          <span>1000 USDC</span>
-                        </div>
-                        <div className="flex justify-between font-bold text-[#011829] border-t pt-2 mt-2">
-                          <span>Total:</span>
-                          <span>1010 USDC</span>
-                        </div>
-                      </div>
-                      <Button
-                        className="w-full bg-[#011829] hover:bg-[#022a3d] text-white p-4 text-lg"
-                        disabled
-                      >
-                        Mint Agent NFT
-                      </Button>
-                    </div>
-                  </div>
+                  </Link>
+                  <p className="text-sm text-[#030F1C]">
+                    Connect your wallet and mint directly from the dedicated
+                    page.
+                  </p>
                 </div>
               </div>
             </CardContent>
@@ -601,128 +502,55 @@ export default function ConvictionFiLanding() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-[#011829] text-white py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-4 gap-8">
-            <div className="md:col-span-2">
-              <div className="flex items-center space-x-2 mb-4">
-                {/* <div className="w-8 h-8 bg-[#4DA2FF] rounded-lg flex items-center justify-center"> */}
-                <div className="w-8 h-8 rounded-lg flex items-center justify-center">
-                  {/* <span className="text-white font-bold text-sm">C</span> */}
-                  <img
-                    src="convictionfi_icon.png"
-                    alt="ConvictionFi Logo"
-                    className="h-6 w-6"
-                  />
-                </div>
-                <span className="text-white font-bold text-xl">
-                  ConvictionFi
-                </span>
-              </div>
-              <p className="text-gray-300 mb-6 max-w-md">
-                Transforming conviction into autonomous AI trading agents. Built
-                on Sui, evolving on Walrus, powered by your beliefs.
-              </p>
-              <div className="flex space-x-4">
-                <Button
-                  size="sm"
-                  variant="ghost"
-                  className="text-gray-300 hover:text-white hover:bg-white/10"
-                >
-                  <Twitter className="h-5 w-5" />
-                </Button>
-                <Button
-                  size="sm"
-                  variant="ghost"
-                  className="text-gray-300 hover:text-white hover:bg-white/10"
-                >
-                  <Linkedin className="h-5 w-5" />
-                </Button>
-                <Button
-                  size="sm"
-                  variant="ghost"
-                  className="text-gray-300 hover:text-white hover:bg-white/10"
-                >
-                  <MessageCircle className="h-5 w-5" />
-                </Button>
-                <Button
-                  size="sm"
-                  variant="ghost"
-                  className="text-gray-300 hover:text-white hover:bg-white/10"
-                >
-                  <Github className="h-5 w-5" />
-                </Button>
-              </div>
-            </div>
-
-            <div>
-              <h4 className="font-semibold text-white mb-4">Product</h4>
-              <ul className="space-y-2 text-gray-300">
-                <li>
-                  <a href="#" className="hover:text-white transition-colors">
-                    How It Works
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white transition-colors">
-                    Strategies
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white transition-colors">
-                    Features
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white transition-colors">
-                    Roadmap
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            <div>
-              <h4 className="font-semibold text-white mb-4">Resources</h4>
-              <ul className="space-y-2 text-gray-300">
-                <li>
-                  <a href="#" className="hover:text-white transition-colors">
-                    Documentation
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white transition-colors">
-                    Whitepaper
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white transition-colors">
-                    Blog
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white transition-colors">
-                    Support
-                  </a>
-                </li>
-              </ul>
+      <footer className="bg-gray-100 text-gray-500 py-6">
+        <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
+          {/* 著作権 & SNS */}
+          <div className="flex items-center space-x-6">
+            <span className="text-sm">
+              © 2025 VillainsLeague. All rights reserved.
+            </span>
+            <div className="flex space-x-4 text-gray-500">
+              <a
+                href="https://x.com/conviction_sui"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-black"
+                aria-label="Twitter"
+              >
+                <Twitter className="w-5 h-5" />
+              </a>
+              <a
+                href="https://www.linkedin.com/company/convictionfi/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-black"
+                aria-label="LinkedIn"
+              >
+                <Linkedin className="w-5 h-5" />
+              </a>
+              <a
+                href="https://www.facebook.com/ConvictionFi"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-black"
+                aria-label="Facebook"
+              >
+                <Facebook className="w-5 h-5" />
+              </a>
             </div>
           </div>
 
-          <div className="border-t border-gray-700 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
-            <div className="text-gray-300 text-sm">
-              © 2025 ConvictionFi. All rights reserved.
-            </div>
-            <div className="flex space-x-6 text-gray-300 text-sm mt-4 md:mt-0">
-              <a href="#" className="hover:text-white transition-colors">
-                Terms of Service
-              </a>
-              <a href="#" className="hover:text-white transition-colors">
-                Privacy Policy
-              </a>
-              <a href="#" className="hover:text-white transition-colors">
-                Credits
-              </a>
-            </div>
+          {/* Founder */}
+          <div className="text-sm">
+            Founder:{" "}
+            <a
+              href="https://x.com/kyohei_nft"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:underline"
+            >
+              @kyohei_nft
+            </a>
           </div>
         </div>
       </footer>

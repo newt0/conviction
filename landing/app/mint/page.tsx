@@ -23,7 +23,6 @@ import {
   Wallet,
   Bot,
   CheckCircle,
-  ArrowLeft,
   Target,
   Shield,
   PieChart,
@@ -236,10 +235,12 @@ export default function MintPage() {
                 </div>
 
                 <div className="flex gap-3 pt-4">
-                  <Button className="flex-1 bg-[#4DA2FF] hover:bg-[#3d8ae6] text-white">
-                    <TrendingUp className="mr-2 h-4 w-4" />
-                    View Agent Dashboard
-                  </Button>
+                  <Link href="/dashboard" className="flex flex-1">
+                    <Button className="flex-1 bg-[#4DA2FF] hover:bg-[#3d8ae6] text-white">
+                      <TrendingUp className="mr-2 h-4 w-4" />
+                      View Agent Dashboard
+                    </Button>
+                  </Link>
                   <Button
                     variant="outline"
                     className="flex-1 border-[#4DA2FF] text-[#4DA2FF] hover:bg-[#4DA2FF] hover:text-white"
@@ -280,7 +281,7 @@ export default function MintPage() {
         <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h1 className="text-3xl md:text-4xl font-bold text-[#011829] mb-4">
-              Mint Your DeFAI NFT Agent
+              Mint Your DeFAI Agent
             </h1>
             <p className="text-lg text-[#030F1C]">
               Configure your autonomous trading agent and transform your
@@ -446,12 +447,12 @@ export default function MintPage() {
               {mintingState === "minting" ? (
                 <>
                   <Zap className="mr-2 h-5 w-5 animate-spin" />
-                  Minting Agent NFT...
+                  Minting DeFAI Agent NFT...
                 </>
               ) : (
                 <>
                   <Bot className="mr-2 h-5 w-5" />
-                  Mint Agent NFT
+                  Mint DeFAI Agent
                 </>
               )}
             </Button>

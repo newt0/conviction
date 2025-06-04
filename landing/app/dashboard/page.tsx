@@ -11,7 +11,6 @@ import {
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
 import {
-  ArrowLeft,
   Bot,
   TrendingUp,
   Activity,
