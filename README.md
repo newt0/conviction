@@ -1,4 +1,4 @@
-## Project Overview
+# ConvictionFi - Mint your Conviction. DeFAI Agent as NFT
 
 ConvictionFi offers a new paradigm for realizing the vision of DeFi × AI (DeFAI). With a single NFT mint, users can delegate conviction-based investing to an autonomous AI agent.
 
@@ -35,7 +35,7 @@ Only Step 1 requires your input — from Step 2 onward, your agent takes over.
    All activity is publicly reported.
 
 4. **Learn & Evolve**  
-   The agent adapts based on market signals or strategy upgrades.
+   The agent xadapts based on market signals or strategy upgrades.
 
 5. **Exit or Transfer**  
    Withdraw via protocol rules — or sell the NFT on secondary markets.
