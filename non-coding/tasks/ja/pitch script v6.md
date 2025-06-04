@@ -1,93 +1,69 @@
-## [TITLE] ConvictionFi
+## 🎤 \[TITLE] ConvictionFi
 
-- 自己紹介
-- NFT をミントするだけでクリプトトレードや投資が自動化される
-- ConvictionFi
+こんにちは。ConvictionFi を開発した匡平と申します。
 
-## [PROBLEM] The Gap: DeFAI Is Just a Buzzword — Until Now
+このプロダクトは、「NFT をミントするだけで、AI があなたの代わりに暗号資産をトレードしてくれる」── そんな未来を実現するために生まれました。
 
-- DeFAI が話題だが、単なるバズワードになっている
-- Vibe Trading とも
-- 具体的な UX として DeFAI を定義し、提供する必要がある
+NFT があなたの信念を代弁し、自律的に資産を運用する。それが ConvictionFi です。
 
-## [SOLUTION] ConvictionFi: DeFAI Agent as NFT
+## 🧩 \[PROBLEM] The Gap: DeFAI Is Just a Buzzword — Until Now
 
-- 私たちのソリューションは「DeFAI Agent as NFT」
-- ユーザーは NFT をミントするだけ
-- NFT は独立したウォレットと署名権限を持つ AI Agent となり、定められた戦略に従って自動的に資産運用する
+最近「DeFAI」という言葉がバズっていますが、実態のないバズワードに過ぎないものが多いのが現状です。
 
-## [HOW-IT-WORKS-USERFLOW] Userflow: Just Mint NFT
+UX が曖昧で、ただの「AI っぽいトレードボット」にとどまっている。
+私たちはそこに真正面から取り組み、「DeFAI とは何か？」を UX として定義し、届けるプロダクトを作りました。
 
-- ConvictionFi は、たった**5 ステップのライフサイクル**で構成される。
-- 重要なのは、**ユーザーが関与するのは最初の 1 ステップだけ**という点
+## 💡 \[SOLUTION] ConvictionFi: DeFAI Agent as NFT
 
-### Step 1: Mint a ConvictionFi NFT
+ConvictionFi の答えはシンプルです。
 
-- テーマを選ぶ。例えば Sui の将来性にベットする「SUI_MAXIMIZER」 や Bitcoin だけが安全資産であるという「BTC_HODLER」など
-- NFT をミントする。ミント額がそのままトレード予算となる
-- ユーザーの意思決定や操作はこれで完了。あとは DeFAI Agent が行ってくれる
+**「DeFAI Agent as NFT」**──
+NFT をミントするだけで、その NFT が独立したウォレットを持ち、AI エージェントとして自律的に運用を開始します。
 
-### Step 2: Your NFT becomes your AI Agent
+ユーザーはただ一度ミントするだけ。あとは NFT が、あなたの代わりに考え、判断し、動いてくれます。
 
-- NFT は独立したスマートコントラクトウォレットを持つ
-- ミント額が運用予算として入金される
-- NFT は署名権限を持つ
+## 🔁 \[HOW-IT-WORKS-USERFLOW] Just Mint NFT
 
-### Step 3: Trade & Report
+ConvictionFi は、たった 5 つのステップで構成されます。
+しかも、ユーザーが操作するのは最初の 1 ステップだけ。
 
-- Strategy logic や AI ロジック、システムプロンプトは、NFT のメタデータとして Walrus にホストされている
-- これを元にトレードを自動実行する
-- トレードのアクティビティは、Twitter Reply を通じて報告される。Twitter はクリプトユーザーがもっとも気軽に閲覧する UI であり、同時に ConvictionFi のグロースハック戦略だ
+ミント → 自律運用 → 報告 → 進化 →Exit。
+この流れの中で、あなたの意思が AI を通して形になっていきます。
+では具体的なステップを紹介します。
 
-### Step 4: Learn & Evolve
+## Step 1: Mint a ConvictionFi NFT
 
-- Strategy logic はアップデート可能だ
-- トレード成績の評価やユーザーの FB を学習して、より洗練された戦略に進化する
-- コアとなる Conviction Thesis は Walrus の永続ストレージに保存されるが、Strategy logic は Walrus のアップデート可能なストレージに保存される
+まず、あなたの信念に合った戦略テーマを選びます。
+たとえば「SUI_MAXIMIZER」や「BTC_HODLER」など。
 
-### Step 5: Exit or Transfer
+NFT をミントすると、その金額がそのままトレード資金になります。
+この時点で、ユーザーの操作は終了。あとは AI エージェントに任せるだけです。
 
-- 投資でもっとも難しいのは Exit だ。よって、基本的には、Exit も AI が代行する。定められた期間や目標金額などのトリガーによって、ユーザーのウォレットに送金する
-- しかし、ユーザーが主体的に Refund することも可能だ。
-- また、ConvictionFi ならではの Exit 方法 として、NFT を二次流通できる。NFT のウォレットごと Transfer されるため、Floor Price は最低でもウォレット内の資産となる
+## Step 2: Your NFT becomes your AI Agent
 
-## [HOW-IT-WORKS-INITIAL_STRATEGY] Initial Strategy
+ミントされた NFT は、独立したスマートウォレットと署名権限を持ちます。
+つまり、完全にあなたとは別個に資産を管理し、動かす存在になります。
 
-- 初期の Strategy の紹介
+資産の安全性と自律性を、両立させる設計です。
 
-## [FEATURES]
+## Step 3: Trade & Report
 
-### [SECURITY-MODEL] NFT as Safety Layer
+トレード戦略や AI ロジックは、NFT メタデータとして Walrus に保存されます。
+それをもとにエージェントが自動でトレードを実行し、成果は Twitter リプライで通知されます。
 
-- DeFi をユーザーが直接操作するのは潜在的に危険であり、web3 のアーキテクチャ上のミスだと思う
-- そこで私たちが提案するのが、NFT as Safety Layer というパラダイムだ
-- NFT がユーザーと DeFi プロトコルとの間に立ち、操作する
-- また、NFT のウォレットはユーザーのウォレットと独立しているから安全だ
-- また、ミント金額=トレード予算というのもシンプルだ
+この通知自体が、UX でもあり、グロースハックでもあるのです。
 
-### [NFT-SECONDARY-MARKET] NFT の二次流通
+## Step 4: Learn & Evolve
 
-- 省略
+ConvictionFi の AI エージェントは、トレード成績やフィードバックをもとに進化します。
 
-### [UX-ABSTRACTION] UX の抽象化
+メタデータのうち、「信念」は永続的に保存され、
+「戦略」は進化し続ける ── それが DeFAI の本質です。
 
-- クロスチェーン Tx やソーシャルログイン、フィアット決済に対応することで、Sui のウォレットや暗号資産を持っていないユーザーを取り込む。
-- あらゆる Web3 UX のハードルを取り除くことで、Sui のユーザーを 100 倍にする
+## Step 5: Exit or Transfer
 
-## [DEMO] デモ動画
+最も難しいのが「Exit」ですが、ConvictionFi ではこれも AI が代行します。
+目標リターンや期間をトリガーに、あなたのウォレットへ送金されます。
 
-1 分間
-
-## [APPENDIX] 🤖Claude Code による新しい Move 開発
-
-- 私たちは Move は AI 開発ともっとも相性の良いスマートコントラクト言語であると気づいてから、Move に夢中になった
-- Claude Code を活用した最先端の Move 開発フローを行っており、これは OSS として広く共有する予定だ
-
-## Founder 紹介
-
-- 私は日本の NFT ではもっとも実績があるビルダーだ。だからこそ、NFT への期待や失望と向き合ってきたが、DeFAI Agent as NFT というコンセプトは NFT のもっとも実用的なユースケースになると確信している
-- さて、私は CTO 経験もビジネスヘッドの経験もあり、優秀なメンバーはいくらでも集められるが、今回のハッカソンはあえて一人で臨んだ。もっとも優れたアイディアはチームワークではなく個人の努力と才能からしか生まれないから、まだ他人を頼るべきではない。プロトタイピングまでは一人で行って、そこから先でチームを作る予定だ
-
-## [ENDING] Mint your Conviction. DeFAI Agent as NFT.
-
-- ありがとうございました
+また、NFT を二次流通することで、戦略と資産ごと他人に譲渡することも可能。
+これもまた、ConvictionFi ならではの Exit 戦略です。
