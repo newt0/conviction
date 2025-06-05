@@ -5,8 +5,8 @@
 
 ## [PROBLEM] The Current State of DeFAI
 
-In 2025, the most anticipated development in the crypto industry is DeFAI—the convergence of DeFi and AI.
-The complexity of DeFi has already exceeded human cognitive limits, making AI integration an inevitable outcome.
+In 2025, the hottest trend in crypto is DeFAI - the fusion of DeFi and AI.
+DeFi's complexity has already surpassed human cognitive capacity, making AI integration inevitable
 However, "DeFAI" and "Vibe Trading" remain largely marketing buzzwords.
 No project has yet defined concrete UX or achieved product-market fit.
 
@@ -31,22 +31,21 @@ ConvictionFi consists of a 5-step lifecycle, but **users only need to make decis
 
 Users select and mint an NFT.
 
-User decision-making ends here. All subsequent steps are passive.
+That's all the decision-making users need to do.
+Everything else happens automatically
 
 ### Step 2: NFT becomes AI Agent
 
 The minted NFT autonomously executes trades.
 
-Each minted NFT has an independent smart contract wallet, with the mint amount serving as its budget.
-
+Each minted NFT operates with its own smart contract wallet, using the mint amount as its trading budget.
 Investment strategies abstracting ideologies and AI system prompts are hosted on Walrus as NFT metadata.
 
 ### Step 3: Trade & Report
 
-Trading activities are reported to users in Twitter reply format.
-Twitter is the interface crypto users engage with most frequently, while simultaneously serving as our product's growth hack mechanism.
-
-Essentially, the very act of minting and operating DeFAI NFTs becomes inherent viral marketing.
+Trading activities are reported to users through Twitter replies.
+Since Twitter is where crypto users spend most of their time, this also serves as our organic growth strategy.
+Every time a DeFAI NFT mints and starts trading, it naturally creates viral marketing.
 
 ### Step 4: Learn & Evolve
 
@@ -55,29 +54,24 @@ Based on trading performance evaluations and user feedback, strategies continuou
 
 ### Step 5: Exit
 
-The most challenging aspect of investing is the "Exit."
-Unrealized gains are merely illusions that deceive people—they're not reality.
-Exit is precisely the domain AI should handle.
+The hardest part of investing? Knowing when to exit.
+Unrealized gains are just numbers on a screen—they're not real money until you sell.
+This is exactly where AI should step in.
+ConvictionFi automatically exits positions based on preset triggers like time limits or profit targets, then sends the actual profits to your wallet.
 
-ConvictionFi automatically executes exits based on triggers like time periods or target amounts, with profits sent to users' wallets.
-
-We deliberately exclude "manual refund functionality" because it would burden users with "decision responsibility" and "anxiety."
-
-Instead, we provide NFT secondary trading as an active exit option.
-
-While traditional NFTs lack substantial asset backing, ConvictionFi NFTs hold assets themselves, providing price justification.
+We intentionally don't include a "cash out anytime" button because that would just stress users out with constant decision-making.
+Instead, users can actively exit by selling their NFT on the secondary market.
+Unlike traditional NFTs that are basically digital art, ConvictionFi NFTs actually hold real assets—giving them concrete value.
 
 ## [FEATURES]
 
 ### Safety Layer as NFT
 
 Current DeFi directly exposes user wallets to smart contracts, which is structurally risky.
-
-Many excellent traders and engineers have fallen victim to exploits.
-I haven't been affected yet, but that's merely probability.
+Even skilled traders and engineers have lost money to exploits and hacks.
+I haven't been targeted yet, but it's statistical probability, not personal precaution.
 
 To address this structural challenge, we propose the **"Safety Layer as NFT"** paradigm.
-
 In this model, NFTs stand between users and DeFi protocols, acting as transaction proxies.
 NFTs have independent wallets, completely separated from users' personal wallets.
 Therefore, regardless of what happens during trading, users' main assets are never at risk.
@@ -85,7 +79,7 @@ Therefore, regardless of what happens during trading, users' main assets are nev
 ## [REVENUE]
 
 ConvictionFi balances stress-free UX with sustainable profitability.
-Our revenue model has three main cash points: Mint, secondary trading, and performance.
+Our revenue model has three main cash points: minting fees, trading royalties, and success bonuses.
 
 First, fixed fees at mint ($5-7).
 Since this isn't percentage-based, users are incentivized to mint larger amounts at once.
