@@ -12,7 +12,7 @@
 In 2025, the hottest trend in crypto is DeFAI - the fusion of DeFi and AI.
 DeFi's complexity has already surpassed human cognitive capacity, making AI integration inevitable
 However, "DeFAI" and "Vibe Trading" remain largely marketing buzzwords.
-No project has yet defined concrete UX or achieved product-market fit.
+No project has yet defined concrete UX or achieved PMF.
 
 ## [SOLUTION] DeFAI Agent as NFT
 
@@ -20,9 +20,9 @@ We propose two core concepts:
 **"Vibe Trading on Conviction"** and **"DeFAI Agent as NFT"**.
 
 Each NFT works as an AI agent with its own wallet, automatically managing investments based on specific strategies.
-Each NFT's investment strategy abstracts users' beliefs and convictions.
+Each investment strategy abstracts convictions.
 
-For example, SUI_MAXI bets on Sui's future potential, BTC_HODLER believes in the Bitcoin narrative, or TRUMP_SUPPORTER—diverse strategies tailored to different ideologies and positions.
+For example, SUI_MAXI bets on Sui's future potential, BTC_HODLER believes in the Bitcoin narrative — diverse strategies tailored to different ideologies and positions.
 
 Users simply select and mint an NFT that aligns with their ideology.
 From there, AI handles everything.
@@ -43,7 +43,7 @@ Everything else happens automatically
 The minted NFT autonomously executes trades.
 
 Each minted NFT operates with its own smart contract wallet, using the mint amount as its trading budget.
-Investment strategies abstracting ideologies and AI system prompts are hosted on Walrus as NFT metadata.
+Investment strategies and AI system prompts are hosted on Walrus as NFT metadata.
 
 ### Step 3: Trade & Report
 
