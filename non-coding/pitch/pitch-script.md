@@ -2,7 +2,7 @@
 
 ## [OPENING]
 
-**Choose an ideology or belief, and AI executes the optimal investment strategy.**
+**Choose conviction. AI executes the optimal investment strategy.**
 **The UX? Simply mint an NFT.**
 
 **That's ConvictionFi.**
@@ -71,14 +71,13 @@ Unlike traditional NFTs that are basically digital art, ConvictionFi NFTs actual
 
 ### Safety Layer as NFT
 
-Current DeFi directly exposes user wallets to smart contracts, which is structurally risky.
-Even skilled traders and engineers have lost money to exploits and hacks.
+Current DeFi exposes user wallets directly to smart contracts, creating structural risk.
+Even skilled traders and engineers have lost money to exploits.
 I haven't been targeted yet, but it's statistical probability, not personal precaution.
 
-To address this structural challenge, we propose the **"Safety Layer as NFT"** paradigm.
-In this model, NFTs stand between users and DeFi protocols, acting as transaction proxies.
-NFTs have independent wallets, completely separated from users' personal wallets.
-Therefore, regardless of what happens during trading, users' main assets are never at risk.
+To solve this, we introduce the "Safety Layer as NFT":
+Each NFT acts as a transaction proxy with its own wallet, fully isolated from the user’s.
+No matter what happens during trading, your main assets remain untouched.
 
 ## [REVENUE]
 
@@ -100,16 +99,6 @@ Achievers receive the prestigious **"The 10x Club" SBT, directly connecting to f
 
 For fiat and cross-chain mints, we charge only minimal fees to avoid disadvantaging non-crypto users.
 Rather than "hidden charges," we pursue mint volume and total assets under management as KPIs.
-
-## [TEAM] Founder Introduction
-
-I'm among the most accomplished individuals in Japan's NFT space.
-I've successfully executed multiple NFT sales exceeding $500K and achieved results with NFT-powered B2B SaaS products.
-I've confronted both expectations and disappointments surrounding NFTs on the front lines.
-This experience led me to conceive "DeFAI Agent as NFT" as NFT's most practical use case.
-
-I deliberately tackled this hackathon solo.
-In the post-AI era of product development, completing everything from idea conception and validation to MVP construction alone is the fastest and most rational approach.
 
 ## [ENDING]
 
