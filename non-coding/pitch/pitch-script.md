@@ -1,172 +1,118 @@
-# ✅ ConvictionFi Pitch Script (vFinal.4)
+# ✅ ConvictionFi Pitch Script (v7)
 
-## 🎬 Title
+## [OPENING]
 
-Imagine minting an NFT once — and never worrying about crypto trading again.
+**Choose an ideology or belief, and AI executes the optimal investment strategy.**
+**The UX? Simply mint an NFT.**
 
-We present **ConvictionFi**.
-Our slogan: _"Mint Your Conviction. DeFAI Agent as NFT."_
+**That's ConvictionFi.**
 
----
+## [PROBLEM] The Current State of DeFAI
 
-## 🧩 THE GAP: DeFAI is a Word. We Made it Work.
+In 2025, the hottest trend in crypto is DeFAI - the fusion of DeFi and AI.
+DeFi's complexity has already surpassed human cognitive capacity, making AI integration inevitable
+However, "DeFAI" and "Vibe Trading" remain largely marketing buzzwords.
+No project has yet defined concrete UX or achieved product-market fit.
 
-Everyone talks about **DeFAI** —
-Decentralized Finance + AI.
-Some even call it _Vibe Trading_.
+## [SOLUTION] DeFAI Agent as NFT
 
-But in reality?
+We propose two core concepts:
+**"Vibe Trading on Conviction"** and **"DeFAI Agent as NFT"**.
 
-It’s still just a marketing term.
-Use cases remain vague.
-Interfaces are broken.
-No one knows what "using DeFAI" actually means.
+Each NFT works as an AI agent with its own wallet, automatically managing investments based on specific strategies.
+Each NFT's investment strategy abstracts users' beliefs and convictions.
 
-**We don’t just say _DeFAI_ or _Vibe Trading_.**
-We deliver it —
-through a simple, self-contained interface:
+For example, SUI_MAXI bets on Sui's future potential, BTC_HODLER believes in the Bitcoin narrative, or TRUMP_SUPPORTER—diverse strategies tailored to different ideologies and positions.
 
-> **DeFAI Agent as NFT.**
-> Mint once. Let the agent do the rest.
+Users simply select and mint an NFT that aligns with their ideology.
+From there, AI handles everything.
 
-It’s not a buzzword.
-It’s a UX breakthrough.
+## [USERFLOW]
 
----
+ConvictionFi consists of a 5-step lifecycle, but **users only need to make decisions in the first step**.
 
-## 💡 SOLUTION: ConvictionFi — Your Conviction, Your Agent
+### Step 1: Mint
 
-This is **Conviction-Driven Automation**.
+Users select and mint an NFT.
 
-You don’t need to master yield strategies or monitor positions.
+That's all the decision-making users need to do.
+Everything else happens automatically
 
-You just mint.
-Each NFT becomes a self-governing agent — a vessel for your belief, your narrative, your thesis.
+### Step 2: NFT becomes AI Agent
 
-Each NFT has its own wallet.
-It manages only the funds inside it.
-It trades and reports — fully autonomously.
+The minted NFT autonomously executes trades.
 
-Just one mint.
-And your conviction comes alive.
+Each minted NFT operates with its own smart contract wallet, using the mint amount as its trading budget.
+Investment strategies abstracting ideologies and AI system prompts are hosted on Walrus as NFT metadata.
 
----
+### Step 3: Trade & Report
 
-## 🔄 HOW IT WORKS: From Belief to Autonomy
+Trading activities are reported to users through Twitter replies.
+Since Twitter is where crypto users spend most of their time, this also serves as our organic growth strategy.
+Every time a DeFAI NFT mints and starts trading, it naturally creates viral marketing.
 
-ConvictionFi is a full-cycle system of belief-driven investing — in five clear steps.
+### Step 4: Learn & Evolve
 
-But here’s the key:
-**Only Step 1 requires your decision.**
-From Step 2 onward, the agent takes over.
+Investment strategy logic is updatable.
+Based on trading performance evaluations and user feedback, strategies continuously learn, improve, and evolve into more sophisticated forms.
 
----
+### Step 5: Exit
 
-### 1. **Choose & Mint Conviction**
+The hardest part of investing? Knowing when to exit.
+Unrealized gains are just numbers on a screen—they're not real money until you sell.
+This is exactly where AI should step in.
+ConvictionFi automatically exits positions based on preset triggers like time limits or profit targets, then sends the actual profits to your wallet.
 
-- Select a thesis: from \$SUI staking to \$BTC HODLing.
-- Mint an NFT agent. Mint price = your trading capital.
-- **That’s it. No setup. No approvals. No dashboards.**
+We intentionally don't include a "cash out anytime" button because that would just stress users out with constant decision-making.
+Instead, users can actively exit by selling their NFT on the secondary market.
+Unlike traditional NFTs that are basically digital art, ConvictionFi NFTs actually hold real assets—giving them concrete value.
 
-> Your conviction is now on-chain.
-> **From here, it acts — not you.**
+## [FEATURES]
 
----
+### Safety Layer as NFT
 
-### 2. **Initialize & Deploy**
+Current DeFi directly exposes user wallets to smart contracts, which is structurally risky.
+Even skilled traders and engineers have lost money to exploits and hacks.
+I haven't been targeted yet, but it's statistical probability, not personal precaution.
 
-- NFT creates its own isolated smart wallet.
-- The full mint price is **transferred into this wallet** — it becomes the agent's trading capital.
-- Strategy logic and system prompt are loaded from **Walrus**.
-- The agent is instantiated via **Sui Agent Kit** — ready to act autonomously.
+To address this structural challenge, we propose the **"Safety Layer as NFT"** paradigm.
+In this model, NFTs stand between users and DeFi protocols, acting as transaction proxies.
+NFTs have independent wallets, completely separated from users' personal wallets.
+Therefore, regardless of what happens during trading, users' main assets are never at risk.
 
----
+## [REVENUE]
 
-### 3. **Trade & Report**
+ConvictionFi balances stress-free UX with sustainable profitability.
+Our revenue model has three main cash points: minting fees, trading royalties, and success bonuses.
 
-The agent autonomously executes trades, staking, or lending —
-based on its embedded strategy and real-time market signals.
+First, fixed fees at mint ($5-7).
+Since this isn't percentage-based, users are incentivized to mint larger amounts at once.
 
-Regular performance updates are posted **publicly via Twitter replies** —
-visible to the user and their network:
+Second, royalties from NFT secondary trading (5%).
+Since ConvictionFi encourages secondary trading as an exit method, NFT liquidity becomes active.
+This leverages NFT characteristics for revenue generation.
 
-- Wallet balance (in NFT)
-- Trade logs
-- Strategy status
-- Performance relative to initial budget
+Finally, performance-based success fees.
+However, these only activate for exceptional returns.
+When an NFT wallet balance reaches 10x the mint amount, we collect 7% of profits as a one-time success fee.
 
-These updates don’t just inform — they spark conversations.
-Friends can comment, share, or follow along in the timeline.
-Each reply becomes a **growth node**, turning belief into visibility.
+Achievers receive the prestigious **"The 10x Club" SBT, directly connecting to future $CONVICTION token allocation**.
 
-A private dashboard is also available for detailed tracking.
+For fiat and cross-chain mints, we charge only minimal fees to avoid disadvantaging non-crypto users.
+Rather than "hidden charges," we pursue mint volume and total assets under management as KPIs.
 
-> Transparency fuels trust.
-> Social feedback fuels growth.
+## [TEAM] Founder Introduction
 
----
+I'm among the most accomplished individuals in Japan's NFT space.
+I've successfully executed multiple NFT sales exceeding $500K and achieved results with NFT-powered B2B SaaS products.
+I've confronted both expectations and disappointments surrounding NFTs on the front lines.
+This experience led me to conceive "DeFAI Agent as NFT" as NFT's most practical use case.
 
-### 4. **Learn & Evolve**
+I deliberately tackled this hackathon solo.
+In the post-AI era of product development, completing everything from idea conception and validation to MVP construction alone is the fastest and most rational approach.
 
-- Strategy logic is **upgradable** via versioned Walrus metadata.
-- Agents adapt transparently to market changes.
-- But conviction — the belief minted in the NFT — is immutable.
+## [ENDING]
 
-> The mind may evolve.
-> But the soul stays the same.
-
----
-
-### 5. **Exit or Transfer**
-
-- Most agents are designed to exit autonomously —
-  triggered by predefined thresholds or lockup periods.
-- But users retain agency:
-  they may **sell the NFT**, or opt-in for a **refund** if permitted by the strategy.
-
-> Exit is guided by belief —
-> but agency is never taken away.
-
----
-
-## 🛡️ NFT as SAFETY LAYER: Why We Never Touch Your Wallet
-
-Most DeFi apps ask users to sign from their main wallet.
-That’s not just clunky — it’s risky.
-
-> _“Don’t put all your eggs in one basket.”_
-
-ConvictionFi fixes this.
-
-- Every NFT has an **isolated smart wallet**
-- No user approvals after mint
-- Even if strategy fails, **your personal wallet stays untouched**
-
-NFTs become **secure intermediaries** —
-not collectibles, but **autonomous firewalls** between you and DeFi risk.
-
----
-
-## 🎥 DEMO VIDEO (Insert @ \~2:00 mark)
-
-> - Show: Minting “SUI_MAXIMIZER” → wallet creation → fund confirmation
-> - Show: Strategy logs → execution tick → Twitter reply notification
-> - UI walkthrough (login → mint → monitor)
-
----
-
-## ✅ Ending
-
-One mint.
-One conviction.
-One unstoppable agent.
-
-Built for believers — not just traders.
-Where AI acts for you — not over you.
-Where NFTs become **living vaults of conviction**.
-
-**ConvictionFi** —
-Where belief becomes automation.
-Where conviction becomes capital.
-
+Vibe Trading on Conviction.
+DeFAI Agent as NFT.
 Thank you.
