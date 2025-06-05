@@ -28,8 +28,7 @@ From there, AI takes over.
 
 ## [USERFLOW]
 
-ConvictionFi runs on a 5-step lifecycle—
-but users only make one decision: minting.
+ConvictionFi has five steps, but users only make one decision: minting.
 
 ### Step 1: Mint
 
@@ -79,7 +78,8 @@ So even if something goes wrong, your main assets stay safe.
 
 ## [REVENUE]
 
-ConvictionFi combines stress-free UX with sustainable revenue.
+ConvictionFi offers both the best UX and a sustainable revenue model.
+
 We monetize through three streams: mint fees, trading royalties, and success bonuses.
 
 First, a fixed mint fee of $5–7.
