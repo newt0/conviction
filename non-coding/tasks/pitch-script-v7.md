@@ -15,9 +15,9 @@ No project has yet defined concrete UX or achieved product-market fit.
 We propose two core concepts:
 **"Vibe Trading on Conviction"** and **"DeFAI Agent as NFT"**.
 
-NFTs function as AI agents with their own wallets and signing authority, executing autonomous asset management on behalf of users according to predetermined strategies.
-
+Each NFT works as an AI agent with its own wallet, automatically managing investments based on specific strategies.
 Each NFT's investment strategy abstracts users' beliefs and convictions.
+
 For example, SUI_MAXI bets on Sui's future potential, BTC_HODLER believes in the Bitcoin narrative, or TRUMP_SUPPORTER—diverse strategies tailored to different ideologies and positions.
 
 Users simply select and mint an NFT that aligns with their ideology.
