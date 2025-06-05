@@ -2,7 +2,7 @@
 
 ## [OPENING]
 
-**Choose conviction. AI executes the optimal investment strategy.**
+Choose conviction. AI invests for you.
 **The UX? Simply mint an NFT.**
 
 **That's ConvictionFi.**
