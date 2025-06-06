@@ -17,12 +17,12 @@ No project has nailed the UX or hit PMF.
 
 ## [SOLUTION] DeFAI Agent as NFT
 
-We propose two core concepts:
+We propose two core ideas:
 **"Vibe Trading on Conviction"** and **"DeFAI Agent as NFT"**.
 
 Each NFT is an AI agent with its own wallet, managing trades based on predefined strategies.
 
-Each strategy abstracts a core conviction, turning belief into behavior — SUI_MAXI, BTC_HODLER, TRUMP_SUPPORTER.
+Each strategy abstracts a core conviction, turning belief into behavior — SUI_MAXI, BTC_HODLER, TRUMP_SUPPORTER, and so on.
 All users do is mint an NFT that matches their view.
 From there, AI takes over.
 
@@ -40,28 +40,28 @@ Everything else happens automatically
 ### Step 2: NFT becomes AI Agent
 
 Each minted NFT runs its own wallet and trades autonomously, using the mint amount as its budget.
-Strategy logic and AI prompts are stored as metadata on Walrus.
+Strategy logic and AI prompts are stored as NFT metadata on Walrus.
 
 ### Step 3: Trade & Report
 
-Every trade is reported via Twitter replies—where crypto users already live.
+Every trade is reported via Twitter replies — where crypto users already live.
 So each NFT becomes its own viral marketing engine.
 
 ### Step 4: Learn & Evolve
 
-Each strategy evolves—driven by data and feedback.
+Each strategy evolves — driven by data and feedback.
 
 ### Step 5: Exit
 
 The hardest part of investing? Knowing when to exit.
-Unrealized gains are just numbers—they’re not real until you sell.
+Unrealized gains are just numbers — they’re not real until you sell.
 This is exactly where AI should step in.
 
 ConvictionFi exits based on triggers like time or profit targets, and sends the profits to your wallet.
 
-We don’t offer a “cash out anytime” button—because it would force users to carry the burden of constant decision-making.
+We don’t offer a “cash out anytime” button — because it would force users to carry the burden of constant decision-making.
 
-Instead, you can exit by selling your NFT on the secondary market.
+Instead, you can exit by selling your NFT.
 And unlike most NFTs, ConvictionFi NFTs hold real assets, giving them actual value.
 
 ## [FEATURES]
@@ -78,7 +78,7 @@ So even if something goes wrong, your main assets stay safe.
 
 ## [REVENUE]
 
-ConvictionFi offers both the best UX and a sustainable revenue model.
+ConvictionFi offers a seamless UX and sustainable revenue.
 
 We monetize through three streams: mint fees, trading royalties, and success bonuses.
 
@@ -88,11 +88,12 @@ Because it’s not percentage-based, users are incentivized to mint larger amoun
 Second, a 5% royalty on secondary trades.
 Since we encourage resale as an exit method, this creates healthy NFT liquidity.
 
-Finally, a one-time 7% success fee—only when an NFT wallet hits 10x its mint amount.
-Those who achieve this milestone earn the "10x Club" SBT, tied to future $CONVICTION allocation.
+Finally, a one-time 7% success fee 　—　 only when an NFT wallet hits 10x its mint amount.
+Those who achieve this milestone earn the "10x Club" SBT, tied to future $CONVICTION airdrop.
 
 We keep fiat and cross-chain mint fees minimal to ensure fair access.
-No hidden charges — our KPIs are mint volume and total assets under management.
+No hidden fees.
+We optimize for mint growth and TVL, not extractive monetization.
 
 ## [ENDING]
 
