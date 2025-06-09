@@ -1,0 +1,34 @@
+Mint your Conviction. DeFAI Agent as NFT.
+
+ConvictionFi offers an ideal DeFAI UX through NFTs.
+With a single NFT mint, users can delegate conviction-based investing to an autonomous AI agent.
+
+〈❗PROBLEM: DeFAI Is Just a Buzzword〉
+In 2025, DeFAI (DeFi × AI) is one of crypto’s hottest trends — but most products lack depth.
+Use cases remain vague, UX is fragmented, and the core value of “using DeFAI” is unclear.
+
+〈💡SOLUTION: Vibe Trading on Conviction. DeFAI Agent as NFT〉
+ConvictionFi introduces two key concepts to deliver a real DeFAI experience:
+- 🌊 Vibe Trading on Conviction
+- 🤖 DeFAI Agent as NFT
+
+Users mint an NFT tied to their conviction — e.g., $SUI_MAXI, $BTC_HODLER, or $TRUMP_SUPPORTER.
+Each NFT becomes an AI agent with its own smart contract wallet and trading strategy.
+Mint it, and let the agent handle the rest.
+
+〈🧭USER-FLOW: Just Mint NFT〉
+ConvictionFi follows a five-step flow, but users make only one decision: minting.
+1. Mint — Pick and mint your NFT.
+2. NFT = AI Agent — It gets its own wallet and trades using the mint amount.
+3. Trade & Report — Autonomous activity is posted via Twitter replies, making each NFT a self-marketing engine.
+4. Evolve — Strategies learn and improve over time.
+5. Exit — AI auto-exits via time or profit triggers. Or, sell the NFT on a marketplace.
+
+〈💸REVENUE: Sustainable Revenue, Seamless UX〉
+ConvictionFi aligns sustainable monetization with a seamless UX:
+- Mint Fee: $5–7 flat — incentivizes larger commitments.
+- Royalty: 5% on secondary trades — drives exit-based liquidity.
+- Success Fee: 7% one-time only when wallet hits 10× mint value — earns access to The 10x Club SBT, linked to $CONVICTION airdrops.
+
+No hidden fees. Fiat and cross-chain minting supported with minimal friction.
+We optimize for TVL and user growth — not extractive monetization.
