@@ -1,6 +1,6 @@
 # 🧠 ConvictionFi — DeFAI Agent as NFT
 
-Hi all, I'm Kyohei, the founder of **ConvictionFi** from Japan.
+Hi all, I'm Kyohei, founder of **ConvictionFi**, joining from Japan 🇯🇵.
 
 Just choose your conviction — and AI does the investing for you.
 **The UX? Simply mint an NFT.**
@@ -8,48 +8,52 @@ Just choose your conviction — and AI does the investing for you.
 - `project_name`: ConvictionFi
 - `track`: AI
 - `product_type`: DeFAI NFT Protocol
-- `tagline`: “Vibe Trading on Conviction. DeFAI Agent as NFT.”
-- `pitchdeck`: https://gamma.app/docs/ConvictionFi-v7-te5708ze6n4d01s
-- `demo_video`: https://youtu.be/Jq4J6sGc0GE
+- `tagline`: _“Vibe Trading on Conviction. DeFAI Agent as NFT.”_
+- `pitch_deck`: [https://gamma.app/docs/ConvictionFi-v7-te5708ze6n4d01s](https://gamma.app/docs/ConvictionFi-v7-te5708ze6n4d01s)
+- `demo_video`: [https://youtu.be/Jq4J6sGc0GE](https://youtu.be/Jq4J6sGc0GE)
 
 ---
 
-## 🚨[PROBLEM] State of DeFAI
+## 🚨 [PROBLEM] The State of DeFAI
 
-In 2025, DeFAI (DeFi + AI) is one of crypto’s hottest trends.
-But in reality, **“DeFAI” and “Vibe Trading” are just buzzwords** — no product has nailed the UX or achieved PMF.
+In 2025, DeFAI (DeFi + AI) is one of the hottest trends in crypto.
+But in reality, **“DeFAI” and “Vibe Trading” are just buzzwords** — no project has nailed the UX or achieved PMF.
 
 ---
 
-## 💡[SOLUTION] DeFAI Agent as NFT
+## 💡 [SOLUTION] DeFAI Agent as NFT
 
-As concrete UX, ConvictionFi introduces two core ideas:
+ConvictionFi introduces two core concepts that define its ideal UX:
 
 - **Vibe Trading on Conviction**
 - **DeFAI Agent as NFT**
 
-Users mint an NFT that matches their conviction — like `SUI_MAXI`, `BTC_HODLER`, or `TRUMP_SUPPORTER`.
-Each NFT becomes an autonomous AI agent with its own wallet and strategy.
-**Mint it, and let AI take over.**
+Users mint an NFT that reflects their conviction — like `SUI_MAXI`, `BTC_HODLER`, or `TRUMP_SUPPORTER`.
+Each NFT becomes an autonomous AI agent with its own wallet and trading logic.
+**Mint it, and let the AI take over.**
 
 ---
 
-## [USERFLOW] Just Mint NFT
+## 🧭 [USER FLOW] One Decision: Mint
 
-1. **Mint**: Users pick an NFT and mint it. That's all the decision-making users need to do. Everything else happens automatically
-2. **NFT becomes AI Agent**: Each minted NFT runs its own wallet and trades autonomously, using the mint price as its budget. Strategy logic and AI prompts are stored as NFT metadata on Walrus.
-3. **Trade & Report**: The agent trades, stakes, or lends — no input needed. Every trade is reported via Twitter replies — where crypto users already live. So each NFT becomes its own viral marketing engine.
-4. **Evolve**: Investment strategy logic is updatable. Based on trading performance evaluations and user feedback, strategies continuously learn, improve, and evolve into more sophisticated forms.
-5. **Exit**: The hardest part of investing is knowing when to exit.ConvictionFi handles it for you — auto-selling based on time or profit triggers, and sending real profits to your wallet.
+ConvictionFi has five steps, but users only make one decision: minting.
 
-## [TECH STACK] Inside ConvictionFi
-
-- Sui Move: もっとも AI 駆動開発 と親和性の高い Smart Contract 言語
-- Walrus: NFT のメタデータとして AI のシステムプロンプトや Stratgy Logic をホスティング
-- Alibaba Cloud: AI Infrastructure
-- Sui Agent Kit: AI Infrastructure
-- misc: Wormhole, Privy, Pyth Network etc.
+1. **Mint** — Pick your NFT and mint it. That’s the only decision you make.
+2. **NFT = AI Agent** — Each NFT runs its own wallet and trades autonomously, using the mint price as its budget. Logic and AI prompts are stored as NFT metadata on Walrus.
+3. **Trade & Report** — The agent trades, stakes, and lends. All activity is transparently posted via Twitter replies, turning each NFT into a viral marketing engine.
+4. **Evolve** — Each strategy evolves — driven by data and feedback.
+5. **Exit** — Exiting is the hardest part of investing. ConvictionFi auto-exits based on time or profit triggers and sends profits to your wallet—no “cash out anytime” button, no decision fatigue. Alternatively, just sell your NFT.
 
 ---
 
-Would love your feedback — thanks! :raised_hands:
+## ⚙️ [TECH STACK] Under the Hood
+
+- `Sui Move` — Ideal for AI-integrated smart contract development
+- `Walrus` — Hosts strategy logic and AI prompts as NFT metadata
+- `Sui Agent Kit` — Framework for building AI agents on Sui
+- `Alibaba Cloud` — Infra for AI compute
+- `Others` — Wormhole, Privy, Pyth Network, and more
+
+---
+
+Would love to hear your feedback! 🙌
