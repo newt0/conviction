@@ -1,6 +1,4 @@
-[🌊Sui Overflow Hackathon]
-
-Last month, I submitted ConvictionFi to the Sui Overflow Hackathon 2025 — a project proposing a new UX for DeFAI (DeFi + AI).
+Submitted ConvictionFi to Sui Overflow 2025 — redefining the UX of DeFAI.
 
 [🧠 ConvictionFi]
 Just choose your conviction — and AI does the investing for you.
