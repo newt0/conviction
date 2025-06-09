@@ -1,0 +1,41 @@
+[🌊Sui Overflow Hackathon]
+
+Last month, I submitted ConvictionFi to the Sui Overflow Hackathon 2025 — a project proposing a new UX for DeFAI (DeFi + AI).
+
+[🧠 ConvictionFi]
+Just choose your conviction — and AI does the investing for you.
+The UX? Simply mint an NFT.
+
+[❗ PROBLEM]
+ In 2025, DeFAI is one of the hottest trends in crypto.
+ But most projects are still just buzzwords — no PMF, no real UX.
+
+[💡 SOLUTION]
+ ConvictionFi introduces two core conceptsthat define its ideal UX:
+🌊 Vibe Trading on Conviction
+🤖 DeFAI Agent as NFT
+Each NFT represents a conviction — like SUI_MAXI, BTC_HODLER, or TRUMP_SUPPORTER.
+Once minted, it becomes an autonomous AI agent that trades on your behalf.
+
+[🧭 USER FLOW]
+You only make one decision: minting.
+1. Mint: Choose your NFT and mint it. That’s the only decision you make.
+2. NFT = AI Agent: Each NFT runs its own wallet and trades autonomously using the mint price as its budget. Strategy logic and AI prompts are stored as metadata on Walrus.
+3. Trade & Report: The agent trades, stakes, or lends. All actions are transparently posted via Twitter replies, turning each NFT into a viral marketing engine.
+4. Evolve: Strategies evolve based on data and user feedback.
+5. Exit: AI exits based on time or profit triggers, sending earnings to your wallet. Alternatively, just sell the NFT.
+
+[TECH STACK]
+- Sui Move
+- Walrus
+- Sui Agent Kit
+- Alibaba Cloud
+- Wormhole, Privy, Pyth Network, etc.
+
+[LINKS]
+🎥 Demo Video: https://youtu.be/Jq4J6sGc0GE
+📄 Pitch Deck: https://gamma.app/docs/ConvictionFi-v7-te5708ze6n4d01s
+
+Would love to hear your feedback and connect with others building at the frontier of DeFAI.
+
+#DeFAI  #Sui #Web3 #SuiOverflowHackathon2025 #NFT #Walrus
