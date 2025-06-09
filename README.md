@@ -15,141 +15,123 @@ With a single NFT mint, users can delegate conviction-based investing to an auto
 
 ## [PROBLEM] DeFAI Is Just a Buzzword
 
-Terms like “DeFAI” and “Vibe Trading” are everywhere—but they lack substance.  
-Most so-called DeFAI products suffer from vague use cases, fragmented user experiences, and an overall lack of clarity about what it actually means to "use DeFAI."
+In 2025, DeFAI (DeFi × AI) is one of crypto’s hottest trends — but most products lack depth.
+Use cases remain vague, UX is fragmented, and the core value of “using DeFAI” is unclear.
 
 ## [SOLUTION] Vibe Trading on Conviction. DeFAI Agent as NFT
 
-We propose two core ideas that define its ideal UX:
+ConvictionFi introduces two key concepts to deliver a real DeFAI experience:
 
 - **Vibe Trading on Conviction**
 - **DeFAI Agent as NFT**
 
-Users mint an NFT that reflects their conviction — like `$SUI_MAXI`, `$BTC_HODLER`, or `$TRUMP_SUPPORTER`.
-Each NFT becomes an autonomous AI agent with its own wallet and trading logic.
-**Mint it, and let the AI take over.**
+Users mint an NFT tied to their conviction — e.g., `$SUI_MAXI`, `$BTC_HODLER`, or `$TRUMP_SUPPORTER`.
+Each NFT becomes an AI agent with its own smart contract wallet and trading strategy.
+Mint it, and let the agent handle the rest.
 
 ## [USER-FLOW] Just Mint NFT
 
-ConvictionFi has five steps, but users only make one decision: minting.
-From Step 2 onward, your AI agent takes over.
+ConvictionFi follows a five-step flow, but users make only one decision: minting.
 
-1. **Mint** — Pick your NFT and mint it.
-2. **NFT = AI Agent** — Each NFT runs its own wallet and trades autonomously using the mint price as its budget.
-3. **Trade & Report** — The agent trades, stakes, or lends. All actions are transparently posted via Twitter replies, turning each NFT into a viral marketing engine.
-4. **Evolve** — Strategies evolve based on data and user feedback.
-5. **Exit** — AI exits based on time or profit triggers, sending earnings to your wallet. Alternatively, just sell the NFT.
+1. **Mint** — Pick and mint your NFT.
+2. **NFT = AI Agent** — It gets its own wallet and trades using the mint amount.
+3. **Trade & Report** — Autonomous activity is posted via Twitter replies, making each NFT a self-marketing engine.
+4. **Evolve** — Strategies learn and improve over time.
+5. **Exit** — AI auto-exits via time or profit triggers. Or, sell the NFT on a marketplace.
 
 ## [FEATURES]
 
-### New Security Model: Safety Layer as NFT
+### 🛡️ New Security Model: Safety Layer as NFT
 
-Most DeFi apps require direct wallet transactions, creating unnecessary risk and inconvenience.  
-ConvictionFi uses a different approach: your minted NFT becomes both entry point and autonomous firewall.
+DeFi traditionally requires users to interact directly with contracts — exposing them to unnecessary risk.
+ConvictionFi offers a better model:
 
-- The minting price becomes your trading budget — no additional deposits or approvals needed
-- Each NFT generates its own isolated smart wallet, completely separate from your personal funds
-- Only the NFT agent signs transactions and takes action
+- No separate deposits or approvals. Minting = Funding
+- Minting Price = Trading Budget
+- Each NFT creates a fully isolated smart contract wallet
+- Only the agent signs transactions
+- Your main wallet stays untouched
 
-Your risk is compartmentalized, your conviction tokenized, and your NFT thinks and acts independently — keeping your wallet safe.
+Your conviction is tokenized, your risk is compartmentalized, and your NFT acts autonomously.
 
-### Walrus Integration: AI Works on Walrus
+### 🧠 Walrus Integration: AI Works on Walrus
 
-ConvictionFi leverages Walrus decentralized storage to ensure immutable and transparent NFT metadata for conviction-based trading agents.  
-Each Conviction NFT stores comprehensive data on Walrus including:
+All ConvictionNFTs store AI prompts, trading logic, and agent history as verifiable metadata on Walrus, a decentralized append-only storage system.
 
-- Strategy parameters and logic
-- Conviction statements and reasoning
-- Risk limits and execution policies
-- Agent version history and mint timestamps
+Stored data includes:
 
-The system utilizes Walrus's key features:
+- Strategy parameters and reasoning
+- Risk thresholds and execution policies
+- Version history with immutable timestamps
+- JSON-formatted metadata accessible via CID/URI
 
-- Content-addressed storage with verifiable CIDs for data integrity
-- Permanent append-only architecture preventing deletions or secret alterations
-- Full transparency allowing anyone to inspect metadata via URI
-
-This approach ensures complete audit trails as trading agents evolve through versioned updates.  
-Each NFT contains a Walrus metadata URI that points to the latest version while preserving access to historical versions for verification.  
-The JSON-formatted data includes strategy details, risk profiles, whitelisted contracts, and execution policies.  
-Since Walrus is append-only, strategy upgrades create new versions rather than overwriting existing data, ensuring full traceability of agent evolution over time.
-
-This storage solution guarantees transparency, auditability, and future-proofing without requiring large metadata storage directly on-chain, while ensuring all strategy changes remain traceable and potentially subject to governance approval.
+This ensures full auditability, upgrade traceability, and governance potential — without storing bloated data directly on-chain.
 
 ## [REVENUE] Sustainable Revenue, Seamless UX
 
-ConvictionFi offers a seamless UX and sustainable revenue.
+ConvictionFi aligns sustainable monetization with a seamless UX:
 
-We monetize through three streams: mint fees, trading royalties, and success bonuses.
+- Mint Fee: $5–7 flat — incentivizes larger commitments.
+- Royalty: 5% on secondary trades — drives exit-based liquidity.
+- Success Fee: 7% one-time only when wallet hits 10× mint value — earns access to The 10x Club SBT, linked to $CONVICTION airdrops.
 
-First, fixed fees at mint ($5-7).
-Since this isn't percentage-based, users are incentivized to mint larger amounts at once.
-
-Second, royalties from NFT secondary trading (5%).
-Since ConvictionFi encourages secondary trading as an exit method, NFT liquidity becomes active.
-This leverages NFT characteristics for revenue generation.
-
-Finally, performance-based success fees.
-However, these only activate for exceptional returns.
-When an NFT wallet balance reaches 10x the mint amount, we collect 7% of profits as a one-time success fee.
-
-Achievers receive the prestigious **"The 10x Club" SBT, directly connecting to future $CONVICTION token allocation**.
-
-For fiat and cross-chain mints, we charge only minimal fees to avoid disadvantaging non-crypto users.
-Rather than "hidden charges," we pursue mint volume and total assets under management as KPIs.
+No hidden fees. Fiat and cross-chain minting supported with minimal friction.
+We optimize for TVL and user growth — not extractive monetization.
 
 ## Sample Strategy
 
 1. **SUI_MAXIMIZER**
-
-   - Aggressive accumulation of SUI and ecosystem tokens during market dips
-   - Ideological Thesis: "Sui represents the future of blockchain scalability. Every dip is an opportunity to accumulate before mass adoption."
+   Aggressively accumulates $SUI and ecosystem tokens during dips.
+   Thesis: “Sui represents the future of scalable blockchains. Buy every dip.”
 
 2. **BTC_HODLER**
-
-   - Long-term Bitcoin accumulation with DCA and volatility exploitation
-   - Ideological Thesis: "Bitcoin is digital gold and the ultimate store of value. Time in market beats timing the market."
-
+   DCA strategy with volatility filters.
+   Thesis: “Bitcoin is digital gold. Time in market > timing the market.”
 3. **STABLE_OPTIMIZER**
-   - Conservative yield optimization across stable pools and lending protocols
-   - "Consistent yield generation with capital preservation. Compound interest is the eighth wonder of the world."
+   Conservative yield farming with capital preservation.
+   Thesis: “Compound interest is the eighth wonder of the world.”
 
 ## [TECHSTACK] Inside ConvictionFi
 
 ### Web3 Layer
 
-| Component          | Tool / Protocol                     | Description                                                                        |
-| ------------------ | ----------------------------------- | ---------------------------------------------------------------------------------- |
-| Layer1             | Sui Network                         | High-speed, low-cost blockchain. Built on the Move programming language.           |
-| Smart Contract     | Move Language                       | Implements core logic for ConvictionNFTs, Agent Wallets, etc.                      |
-| AI Agent Framework | Sui Agent Kit                       | On-chain initialization and deployment of AI trading agents.                       |
-| Storage            | Walrus                              | Stores strategy prompts and metadata (supports both editable and immutable types). |
-| Bridge             | Wormhole                            | Enables cross-chain fund transfers (e.g., ETH/USDC → Sui).                         |
-| Authentication     | Privy                               | Enables social login and zkLogin for seamless Web2-style onboarding.               |
-| NFT Marketplace    | BlueMove (and other Sui-compatible) | Enables secondary trading of ConvictionNFTs.                                       |
-| Token Standards    | Sui::NFT, Wallet::Object            | Each NFT functions as a wallet and signer with embedded logic.                     |
+| Component          | Tool/Protocol            | Description                                               |
+| ------------------ | ------------------------ | --------------------------------------------------------- |
+| Layer1             | Sui Network              | High-speed, low-cost, Move-based blockchain               |
+| Smart Contract     | Move Language            | Handles ConvictionNFTs, agent logic, and isolated wallets |
+| AI Agent Framework | Sui Agent Kit            | On-chain deployment of autonomous trading agents          |
+| Storage            | Walrus                   | Append-only metadata storage with CIDs                    |
+| Bridge             | Wormhole                 | Cross-chain fund bridging (ETH/USDC → Sui)                |
+| Authentication     | Privy                    | Social login + zkLogin onboarding                         |
+| NFT Marketplace    | BlueMove (and others)    | Secondary market for ConvictionNFTs                       |
+| Token Standard     | Sui::NFT, Wallet::Object | NFTs double as wallets + signers                          |
 
-### Web2 / Application Layer
+### Web2 / App Layer
 
-| Component       | Tool / Platform  | Description                                |
-| --------------- | ---------------- | ------------------------------------------ |
-| Deployment      | Vercel           | Hosting platform for frontend application. |
-| Database (temp) | Firebase         | Temporary backend database.                |
-| AI Cloud        | Alibaba Cloud    | Infrastructure for running AI logic.       |
-| Payment API     | Stripe (planned) | Enables fiat-based NFT minting.            |
+| Component | Tool/Platform    | Description                    |
+| --------- | ---------------- | ------------------------------ |
+| Hosting   | Vercel           | Frontend deployment            |
+| DB (temp) | Firebase         | Temporary backend              |
+| AI Infra  | Alibaba Cloud    | Hosts AI strategy execution    |
+| Payments  | Stripe (planned) | Enables fiat-based NFT minting |
 
-### Developer Tools & Infrastructure
+### Dev Infra
 
-| Component            | Tool                            | Description                                        |
-| -------------------- | ------------------------------- | -------------------------------------------------- |
-| AI Coding Assistants | ChatGPT, Claude, Cursor, v0.dev | Used for AI-driven development and prototyping.    |
-| CI/CD Integration    | Claude Code GitHub Actions      | Automates testing and deployment of Move codebase. |
+| Component | Tools                           | Description                             |
+| --------- | ------------------------------- | --------------------------------------- |
+| AI Coding | ChatGPT, Claude, Cursor, v0.dev | AI-driven code prototyping              |
+| CI/CD     | Claude Code GitHub Actions      | Automates testing + deployment for Move |
 
 ## Links
 
-X(Twitter): https://x.com/ConvictionFi
-Slide Deck: https://gamma.app/docs/ConvictionFi-yicndaml629ajp0
-Demo: https://convictionfi.vercel.app/
-Founder: https://www.linkedin.com/in/kyohei-nft/
+- X(Twitter): https://x.com/ConvictionFi
+- Slide Deck: https://gamma.app/docs/ConvictionFi-yicndaml629ajp0
+- Demo: https://convictionfi.vercel.app/
+- Founder: https://www.linkedin.com/in/kyohei-nft/
 
 ![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/lf9nhc0nvdxig4uotd6z.jpg)
+
+## Summary
+
+ConvictionFi is where belief becomes behavior — and NFTs become autonomous agents.
+Built on Sui. Powered by Move. Inspired by conviction.
