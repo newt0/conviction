@@ -13,12 +13,12 @@ With a single NFT mint, users can delegate conviction-based investing to an auto
 | Status       | Prototype Phase \| Raising Pre-Seed                                                                                                                                                                                                                                                                                                        |
 | Using        | [Walrus](https://www.walrus.xyz/), [AlibabaCloud](https://www.alibabacloud.com), [Privy](https://www.privy.io/), [Wormhole](https://wormhole.com/), [Pyth](https://www.pyth.network/), [UNI](https://unicoinsui.com/), [HIPPO](https://www.hippocto.meme/), [Scallop](https://scallop.io/), [Navi Protocol](https://naviprotocol.io/) etc. |
 
-## [PROBLEM] DeFAI Is Just a Buzzword
+## [PROBLEM] ❗ DeFAI Is Just a Buzzword
 
 In 2025, DeFAI (DeFi × AI) is one of crypto’s hottest trends — but most products lack depth.
 Use cases remain vague, UX is fragmented, and the core value of “using DeFAI” is unclear.
 
-## [SOLUTION] Vibe Trading on Conviction. DeFAI Agent as NFT
+## [SOLUTION] 💡 Vibe Trading on Conviction. DeFAI Agent as NFT
 
 ConvictionFi introduces two key concepts to deliver a real DeFAI experience:
 
@@ -29,7 +29,7 @@ Users mint an NFT tied to their conviction — e.g., `$SUI_MAXI`, `$BTC_HODLER`,
 Each NFT becomes an AI agent with its own smart contract wallet and trading strategy.
 Mint it, and let the agent handle the rest.
 
-## [USER-FLOW] Just Mint NFT
+## [USER-FLOW] 🧭 Just Mint NFT
 
 ConvictionFi follows a five-step flow, but users make only one decision: minting.
 
@@ -67,7 +67,7 @@ Stored data includes:
 
 This ensures full auditability, upgrade traceability, and governance potential — without storing bloated data directly on-chain.
 
-## [REVENUE] Sustainable Revenue, Seamless UX
+## [REVENUE] 💸 Sustainable Revenue, Seamless UX
 
 ConvictionFi aligns sustainable monetization with a seamless UX:
 
@@ -78,7 +78,7 @@ ConvictionFi aligns sustainable monetization with a seamless UX:
 No hidden fees. Fiat and cross-chain minting supported with minimal friction.
 We optimize for TVL and user growth — not extractive monetization.
 
-## Sample Strategy
+## ♟️ Sample Strategy
 
 1. **SUI_MAXIMIZER**
    Aggressively accumulates $SUI and ecosystem tokens during dips.
@@ -91,7 +91,7 @@ We optimize for TVL and user growth — not extractive monetization.
    Conservative yield farming with capital preservation.
    Thesis: “Compound interest is the eighth wonder of the world.”
 
-## [TECHSTACK] Inside ConvictionFi
+## [TECHSTACK] ⚙️ Inside ConvictionFi
 
 ### Web3 Layer
 
